@@ -1,7 +1,5 @@
 package utils;
 
-import exceptions.NoSuchPropertyFoundException;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -23,6 +21,7 @@ public class PropertyReader {
     public String getPropertyValueByKey(String key) {
         if (properties.getProperty(key) != null) {
             return properties.getProperty(key);
-        } else throw new NoSuchPropertyFoundException();
+        } else System.out.println("Cannot find properly by key: " + key);
+        throw new RuntimeException("Cannot find properly by key: " + key);
     }
 }
