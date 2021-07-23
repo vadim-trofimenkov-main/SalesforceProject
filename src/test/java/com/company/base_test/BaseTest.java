@@ -1,5 +1,6 @@
 package com.company.base_test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,7 +20,8 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
+        //System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);

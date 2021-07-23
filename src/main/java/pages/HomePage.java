@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class HomePage {
-    private WebDriver driver;
-    private By homeButtonLocator = By.cssSelector("[title = 'Home Tab - Selected']");
+    private final WebDriver driver;
+    private static final By HOME_BUTTON_LOCATOR = By.cssSelector("[title = 'Home Tab - Selected']");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -17,8 +17,8 @@ public class HomePage {
 
     public String getHomeBtnText() {
         WebElement firstResult = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(homeButtonLocator));
-        return driver.findElement(homeButtonLocator).getText();
+                .until(ExpectedConditions.presenceOfElementLocated(HOME_BUTTON_LOCATOR));
+        return driver.findElement(HOME_BUTTON_LOCATOR).getText();
     }
 }
 
