@@ -21,7 +21,9 @@ public class PropertyReader {
     public String getPropertyValueByKey(String key) {
         if (properties.getProperty(key) != null) {
             return properties.getProperty(key);
-        } else System.out.println("Cannot find properly by key: " + key);
-        throw new RuntimeException("Cannot find properly by key: " + key);
+        } else {
+            System.out.println("Cannot find properly by key: " + key);
+            throw new RuntimeException("Cannot find properly by key: " + key);
+        }
     }
 }
