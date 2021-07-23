@@ -6,14 +6,16 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.HomePage;
+import pages.LoginPage;
+import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
-    private WebDriver driver;
-    private String link = "https://login.salesforce.com/";
-    public HomePage homepage;
+public abstract class BaseTest {
+    protected WebDriver driver;
+    protected PropertyReader propertyReader = new PropertyReader("src/main/resources/configuration.properties");
+    protected String link = "https://login.salesforce.com/";
+    protected LoginPage loginPage;
 
     @BeforeClass
     public void setUp() {
@@ -25,12 +27,13 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void goHome() {
+    public void goToLoginPage() {
         driver.get(link);
+        loginPage = new LoginPage(driver);
     }
 
-    @AfterClass
-    public void tearDown(){
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
         driver.quit();
     }
 }

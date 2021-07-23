@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-
     private WebDriver driver;
     private By usernameLocator = By.id("username");
     private By passwordLocator = By.id("password");
