@@ -1,6 +1,7 @@
 package com.itechart.tests;
-import com.itechart.tests.pages.LoginPage;
-import com.itechart.tests.utils.PropertyReader;
+
+import com.itechart.pages.LoginPage;
+import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
