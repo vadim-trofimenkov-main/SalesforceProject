@@ -22,13 +22,16 @@ public class HomePage extends BasePage {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(HOME_BUTTON_LOCATOR));
         return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
     }
+
     public AppLauncherSearchResultPage goToTabFromAppLauncher(String tab) {
-        driver.findElement(APP_LAUNCHER_LOCATOR).click();
-        driver.findElement(APP_LAUNCHER_SEARCH_LOCATOR).sendKeys(tab);
-        WebElement element = driver.findElement(APP_LAUNCHER_SEARCH_First_Result_LOCATOR);
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].click();", element);
-        return new AppLauncherSearchResultPage(driver);
+        if (isPageOpened()) {
+            driver.findElement(APP_LAUNCHER_LOCATOR).click();
+            driver.findElement(APP_LAUNCHER_SEARCH_LOCATOR).sendKeys(tab);
+            WebElement element = driver.findElement(APP_LAUNCHER_SEARCH_First_Result_LOCATOR);
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("arguments[0].click();", element);
+            return new AppLauncherSearchResultPage(driver);
+        } else throw new RuntimeException("Page is not opened");
     }
 }
 

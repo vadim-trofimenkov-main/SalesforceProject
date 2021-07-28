@@ -22,7 +22,8 @@ public class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/main/resources/configuration.properties");
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
-    protected final String URL = propertyReader.getPropertyValueByKey("baseUrl");
+    protected final String LOGINURL = propertyReader.getPropertyValueByKey("baseUrl");
+    protected final String HOMEPAGEURL = propertyReader.getPropertyValueByKey("homepage");
 
     @BeforeClass
     public void setUp() {
@@ -31,13 +32,18 @@ public class BaseTest {
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        login();
+    }
+
+    public void login() {
+        driver.get(LOGINURL);
+        loginPage = new LoginPage(driver);
+        homePage = loginPage.login(USERNAME, PASSWORD);
     }
 
     @BeforeMethod
-    public void goToLoginPage() {
-        driver.get(URL);
-        loginPage = new LoginPage(driver);
-        homePage = loginPage.login(USERNAME,PASSWORD);
+    public void goToHomePage() {
+        driver.get(HOMEPAGEURL);
     }
 
     @AfterClass(alwaysRun = true)
@@ -48,7 +54,7 @@ public class BaseTest {
     private void setCookie() {
         Cookie cookie = new Cookie
                 .Builder(USERNAME, PASSWORD)
-                .domain(URL)
+                .domain(LOGINURL)
                 .build();
         driver.manage().addCookie(cookie);
     }
