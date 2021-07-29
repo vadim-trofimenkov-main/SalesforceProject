@@ -3,7 +3,6 @@ package com.itechart.pages.account;
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountListViewPage extends BasePage {
@@ -17,11 +16,12 @@ public class AccountListViewPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(BREADCRUMB_LOCATOR));
+        wait.until(ExpectedConditions.presenceOfElementLocated(BREADCRUMB_LOCATOR));
         return driver.findElement(BREADCRUMB_LOCATOR).getText().contains("Accounts");
     }
 
     public AccountModalPage clickNewButton() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(NEW_BUTTON_LOCATOR));
         driver.findElement(NEW_BUTTON_LOCATOR).click();
         return new AccountModalPage(driver);
     }

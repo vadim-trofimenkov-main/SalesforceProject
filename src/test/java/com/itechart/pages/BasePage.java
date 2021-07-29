@@ -20,11 +20,14 @@ public class BasePage {
         wait = new WebDriverWait(driver, 5);
     }
 
-    public boolean isPageOpened(){
+    public boolean isPageOpened() {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(HOME_BUTTON_LOCATOR));
         return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
     }
-    public void goToPage(String link){}
+
+    public void goToPage(String link) {
+        driver.get(link);
+    }
 
     public AppLauncherSearchResultPage goToTabFromAppLauncher(String tab) {
         if (isPageOpened()) {
