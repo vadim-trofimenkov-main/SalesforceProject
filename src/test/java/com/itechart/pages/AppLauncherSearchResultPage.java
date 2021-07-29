@@ -36,7 +36,6 @@ public class AppLauncherSearchResultPage extends BasePage {
         driver.findElement(EMAIL_LOCATOR).sendKeys(email);
         driver.findElement(NUMBER_LOCATOR).sendKeys(number);
         driver.findElement(TEXT_LOCATOR).sendKeys(text);
-        driver.findElement(TEXT_LOCATOR).sendKeys(text);
     }
 
     public void clickNewButton() {
