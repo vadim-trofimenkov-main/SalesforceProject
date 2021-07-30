@@ -20,7 +20,6 @@ public class AccountModalPage extends BasePage {
     private final By SAVE_AND_NEW_BUTTON_LOCATOR = By.cssSelector("[title='Save & New']");
     private final By EMPTY_REQUIRED_FIELD_LOCATOR = By.xpath("//li[contains(text(),'These required fields must be completed')]");
     private final By MODAL_HEADER_LOCATOR = By.xpath("//div[@class='slds-modal__header']");
-    private final By PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR = By.xpath("(//div[@class='slds-m-left--smalllabels slds-truncate slds-media__body']) [1]");
 
     //address
     private final By BILLING_STREET_LOCATOR = By.cssSelector("[placeholder='Billing Street']");
@@ -48,14 +47,14 @@ public class AccountModalPage extends BasePage {
         }
     }
 
-    public void enterDataInNewRecordModalFields(String name, String type, String website, String industry,
+    public void enterDataInNewRecordModalFields(String name, String parentAccount, String type, String website, String industry,
         String phone, String description, String employees, String billingStreet, String billingCity,
         String billingPostalCode, String billingState,
         String billingCountry, String shippingStreet, String shippingCity, String shippingState, String shippingPostalCode,
         String shippingCountry) {
         driver.findElement(ACCOUNT_NAME_LOCATOR).sendKeys(name);
         selectPicklistOption(TYPE_LOCATOR, type);
-        //   selectParentAccountFirstPage(parentAccount);
+        selectParentAccountFirstPage(parentAccount);
         driver.findElement(WEBSITE_LOCATOR).sendKeys(website);
         selectPicklistOption(INDUSTRY_LOCATOR, industry);
         driver.findElement(PHONE_LOCATOR).sendKeys(phone);
@@ -103,10 +102,10 @@ public class AccountModalPage extends BasePage {
     }
 
     public void selectParentAccountFirstPage(String parentAccount) {
-        driver.findElement(PARENT_ACCOUNT_LOCATOR).click();
+        By PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR = By.xpath("(//div[contains(@title, '" + parentAccount + "')]" +
+                "//ancestor::li[not(contains(@class, 'invisible'))]) [1]");
+        driver.findElement(PARENT_ACCOUNT_LOCATOR).sendKeys(parentAccount);
         wait.until(ExpectedConditions.presenceOfElementLocated(PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR));
-        WebElement element = driver.findElement(PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR);
-        Actions action = new Actions(driver);
-        action.click(element);
+        driver.findElement(PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR).click();
     }
 }

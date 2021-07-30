@@ -10,9 +10,8 @@ public class CreateNewAccountTest extends BaseTest {
     @Test
     public void createNewAccountRecord() {
         homePage.goToPage("https://itechart4.lightning.force.com/lightning/o/Account/list?filterName=Recent");
-        AccountListViewPage listViewPage = new AccountListViewPage(driver);
-        AccountModalPage modalPage = listViewPage.clickNewButton();
-        modalPage.enterDataInNewRecordModalFields("Test New Account", "Investor", "test", "Banking",
+        AccountModalPage modalPage = new AccountListViewPage(driver).clickNewButton();
+        modalPage.enterDataInNewRecordModalFields("Test final Account","Test New Account", "Investor", "test", "Banking",
                 "123", "test desc", "1234", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address");

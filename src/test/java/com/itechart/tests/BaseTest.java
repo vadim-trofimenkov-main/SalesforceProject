@@ -2,6 +2,7 @@ package com.itechart.tests;
 
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
+import com.itechart.pages.account.AccountListViewPage;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Cookie;
