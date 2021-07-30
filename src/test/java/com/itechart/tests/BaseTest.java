@@ -1,5 +1,6 @@
 package com.itechart.tests;
 
+import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -18,6 +19,11 @@ public abstract class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/main/resources/configuration.properties");
     protected String link = "https://login.salesforce.com/";
     protected LoginPage loginPage;
+    protected HomePage homePage;
+    protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
+    protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
+    protected final String LOGINURL = propertyReader.getPropertyValueByKey("baseUrl");
+    protected final String HOMEPAGEURL = propertyReader.getPropertyValueByKey("homepage");
 
     @BeforeClass
     public void setUp() {
@@ -26,12 +32,18 @@ public abstract class BaseTest {
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        login();
+    }
+
+    public void login() {
+        driver.get(LOGINURL);
+        loginPage = new LoginPage(driver);
+        homePage = loginPage.login(USERNAME, PASSWORD);
     }
 
     @BeforeMethod
-    public void goToLoginPage() {
-        driver.get(link);
-        loginPage = new LoginPage(driver);
+    public void goToHomePage() {
+        driver.get(HOMEPAGEURL);
     }
 
     @AfterClass(alwaysRun = true)
