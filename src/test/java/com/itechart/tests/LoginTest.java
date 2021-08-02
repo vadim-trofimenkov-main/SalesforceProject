@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 
 
 public class LoginTest extends BaseTest {
-    private final String USERNAME = propertyReader.getPropertyValueByKey("username");
-    private final String PASSWORD = propertyReader.getPropertyValueByKey("password");
 
     @Test
     public void login() {
