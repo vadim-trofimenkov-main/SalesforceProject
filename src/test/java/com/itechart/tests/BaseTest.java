@@ -2,6 +2,7 @@ package com.itechart.tests;
 
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
+import com.itechart.pages.account.AccountListViewPage;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -16,10 +17,9 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
     protected WebDriver driver;
-    protected PropertyReader propertyReader = new PropertyReader("src/main/resources/configuration.properties");
-    protected String link = "https://login.salesforce.com/";
     protected LoginPage loginPage;
     protected HomePage homePage;
+    protected PropertyReader propertyReader = new PropertyReader("src/main/resources/configuration.properties");
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
     protected final String LOGINURL = propertyReader.getPropertyValueByKey("baseUrl");

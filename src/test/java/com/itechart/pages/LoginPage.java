@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        WebElement firstResult = wait.until(ExpectedConditions.presenceOfElementLocated(LOGO_LOCATOR));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(LOGO_LOCATOR));
         return driver.findElement(LOGO_LOCATOR).isDisplayed();
     }
 
