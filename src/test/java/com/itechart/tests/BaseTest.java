@@ -2,10 +2,8 @@ package com.itechart.tests;
 
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
-import com.itechart.pages.account.AccountListViewPage;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,7 +14,7 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public abstract class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected HomePage homePage;
@@ -50,13 +48,5 @@ public class BaseTest {
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
-    }
-
-    private void setCookie() {
-        Cookie cookie = new Cookie
-                .Builder(USERNAME, PASSWORD)
-                .domain(LOGINURL)
-                .build();
-        driver.manage().addCookie(cookie);
     }
 }
