@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ContactModalPage extends BasePage {
     private static final By SALUTATION_PICKLIST_LOCATOR = By.xpath("//input[@name='salutation']");
-    private static final By SALUTATION_VALUE_LOCATOR = By.xpath("//span[@title='Mr.']");
+    private String SALUTATION_VALUE = "//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item[contains(@data-value, '%s')]";
     private static final By FIRST_NAME_LOCATOR = By.xpath("//input[@name='firstName']");
     private static final By MIDDLE_NAME_LOCATOR = By.xpath("//input[@name='middleName']");
     private static final By LAST_NAME_LOCATOR = By.xpath("//input[@name='lastName']");
@@ -18,24 +18,32 @@ public class ContactModalPage extends BasePage {
     private static final By PHONE_LOCATOR = By.xpath("//input[@name='Phone']");
     private static final By MOBILE_LOCATOR = By.xpath("//input[@name='MobilePhone']");
     private static final By ACCOUNT_NAME_LOOKUP = By.xpath("//input[@placeholder='Search Accounts...']");
-    private static final By ACCOUNT_NAME_VALUE = By.xpath("(//span[contains(@title, 'Test New Account')]//ancestor::lightning-base-combobox-item[@class]) [1]");
+    private String ACCOUNT_NAME_VALUE = "(//span[contains(@title, '%s')]//ancestor::lightning-base-combobox-item[@class]) [1]";
     private static final By REPORTS_TO_LOOKUP = By.xpath("//input[@placeholder='Search Contacts...']");
     private static final By REPORTS_TO_VALUE = By.xpath("(//span[contains(@title, 'test contact')]//ancestor::li) [1]");
     private static final By SAVE_BUTTON_LOCATOR = By.xpath("//button[@name='SaveEdit']");
 
     public ContactModalPage(WebDriver driver) {super(driver);}
 
-    public ContactModalPage fillContactDetails(String firstname, String middlename, String lastname,
-                                   String suffix, String title, String department, String email,
-                                   String fax, String phone, String mobile){
+    public void fillSalutationPicklist(String value){
         driver.findElement(SALUTATION_PICKLIST_LOCATOR).click();
-        driver.findElement(SALUTATION_VALUE_LOCATOR).click();
+        driver.findElement(By.xpath(String.format(SALUTATION_VALUE, value, value))).click();
+    }
+
+    public void fillAccountNameLookUp(String value){
+        driver.findElement(ACCOUNT_NAME_LOOKUP).click();
+        driver.findElement(By.xpath(String.format(ACCOUNT_NAME_VALUE, value, value))).click();
+    }
+
+    public ContactModalPage fillContactDetails(String salutation, String firstname, String middlename, String lastname,
+                                   String suffix, String accountname, String title, String department, String email,
+                                   String fax, String phone, String mobile){
+        fillSalutationPicklist(salutation);
         driver.findElement(FIRST_NAME_LOCATOR).sendKeys(firstname);
         driver.findElement(MIDDLE_NAME_LOCATOR).sendKeys(middlename);
         driver.findElement(LAST_NAME_LOCATOR).sendKeys(lastname);
         driver.findElement(SUFFIX_LOCATOR).sendKeys(suffix);
-        driver.findElement(ACCOUNT_NAME_LOOKUP).click();
-        driver.findElement(ACCOUNT_NAME_VALUE).click();
+        fillAccountNameLookUp(accountname);
         driver.findElement(REPORTS_TO_LOOKUP).click();
         driver.findElement(REPORTS_TO_VALUE).click();
         driver.findElement(TITLE_LOCATOR).sendKeys(title);
