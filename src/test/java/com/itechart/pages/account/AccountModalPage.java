@@ -2,7 +2,6 @@ package com.itechart.pages.account;
 
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountModalPage extends BasePage {
@@ -20,6 +19,7 @@ public class AccountModalPage extends BasePage {
     private final By SAVE_AND_NEW_BUTTON_LOCATOR = By.cssSelector("[title='Save & New']");
     private final By EMPTY_REQUIRED_FIELD_LOCATOR = By.xpath("//li[contains(text(),'These required fields must be completed')]");
     private final By MODAL_HEADER_LOCATOR = By.xpath("//div[@class='slds-modal__header']");
+    private String parentAccountField = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
 
     //address
     private final By BILLING_STREET_LOCATOR = By.cssSelector("[placeholder='Billing Street']");
@@ -48,10 +48,10 @@ public class AccountModalPage extends BasePage {
     }
 
     public void enterDataInNewRecordModalFields(String name, String parentAccount, String type, String website, String industry,
-        String phone, String description, String employees, String billingStreet, String billingCity,
-        String billingPostalCode, String billingState,
-        String billingCountry, String shippingStreet, String shippingCity, String shippingState, String shippingPostalCode,
-        String shippingCountry) {
+                                                String phone, String description, String employees, String billingStreet, String billingCity,
+                                                String billingPostalCode, String billingState,
+                                                String billingCountry, String shippingStreet, String shippingCity, String shippingState, String shippingPostalCode,
+                                                String shippingCountry) {
         driver.findElement(ACCOUNT_NAME_LOCATOR).sendKeys(name);
         selectPicklistOption(TYPE_LOCATOR, type);
         selectParentAccountFirstPage(parentAccount);
@@ -102,10 +102,10 @@ public class AccountModalPage extends BasePage {
     }
 
     public void selectParentAccountFirstPage(String parentAccount) {
-        By PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR = By.xpath("(//div[contains(@title, '" + parentAccount + "')]" +
-                "//ancestor::li[not(contains(@class, 'invisible'))]) [1]");
+        By PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR = By.xpath(String.format(parentAccountField, parentAccount));
         driver.findElement(PARENT_ACCOUNT_LOCATOR).sendKeys(parentAccount);
         wait.until(ExpectedConditions.presenceOfElementLocated(PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR));
-        driver.findElement(PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR).click();
+        WebElement element = driver.findElement(PARENT_ACCOUNT_FIRST_OPTION_HEADER_LOCATOR);
+        element.click();
     }
 }
