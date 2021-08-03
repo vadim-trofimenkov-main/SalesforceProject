@@ -31,6 +31,7 @@ public class AccountDetailsPage extends BasePage {
 
 
     public String getTitle() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(ACCOUNT_TITLE));
         return driver.findElement(ACCOUNT_TITLE).getText();
     }
 
