@@ -18,9 +18,9 @@ public class ContactModalPage extends BasePage {
     private static final By PHONE_LOCATOR = By.xpath("//input[@name='Phone']");
     private static final By MOBILE_LOCATOR = By.xpath("//input[@name='MobilePhone']");
     private static final By ACCOUNT_NAME_LOOKUP = By.xpath("//input[@placeholder='Search Accounts...']");
-    private String ACCOUNT_NAME_VALUE = "(//span[contains(@title, '%s')]//ancestor::lightning-base-combobox-item[@class]) [1]";
+    private String ACCOUNT_NAME_VALUE = "//span[@class='slds-listbox__option-text slds-listbox__option-text_entity']//span[contains(text(), '%s')]";
     private static final By REPORTS_TO_LOOKUP = By.xpath("//input[@placeholder='Search Contacts...']");
-    private static final By REPORTS_TO_VALUE = By.xpath("(//span[contains(@title, 'test contact')]//ancestor::li) [1]");
+    private String REPORTS_TO_VALUE = "//span[@class='slds-truncate' and contains(text(),'%s')]";
     private static final By SAVE_BUTTON_LOCATOR = By.xpath("//button[@name='SaveEdit']");
 
     public ContactModalPage(WebDriver driver) {super(driver);}
@@ -30,22 +30,26 @@ public class ContactModalPage extends BasePage {
         driver.findElement(By.xpath(String.format(SALUTATION_VALUE, value, value))).click();
     }
 
-    public void fillAccountNameLookUp(String value){
+    public void fillAccountName(String value){
         driver.findElement(ACCOUNT_NAME_LOOKUP).click();
-        driver.findElement(By.xpath(String.format(ACCOUNT_NAME_VALUE, value, value))).click();
+        driver.findElement(By.xpath(String.format(ACCOUNT_NAME_VALUE, value))).click();
+    }
+
+    public void fillReportsTo(String value){
+        driver.findElement(REPORTS_TO_LOOKUP).click();
+        driver.findElement(By.xpath(String.format(REPORTS_TO_VALUE, value))).click();
     }
 
     public ContactModalPage fillContactDetails(String salutation, String firstname, String middlename, String lastname,
-                                   String suffix, String accountname, String title, String department, String email,
+                                   String suffix, String accountname, String reportsto, String title, String department, String email,
                                    String fax, String phone, String mobile){
         fillSalutationPicklist(salutation);
         driver.findElement(FIRST_NAME_LOCATOR).sendKeys(firstname);
         driver.findElement(MIDDLE_NAME_LOCATOR).sendKeys(middlename);
         driver.findElement(LAST_NAME_LOCATOR).sendKeys(lastname);
         driver.findElement(SUFFIX_LOCATOR).sendKeys(suffix);
-        fillAccountNameLookUp(accountname);
-        driver.findElement(REPORTS_TO_LOOKUP).click();
-        driver.findElement(REPORTS_TO_VALUE).click();
+        fillAccountName(accountname);
+        fillReportsTo(reportsto);
         driver.findElement(TITLE_LOCATOR).sendKeys(title);
         driver.findElement(DEPARTMENT_LOCATOR).sendKeys(department);
         driver.findElement(EMAIL_LOCATOR).sendKeys(email);
