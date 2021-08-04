@@ -18,7 +18,6 @@ public class CreateNewContactTest extends BaseTest {
                 "Test4 Test5 Contact6 Test7","Test8",
                 "Test9", "test@tes.t", "12945678", "+3751730000", "+3752930000");
         contactModalPage.clickSaveButton();
-        contactModalPage.clickSaveButton();
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
         Assert.assertEquals(contactDetailsPage.getTitle(),"Contact", "Title is not correct");
         contactDetailsPage.openDetails();

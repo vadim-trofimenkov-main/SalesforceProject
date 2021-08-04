@@ -1,18 +1,14 @@
 package com.itechart.pages.account;
 
+import com.itechart.elements.DropDown;
+import com.itechart.elements.Input;
+import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountModalPage extends BasePage {
-    private final By ACCOUNT_NAME_LOCATOR = By.xpath("//div[@class='autocompleteWrapper slds-grow']/input [1]");
-    private final By TYPE_LOCATOR = By.xpath("(//a[@class='select']) [1]");
-    private final By WEBSITE_LOCATOR = By.xpath("//input[@type='url']");
-    private final By PHONE_LOCATOR = By.xpath("//input[@type='tel']");
-    private final By DESCRIPTION_LOCATOR = By.xpath("//textarea[@class=' textarea']");
-    private final By EMPLOYEES_LOCATOR = By.xpath("//input[@class='input uiInputSmartNumber']");
     private final By PARENT_ACCOUNT_LOCATOR = By.xpath("//input[@title='Search Accounts']");
-    private final By INDUSTRY_LOCATOR = By.xpath("(//a[@class='select']) [2]");
     private final By SAVE_BUTTON_LOCATOR = By.cssSelector("[title='Save']");
     private final By CANCEL_BUTTON_LOCATOR = By.cssSelector("[title='Cancel']");
     private final By CROSS_BUTTON_LOCATOR = By.xpath("//button[@title='Close this window']");
@@ -20,18 +16,6 @@ public class AccountModalPage extends BasePage {
     private final By EMPTY_REQUIRED_FIELD_LOCATOR = By.xpath("//li[contains(text(),'These required fields must be completed')]");
     private final By MODAL_HEADER_LOCATOR = By.xpath("//div[@class='slds-modal__header']");
     private String parentAccountField = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
-
-    //address
-    private final By BILLING_STREET_LOCATOR = By.cssSelector("[placeholder='Billing Street']");
-    private final By BILLING_CITY_LOCATOR = By.cssSelector("[placeholder='Billing City']");
-    private final By BILLING_POSTAL_CODE_LOCATOR = By.cssSelector("[placeholder='Billing Zip/Postal Code']");
-    private final By BILLING_STATE_LOCATOR = By.cssSelector("[placeholder='Billing State/Province']");
-    private final By BILLING_COUNTRY_LOCATOR = By.cssSelector("[placeholder='Billing Country']");
-    private final By SHIPPING_STREET_LOCATOR = By.cssSelector("[placeholder='Shipping Street']");
-    private final By SHIPPING_CITY_LOCATOR = By.cssSelector("[placeholder='Shipping City']");
-    private final By SHIPPING_STATE_LOCATOR = By.cssSelector("[placeholder='Shipping State/Province']");
-    private final By SHIPPING_POSTAL_CODE_LOCATOR = By.cssSelector("[placeholder='Shipping Zip/Postal Code']");
-    private final By SHIPPING_COUNTRY_LOCATOR = By.cssSelector("[placeholder='Shipping Country']");
 
     public AccountModalPage(WebDriver driver) {
         super(driver);
@@ -47,29 +31,29 @@ public class AccountModalPage extends BasePage {
         }
     }
 
-    public void enterDataInNewRecordModalFields(String name, String parentAccount, String type, String website, String industry,
-                                                String phone, String description, String employees, String billingStreet, String billingCity,
-                                                String billingPostalCode, String billingState,
-                                                String billingCountry, String shippingStreet, String shippingCity, String shippingState, String shippingPostalCode,
-                                                String shippingCountry) {
-        driver.findElement(ACCOUNT_NAME_LOCATOR).sendKeys(name);
-        selectPicklistOption(TYPE_LOCATOR, type);
+    public void enterData(String name, String parentAccount, String type, String website, String industry,
+                          String phone, String description, String employees, String billingStreet, String billingCity,
+                          String billingPostalCode, String billingState,
+                          String billingCountry, String shippingStreet, String shippingCity, String shippingState, String shippingPostalCode,
+                          String shippingCountry) {
+        new Input(driver, "Account Name").accountWrite(name);
+        new DropDown(driver, "Type").select(type);
+        new Input(driver, "Website").accountWrite(website);
+        new TextArea(driver, "Description").write(description);
         selectParentAccountFirstPage(parentAccount);
-        driver.findElement(WEBSITE_LOCATOR).sendKeys(website);
-        selectPicklistOption(INDUSTRY_LOCATOR, industry);
-        driver.findElement(PHONE_LOCATOR).sendKeys(phone);
-        driver.findElement(DESCRIPTION_LOCATOR).sendKeys(description);
-        driver.findElement(EMPLOYEES_LOCATOR).sendKeys(employees);
-        driver.findElement(BILLING_STREET_LOCATOR).sendKeys(billingStreet);
-        driver.findElement(BILLING_CITY_LOCATOR).sendKeys(billingCity);
-        driver.findElement(BILLING_POSTAL_CODE_LOCATOR).sendKeys(billingPostalCode);
-        driver.findElement(BILLING_STATE_LOCATOR).sendKeys(billingState);
-        driver.findElement(BILLING_COUNTRY_LOCATOR).sendKeys(billingCountry);
-        driver.findElement(SHIPPING_STREET_LOCATOR).sendKeys(shippingStreet);
-        driver.findElement(SHIPPING_CITY_LOCATOR).sendKeys(shippingCity);
-        driver.findElement(SHIPPING_STATE_LOCATOR).sendKeys(shippingState);
-        driver.findElement(SHIPPING_POSTAL_CODE_LOCATOR).sendKeys(shippingPostalCode);
-        driver.findElement(SHIPPING_COUNTRY_LOCATOR).sendKeys(shippingCountry);
+        new Input(driver, "Phone").accountWrite(phone);
+        new DropDown(driver, "Industry").select(industry);
+        new Input(driver, "Employees").accountWrite(employees);
+        new TextArea(driver, "Billing Street").write(billingStreet);
+        new Input(driver, "Billing City").accountWrite(billingCity);
+        new Input(driver, "Billing State/Province").accountWrite(billingState);
+        new Input(driver, "Billing Zip/Postal Code").accountWrite(billingPostalCode);
+        new Input(driver, "Billing Country").accountWrite(billingCountry);
+        new TextArea(driver, "Shipping Street").write(shippingStreet);
+        new Input(driver, "Shipping City").accountWrite(shippingCity);
+        new Input(driver, "Shipping State/Province").accountWrite(shippingState);
+        new Input(driver, "Shipping Zip/Postal Code").accountWrite(shippingPostalCode);
+        new Input(driver, "Shipping Country").accountWrite(shippingCountry);
     }
 
     public AccountDetailsPage clickSaveButton() {
@@ -94,11 +78,6 @@ public class AccountModalPage extends BasePage {
 
     public boolean isEmptyRequiredFieldsValidationError() {
         return driver.findElement(EMPTY_REQUIRED_FIELD_LOCATOR).isDisplayed();
-    }
-
-    public void selectPicklistOption(By locator, String type) {
-        driver.findElement(locator).click();
-        driver.findElement(By.linkText(type)).click();
     }
 
     public void selectParentAccountFirstPage(String parentAccount) {
