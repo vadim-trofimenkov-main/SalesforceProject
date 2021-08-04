@@ -1,12 +1,13 @@
 package com.itechart.pages.account;
 
 import com.itechart.pages.BasePage;
+import models.Account;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountModalPage extends BasePage {
     private final By ACCOUNT_NAME_LOCATOR = By.xpath("//div[@class='autocompleteWrapper slds-grow']/input [1]");
-    private final By TYPE_LOCATOR = By.xpath("(//a[@class='select']) [1]");
+    String TYPE_LOCATOR = "//*[contains(@class, 'uiMenuList') and contains(@class, 'visible')]//a[@title='%s']";
     private final By WEBSITE_LOCATOR = By.xpath("//input[@type='url']");
     private final By PHONE_LOCATOR = By.xpath("//input[@type='tel']");
     private final By DESCRIPTION_LOCATOR = By.xpath("//textarea[@class=' textarea']");
@@ -47,29 +48,25 @@ public class AccountModalPage extends BasePage {
         }
     }
 
-    public void enterDataInNewRecordModalFields(String name, String parentAccount, String type, String website, String industry,
-                                                String phone, String description, String employees, String billingStreet, String billingCity,
-                                                String billingPostalCode, String billingState,
-                                                String billingCountry, String shippingStreet, String shippingCity, String shippingState, String shippingPostalCode,
-                                                String shippingCountry) {
-        driver.findElement(ACCOUNT_NAME_LOCATOR).sendKeys(name);
-        selectPicklistOption(TYPE_LOCATOR, type);
-        selectParentAccountFirstPage(parentAccount);
-        driver.findElement(WEBSITE_LOCATOR).sendKeys(website);
-        selectPicklistOption(INDUSTRY_LOCATOR, industry);
-        driver.findElement(PHONE_LOCATOR).sendKeys(phone);
-        driver.findElement(DESCRIPTION_LOCATOR).sendKeys(description);
-        driver.findElement(EMPLOYEES_LOCATOR).sendKeys(employees);
-        driver.findElement(BILLING_STREET_LOCATOR).sendKeys(billingStreet);
-        driver.findElement(BILLING_CITY_LOCATOR).sendKeys(billingCity);
-        driver.findElement(BILLING_POSTAL_CODE_LOCATOR).sendKeys(billingPostalCode);
-        driver.findElement(BILLING_STATE_LOCATOR).sendKeys(billingState);
-        driver.findElement(BILLING_COUNTRY_LOCATOR).sendKeys(billingCountry);
-        driver.findElement(SHIPPING_STREET_LOCATOR).sendKeys(shippingStreet);
-        driver.findElement(SHIPPING_CITY_LOCATOR).sendKeys(shippingCity);
-        driver.findElement(SHIPPING_STATE_LOCATOR).sendKeys(shippingState);
-        driver.findElement(SHIPPING_POSTAL_CODE_LOCATOR).sendKeys(shippingPostalCode);
-        driver.findElement(SHIPPING_COUNTRY_LOCATOR).sendKeys(shippingCountry);
+    public void enterDataInNewRecordModalFields(Account account) {
+        driver.findElement(ACCOUNT_NAME_LOCATOR).sendKeys(account.getAccountName());
+        selectPicklistOption(TYPE_LOCATOR, account.getType());
+        selectParentAccountFirstPage(account.getParentAccount());
+        driver.findElement(WEBSITE_LOCATOR).sendKeys(account.getWebsite());
+        selectPicklistOption(TYPE_LOCATOR, account.getIndustry());
+        driver.findElement(PHONE_LOCATOR).sendKeys(account.getPhone());
+        driver.findElement(DESCRIPTION_LOCATOR).sendKeys(account.getDescription());
+        driver.findElement(EMPLOYEES_LOCATOR).sendKeys(account.getEmployees());
+        driver.findElement(BILLING_STREET_LOCATOR).sendKeys(account.getBillingStreet());
+        driver.findElement(BILLING_CITY_LOCATOR).sendKeys(account.getBillingCity());
+        driver.findElement(BILLING_POSTAL_CODE_LOCATOR).sendKeys(account.getBillingPostalCode());
+        driver.findElement(BILLING_STATE_LOCATOR).sendKeys(account.getBillingState());
+        driver.findElement(BILLING_COUNTRY_LOCATOR).sendKeys(account.getBillingCountry());
+        driver.findElement(SHIPPING_STREET_LOCATOR).sendKeys(account.getShippingStreet());
+        driver.findElement(SHIPPING_CITY_LOCATOR).sendKeys(account.getShippingCity());
+        driver.findElement(SHIPPING_STATE_LOCATOR).sendKeys(account.getShippingState());
+        driver.findElement(SHIPPING_POSTAL_CODE_LOCATOR).sendKeys(account.getShippingPostalCode());
+        driver.findElement(SHIPPING_COUNTRY_LOCATOR).sendKeys(account.getShippingCountry());
     }
 
     public AccountDetailsPage clickSaveButton() {
@@ -96,8 +93,9 @@ public class AccountModalPage extends BasePage {
         return driver.findElement(EMPTY_REQUIRED_FIELD_LOCATOR).isDisplayed();
     }
 
-    public void selectPicklistOption(By locator, String type) {
-        driver.findElement(locator).click();
+    public void selectPicklistOption(String locator, String type) {
+        driver.findElement(By.xpath(locator)).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated((By.linkText(type))));
         driver.findElement(By.linkText(type)).click();
     }
 

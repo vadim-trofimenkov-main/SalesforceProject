@@ -1,6 +1,7 @@
 package com.itechart.pages.contact;
 
 import com.itechart.pages.BasePage;
+import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -40,22 +41,20 @@ public class ContactModalPage extends BasePage {
         driver.findElement(By.xpath(String.format(REPORTS_TO_VALUE, value))).click();
     }
 
-    public ContactModalPage fillContactDetails(String salutation, String firstname, String middlename, String lastname,
-                                   String suffix, String accountname, String reportsto, String title, String department, String email,
-                                   String fax, String phone, String mobile){
-        fillSalutationPicklist(salutation);
-        driver.findElement(FIRST_NAME_LOCATOR).sendKeys(firstname);
-        driver.findElement(MIDDLE_NAME_LOCATOR).sendKeys(middlename);
-        driver.findElement(LAST_NAME_LOCATOR).sendKeys(lastname);
-        driver.findElement(SUFFIX_LOCATOR).sendKeys(suffix);
-        fillAccountName(accountname);
-        fillReportsTo(reportsto);
-        driver.findElement(TITLE_LOCATOR).sendKeys(title);
-        driver.findElement(DEPARTMENT_LOCATOR).sendKeys(department);
-        driver.findElement(EMAIL_LOCATOR).sendKeys(email);
-        driver.findElement(FAX_LOCATOR).sendKeys(fax);
-        driver.findElement(PHONE_LOCATOR).sendKeys(phone);
-        driver.findElement(MOBILE_LOCATOR).sendKeys(mobile);
+    public ContactModalPage fillContactDetails(Contact contact){
+        fillSalutationPicklist(contact.getSalutation());
+        driver.findElement(FIRST_NAME_LOCATOR).sendKeys(contact.getFirstName());
+        driver.findElement(MIDDLE_NAME_LOCATOR).sendKeys(contact.getMiddleName());
+        driver.findElement(LAST_NAME_LOCATOR).sendKeys(contact.getLastName());
+        driver.findElement(SUFFIX_LOCATOR).sendKeys(contact.getSuffix());
+        fillAccountName(contact.getAccountName());
+        fillReportsTo(contact.getReportsTo());
+        driver.findElement(TITLE_LOCATOR).sendKeys(contact.getTitle());
+        driver.findElement(DEPARTMENT_LOCATOR).sendKeys(contact.getDepartment());
+        driver.findElement(EMAIL_LOCATOR).sendKeys(contact.getEmail());
+        driver.findElement(FAX_LOCATOR).sendKeys(contact.getFax());
+        driver.findElement(PHONE_LOCATOR).sendKeys(contact.getPhone());
+        driver.findElement(MOBILE_LOCATOR).sendKeys(contact.getMobile());
         return new ContactModalPage(driver);
     }
 
