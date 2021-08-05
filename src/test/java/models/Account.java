@@ -1,29 +1,26 @@
 package models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@AllArgsConstructor
-@Getter
+@Data
 public class Account {
-
-    String accountName;
-    String type;
-    String website;
-    String phone;
-    String description;
-    String employees;
-    String parentAccount;
-    String industry;
-    String parentAccountField;
-    String billingStreet;
-    String billingCity;
-    String billingPostalCode;
-    String billingState;
-    String billingCountry;
-    String shippingStreet;
-    String shippingCity;
-    String shippingState;
-    String shippingPostalCode;
-    String shippingCountry;
+    final String accountName;
+    final String type;
+    final String website;
+    final String phone;
+    final String description;
+    final String employees;
+    final String parentAccount;
+    final String industry;
+    final String parentAccountField;
+    final String billingStreet;
+    final String billingCity;
+    final String billingPostalCode;
+    final String billingState;
+    final String billingCountry;
+    final String shippingStreet;
+    final String shippingCity;
+    final String shippingState;
+    final String shippingPostalCode;
+    final String shippingCountry;
 }

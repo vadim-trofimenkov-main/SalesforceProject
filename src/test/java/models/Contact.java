@@ -1,23 +1,20 @@
 package models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@AllArgsConstructor
-@Getter
+@Data
 public class Contact {
-
-    String salutation;
-    String firstName;
-    String middleName;
-    String lastName;
-    String suffix;
-    String accountName;
-    String reportsTo;
-    String title;
-    String department;
-    String email;
-    String fax;
-    String phone;
-    String mobile;
+    final String salutation;
+    final String firstName;
+    final String middleName;
+    final String lastName;
+    final String suffix;
+    final String accountName;
+    final String reportsTo;
+    final String title;
+    final String department;
+    final String email;
+    final String fax;
+    final String phone;
+    final String mobile;
 }
