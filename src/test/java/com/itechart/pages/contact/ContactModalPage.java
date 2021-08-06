@@ -4,7 +4,6 @@ import com.itechart.elements.LightInput;
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ContactModalPage extends BasePage {
     private static final By SALUTATION_PICKLIST_LOCATOR = By.xpath("//input[@name='salutation']");

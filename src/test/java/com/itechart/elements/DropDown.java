@@ -21,7 +21,7 @@ public class DropDown {
     public void select(String option) {
         driver.findElement(By.xpath(String.format(locator, label))).click();
         System.out.printf("Selecting option '%s' in drop-down %s\n", option, label);
-        WebElement element = new WebDriverWait(driver,5).until(ExpectedConditions
+        WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(String.format(optionLocator, option))));
         driver.findElement(By.xpath(String.format(optionLocator, option))).click();
     }

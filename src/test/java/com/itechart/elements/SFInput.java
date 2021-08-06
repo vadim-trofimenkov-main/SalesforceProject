@@ -25,9 +25,9 @@ public class SFInput {
 
     public void selectLookupOption(String option) {
         By LOOKUP_OPTION = By.xpath(String.format(lookupOption, option));
-        driver.findElement(By.xpath(String.format(inputLocator,label))).click();
+        driver.findElement(By.xpath(String.format(inputLocator, label))).click();
         System.out.printf("Selecting option '%s' from %s lookup \n", option, label);
-        WebElement element = new WebDriverWait(driver,10)
+        WebElement element = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(LOOKUP_OPTION));
         driver.findElement(LOOKUP_OPTION).click();
     }

@@ -17,6 +17,6 @@ public class TextArea {
 
     public void write(String text) {
         System.out.printf("Writing text '%s' into text-area field with label %s", text, label);
-        driver.findElement(By.xpath(String.format(textAreaLocator,label))).sendKeys(text);
+        driver.findElement(By.xpath(String.format(textAreaLocator, label))).sendKeys(text);
     }
 }
