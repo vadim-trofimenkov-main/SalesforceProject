@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -38,5 +39,14 @@ public abstract class BasePage {
             executor.executeScript("arguments[0].click();", element);
             return new AppLauncherSearchResultPage(driver);
         } else throw new RuntimeException("Page is not opened");
+    }
+
+    public void validateInput(String label, String expected) {
+        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//" +
+                "*[@data-output-element-id='output-field']";
+        Assert.assertTrue(
+                driver.findElement(By.xpath(String.format(locator, label))).getText().contains(expected),
+                String.format("%s input is not correct", label)
+        );
     }
 }
