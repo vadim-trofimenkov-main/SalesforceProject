@@ -2,6 +2,7 @@ package com.itechart.pages.contact;
 
 import com.itechart.elements.LightInput;
 import com.itechart.pages.BasePage;
+import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,22 +20,20 @@ public class ContactModalPage extends BasePage {
         driver.findElement(By.xpath(String.format(SALUTATION_VALUE, value, value))).click();
     }
 
-    public ContactModalPage enterData(String salutation, String firstname, String middlename, String lastname,
-                                      String suffix, String accountname, String reportsto, String title, String department, String email,
-                                      String fax, String phone, String mobile) {
-        fillSalutationPicklist(salutation);
-        new LightInput(driver, "First Name").write(firstname);
-        new LightInput(driver, "Middle Name").write(middlename);
-        new LightInput(driver, "Last Name").write(lastname);
-        new LightInput(driver, "Suffix").write(suffix);
-        new LightInput(driver, "Account Name").selectLookupOption(accountname);
-        new LightInput(driver, "Reports To").selectLookupOption(reportsto);
-        new LightInput(driver, "Title").write(title);
-        new LightInput(driver, "Email").write(email);
-        new LightInput(driver, "Phone").write(phone);
-        new LightInput(driver, "Mobile").write(mobile);
-        new LightInput(driver, "Department").write(department);
-        new LightInput(driver, "Fax").write(fax);
+    public ContactModalPage enterData(Contact contact) {
+        fillSalutationPicklist(contact.getSalutation());
+        new LightInput(driver, "First Name").write(contact.getFirstName());
+        new LightInput(driver, "Middle Name").write(contact.getMiddleName());
+        new LightInput(driver, "Last Name").write(contact.getLastName());
+        new LightInput(driver, "Suffix").write(contact.getSuffix());
+        new LightInput(driver, "Account Name").selectLookupOption(contact.getAccountName());
+        new LightInput(driver, "Reports To").selectLookupOption(contact.getReportsTo());
+        new LightInput(driver, "Title").write(contact.getTitle());
+        new LightInput(driver, "Email").write(contact.getEmail());
+        new LightInput(driver, "Phone").write(contact.getPhone());
+        new LightInput(driver, "Mobile").write(contact.getMobile());
+        new LightInput(driver, "Department").write(contact.getDepartment());
+        new LightInput(driver, "Fax").write(contact.getFax());
         return new ContactModalPage(driver);
     }
 
