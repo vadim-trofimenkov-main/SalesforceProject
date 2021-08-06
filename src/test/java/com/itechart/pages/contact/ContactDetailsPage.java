@@ -22,14 +22,14 @@ public class ContactDetailsPage extends BasePage {
 
     public void validate(String name, String accountName, String reportsTo, String title, String department, String email,
                          String fax, String phone, String mobile) {
-        validateName("Name", name);
-        validateLink("Account Name", accountName);
-        validateLink("Reports To", reportsTo);
+        validateInput("Name", name);
+        validateInput("Account Name", accountName);
+        validateInput("Reports To", reportsTo);
         validateInput("Title", title);
         validateInput("Department", department);
-        validateLink("Email", email);
-        validateLink("Phone", phone);
-        validateLink("Fax", fax);
-        validateLink("Mobile", mobile);
+        validateInput("Email", email);
+        validateInput("Phone", phone);
+        validateInput("Fax", fax);
+        validateInput("Mobile", mobile);
     }
 }

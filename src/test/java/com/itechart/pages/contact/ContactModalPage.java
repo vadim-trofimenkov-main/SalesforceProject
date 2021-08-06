@@ -1,6 +1,6 @@
 package com.itechart.pages.contact;
 
-import com.itechart.elements.Input;
+import com.itechart.elements.LightInput;
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,10 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ContactModalPage extends BasePage {
     private static final By SALUTATION_PICKLIST_LOCATOR = By.xpath("//input[@name='salutation']");
     private String SALUTATION_VALUE = "//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item[contains(@data-value, '%s')]";
-    private static final By ACCOUNT_NAME_LOOKUP = By.xpath("//input[@placeholder='Search Accounts...']");
-    private String ACCOUNT_NAME_VALUE = "//span[@class='slds-listbox__option-text slds-listbox__option-text_entity']//span[contains(text(), '%s')]";
-    private static final By REPORTS_TO_LOOKUP = By.xpath("//input[@placeholder='Search Contacts...']");
-    private String REPORTS_TO_VALUE = "//span[@class='slds-truncate' and contains(text(),'%s')]";
     private static final By SAVE_BUTTON_LOCATOR = By.xpath("//button[@name='SaveEdit']");
 
     public ContactModalPage(WebDriver driver) {
@@ -24,33 +20,22 @@ public class ContactModalPage extends BasePage {
         driver.findElement(By.xpath(String.format(SALUTATION_VALUE, value, value))).click();
     }
 
-    public void fillAccountName(String value) {
-        driver.findElement(ACCOUNT_NAME_LOOKUP).click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(ACCOUNT_NAME_VALUE, value))));
-        driver.findElement(By.xpath(String.format(ACCOUNT_NAME_VALUE, value))).click();
-    }
-
-    public void fillReportsTo(String value) {
-        driver.findElement(REPORTS_TO_LOOKUP).click();
-        driver.findElement(By.xpath(String.format(REPORTS_TO_VALUE, value))).click();
-    }
-
-    public ContactModalPage fillContactDetails(String salutation, String firstname, String middlename, String lastname,
-                                               String suffix, String accountname, String reportsto, String title, String department, String email,
-                                               String fax, String phone, String mobile) {
+    public ContactModalPage enterData(String salutation, String firstname, String middlename, String lastname,
+                                      String suffix, String accountname, String reportsto, String title, String department, String email,
+                                      String fax, String phone, String mobile) {
         fillSalutationPicklist(salutation);
-        new Input(driver, "First Name").contactWrite(firstname);
-        new Input(driver, "Middle Name").contactWrite(middlename);
-        new Input(driver, "Last Name").contactWrite(lastname);
-        new Input(driver, "Suffix").contactWrite(suffix);
-        fillAccountName(accountname);
-        fillReportsTo(reportsto);
-        new Input(driver, "Title").contactWrite(title);
-        new Input(driver, "Email").contactWrite(email);
-        new Input(driver, "Phone").contactWrite(phone);
-        new Input(driver, "Mobile").contactWrite(mobile);
-        new Input(driver, "Department").contactWrite(department);
-        new Input(driver, "Fax").contactWrite(fax);
+        new LightInput(driver, "First Name").write(firstname);
+        new LightInput(driver, "Middle Name").write(middlename);
+        new LightInput(driver, "Last Name").write(lastname);
+        new LightInput(driver, "Suffix").write(suffix);
+        new LightInput(driver, "Account Name").selectLookupOption(accountname);
+        new LightInput(driver, "Reports To").selectLookupOption(reportsto);
+        new LightInput(driver, "Title").write(title);
+        new LightInput(driver, "Email").write(email);
+        new LightInput(driver, "Phone").write(phone);
+        new LightInput(driver, "Mobile").write(mobile);
+        new LightInput(driver, "Department").write(department);
+        new LightInput(driver, "Fax").write(fax);
         return new ContactModalPage(driver);
     }
 

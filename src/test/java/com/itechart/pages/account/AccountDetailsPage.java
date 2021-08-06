@@ -39,12 +39,12 @@ public class AccountDetailsPage extends BasePage {
         validateInput("Type", type);
         validateInput("Description", description);
         validateInput("Industry", industry);
-        validateUrl("Website", website);
-        validatePhone("Phone", phone);
-        validateNumber("Employees", employees);
-        validateAddress("Billing Address", billingAddress);
-        validateAddress("Shipping Address", shippingAddress);
-        validateLink("Account Owner", accountOwner);
-        validateLink("Parent Account", parentAccount);
+        validateInput("Website", website);
+        validateInput("Phone", phone);
+        validateInput("Employees", employees);
+        validateInput("Billing Address", billingAddress);
+        validateInput("Shipping Address", shippingAddress);
+        validateInput("Account Owner", accountOwner);
+        validateInput("Parent Account", parentAccount);
     }
 }

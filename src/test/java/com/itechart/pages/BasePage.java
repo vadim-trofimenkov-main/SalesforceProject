@@ -42,65 +42,11 @@ public abstract class BasePage {
     }
 
     public void validateInput(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//lightning-formatted-text";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
+        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//" +
+                "*[@data-output-element-id='output-field']";
+        Assert.assertTrue(
+                driver.findElement(By.xpath(String.format(locator, label))).getText().contains(expected),
                 String.format("%s input is not correct", label)
-        );
-    }
-
-    public void validateUrl(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//lightning-formatted-url";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
-                String.format("%s url is not correct", label)
-        );
-    }
-
-    public void validatePhone(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//lightning-formatted-phone";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
-                String.format("%s phone is not correct", label)
-        );
-    }
-
-    public void validateNumber(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//lightning-formatted-number";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
-                String.format("%s input is not correct", label)
-        );
-    }
-
-    public void validateAddress(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//lightning-formatted-address";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
-                String.format("%s is not correct", label)
-        );
-    }
-
-    public void validateLink(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//a";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
-                String.format("%s is not correct", label)
-        );
-    }
-
-    public void validateName(String label, String expected) {
-        String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//lightning-formatted-name";
-        Assert.assertEquals(
-                driver.findElement(By.xpath(String.format(locator, label))).getText(),
-                expected,
-                String.format("%s is not correct", label)
         );
     }
 }
