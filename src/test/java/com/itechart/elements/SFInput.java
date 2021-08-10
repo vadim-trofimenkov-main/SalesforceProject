@@ -10,7 +10,7 @@ public class SFInput {
     WebDriver driver;
     String label;
     String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::div[contains(@class,'uiInput')]//input";
-    private String lookupOption = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
+    String lookupOption = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
 
     public SFInput(WebDriver driver, String label) {
         this.driver = driver;
