@@ -4,12 +4,11 @@ import com.itechart.elements.DropDown;
 import com.itechart.elements.SFInput;
 import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
-import models.Account;
+import com.itechart.models.Account;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountModalPage extends BasePage {
-
     private final By SAVE_BUTTON_LOCATOR = By.cssSelector("[title='Save']");
     private final By CANCEL_BUTTON_LOCATOR = By.cssSelector("[title='Cancel']");
     private final By CROSS_BUTTON_LOCATOR = By.xpath("//button[@title='Close this window']");
