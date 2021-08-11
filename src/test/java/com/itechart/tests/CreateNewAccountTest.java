@@ -20,12 +20,16 @@ public class CreateNewAccountTest extends BaseTest {
         AccountDetailsPage detailsPage = modalPage.clickSaveButton();
         Assert.assertTrue(detailsPage.getTitle().contains("Account"), "Account is not created");
         detailsPage.openDetails();
-        detailsPage.validate("Test Account", "Test Account", "Investor", "test", "Banking",
-                "123", "test desc", "123", "Test Address\n" +
-                        "Test Address, Test Address Test Address\n" +
-                        "Test Address", "Test Address\n" +
-                        "Test Address, Test Address Test Address\n" +
-                        "Test Address",
-                "Vadim Trofimenkov");
+        detailsPage.validate(account);
+        detailsPage.clickEditDetailsButton().clearData();
+        Account account2 = new Account("Test Account1", "Test Account", "Analyst", "test1", "Apparel",
+                "1234", "test descr", "1234", "Test Address1", "Test Address1",
+                "Test Address1", "Test Address1", "Test Address1", "Test Address1",
+                "Test Address1", "Test Address1", "Test Address1", "Test Address1");
+        modalPage.enterData(account2);
+        modalPage
+                .clickSaveButton()
+                .openDetails()
+                .validate(account2);
     }
 }

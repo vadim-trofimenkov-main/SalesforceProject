@@ -1,7 +1,10 @@
 package com.itechart.pages.contact;
 
 import com.itechart.elements.LightInput;
+import com.itechart.elements.SFInput;
+import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
+import com.itechart.pages.account.AccountModalPage;
 import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,13 +18,8 @@ public class ContactModalPage extends BasePage {
         super(driver);
     }
 
-    public void fillSalutationPicklist(String value) {
-        driver.findElement(SALUTATION_PICKLIST_LOCATOR).click();
-        driver.findElement(By.xpath(String.format(SALUTATION_VALUE, value, value))).click();
-    }
-
     public ContactModalPage enterData(Contact contact) {
-        fillSalutationPicklist(contact.getSalutation());
+        new LightInput(driver,"Salutation").selectLookupOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
         new LightInput(driver, "Middle Name").write(contact.getMiddleName());
         new LightInput(driver, "Last Name").write(contact.getLastName());
@@ -37,7 +35,25 @@ public class ContactModalPage extends BasePage {
         return new ContactModalPage(driver);
     }
 
-    public void clickSaveButton() {
+    public ContactModalPage clearData() {
+        new LightInput(driver, "Salutation").clearDropDown();
+        new LightInput(driver, "First Name").clearLightInput();
+        new LightInput(driver, "Middle Name").clearLightInput();
+        new LightInput(driver, "Last Name").clearLightInput();
+        new LightInput(driver, "Suffix").clearLightInput();
+        new LightInput(driver, "Account Name").clearLookUp();
+        new LightInput(driver, "Reports To").clearLookUp();
+        new LightInput(driver, "Title").clearLightInput();
+        new LightInput(driver, "Email").clearLightInput();
+        new LightInput(driver, "Phone").clearLightInput();
+        new LightInput(driver, "Mobile").clearLightInput();
+        new LightInput(driver, "Department").clearLightInput();
+        new LightInput(driver, "Fax").clearLightInput();
+        return this;
+    }
+
+    public ContactDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
+        return new ContactDetailsPage(driver);
     }
 }
