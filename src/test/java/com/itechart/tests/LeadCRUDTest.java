@@ -7,15 +7,15 @@ import com.itechart.pages.lead.LeadModalPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateValidateNewLeadTest extends BaseTest {
+public class LeadCRUDTest extends BaseTest {
 
     @Test
-    public void createNewLeadRecord() {
+    public void createReadUpdateDeleteLeadRecord() {
         homePage.goToPage("https://itechart4.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
         LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadModalPage modalPage = leadListViewPage.clickNewButton();
-        Lead lead = new Lead("New", "Mr.", "Alex", "Middle", "aka",
-                "Tester", "Boss", "pp41@mailinator.com", "54321", "12345",
+        Lead lead = new Lead("New", "Mr.", "Record", "for", "Success",
+                "Delete", "Boss", "pp41@mailinator.com", "54321", "12345",
                 "Hot", "test.com", "Google", "Banking",
                 "10", "Partner", "Test Street", "Test City", "02240",
                 "NY", "NY");
@@ -23,6 +23,11 @@ public class CreateValidateNewLeadTest extends BaseTest {
         LeadDetailsPage detailsPage = modalPage.clickSaveButton();
         Assert.assertEquals(detailsPage.getTitle(), "Lead", "Title is not correct");
         detailsPage.openDetails();
-        detailsPage.validate(lead);
+        boolean isRecordDeleted = detailsPage
+                                             .validate(lead)
+                                             .clickDeleteButton()
+                                             .delete()
+                                             .isSuccessDeleteMessageDisplayed();
+        Assert.assertTrue(isRecordDeleted, "Record deletion failed");
     }
 }

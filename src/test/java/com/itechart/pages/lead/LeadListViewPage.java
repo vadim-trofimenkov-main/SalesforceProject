@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class LeadListViewPage extends BasePage {
     private final By BREADCRUMB_LOCATOR = By.cssSelector(".slds-var-p-right_x-small");
     private final By NEW_BUTTON_LOCATOR = By.xpath("(//div[@title ='New']) [1]");
+    private final By SUCCESS_DELETE_MESSAGE = By.xpath("//*[contains(@class, 'slds-theme--success')]");
 
     public LeadListViewPage(WebDriver driver) {
         super(driver);
@@ -25,4 +26,8 @@ public class LeadListViewPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
+    public boolean isSuccessDeleteMessageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESS_DELETE_MESSAGE));
+        return driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
+    }
 }
