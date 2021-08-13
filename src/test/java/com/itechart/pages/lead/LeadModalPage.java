@@ -1,5 +1,6 @@
 package com.itechart.pages.lead;
 
+import com.itechart.elements.LightDropDown;
 import com.itechart.elements.LightInput;
 import com.itechart.elements.TextArea;
 import com.itechart.models.Lead;
@@ -15,8 +16,8 @@ public class LeadModalPage extends BasePage {
     }
 
     public LeadModalPage enterData(Lead lead) {
-        new LightInput(driver, "Lead Status").selectLookupOption(lead.getLeadStatus());
-        new LightInput(driver, "Salutation").selectLookupOption(lead.getSalutation());
+        new LightDropDown(driver, "Lead Status").selectOption(lead.getLeadStatus());
+        new LightDropDown(driver, "Salutation").selectOption(lead.getSalutation());
         new LightInput(driver, "First Name").write(lead.getFirstName());
         new LightInput(driver, "Middle Name").write(lead.getMiddleName());
         new LightInput(driver, "Last Name").write(lead.getLastName());
@@ -25,12 +26,12 @@ public class LeadModalPage extends BasePage {
         new LightInput(driver, "Email").write(lead.getEmail());
         new LightInput(driver, "Phone").write(lead.getPhone());
         new LightInput(driver, "Mobile").write(lead.getMobile());
-        new LightInput(driver, "Rating").selectLookupOption(lead.getRating());
+        new LightDropDown(driver, "Rating").selectOption(lead.getRating());
         new LightInput(driver, "Website").write(lead.getWebsite());
         new LightInput(driver, "Company").write(lead.getCompany());
-        new LightInput(driver, "Industry").selectLookupOption(lead.getIndustry());
+        new LightDropDown(driver, "Industry").selectOption(lead.getIndustry());
         new LightInput(driver, "No. of Employees").write(lead.getNoOfEmployees());
-        new LightInput(driver, "Lead Source").selectLookupOption(lead.getLeadSource());
+        new LightDropDown(driver, "Lead Source").selectOption(lead.getLeadSource());
         new TextArea(driver, "Street").write(lead.getStreet());
         new LightInput(driver, "City").write(lead.getCity());
         new LightInput(driver, "State/Province").write(lead.getStateOrProvince());

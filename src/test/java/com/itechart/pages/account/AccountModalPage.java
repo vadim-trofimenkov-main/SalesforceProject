@@ -1,7 +1,8 @@
 package com.itechart.pages.account;
 
-import com.itechart.elements.DropDown;
+import com.itechart.elements.SFDropDown;
 import com.itechart.elements.SFInput;
+import com.itechart.elements.SFLookUp;
 import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
 import com.itechart.models.Account;
@@ -30,14 +31,14 @@ public class AccountModalPage extends BasePage {
         }
     }
 
-    public void enterData(Account account) {
+    public AccountModalPage enterData(Account account) {
         new SFInput(driver, "Account Name").write(account.getAccountName());
-        new DropDown(driver, "Type").select(account.getType());
+        new SFDropDown(driver, "Type").select(account.getType());
         new SFInput(driver, "Website").write(account.getWebsite());
         new TextArea(driver, "Description").write(account.getDescription());
-        new SFInput(driver, "Parent Account").selectLookupOption(account.getParentAccount());
+        new SFLookUp(driver, "Parent Account").selectOption(account.getParentAccount());
         new SFInput(driver, "Phone").write(account.getPhone());
-        new DropDown(driver, "Industry").select(account.getIndustry());
+        new SFDropDown(driver, "Industry").select(account.getIndustry());
         new SFInput(driver, "Employees").write(account.getEmployees());
         new TextArea(driver, "Billing Street").write(account.getBillingStreet());
         new SFInput(driver, "Billing City").write(account.getBillingCity());
@@ -49,6 +50,7 @@ public class AccountModalPage extends BasePage {
         new SFInput(driver, "Shipping State/Province").write(account.getShippingState());
         new SFInput(driver, "Shipping Zip/Postal Code").write(account.getShippingPostalCode());
         new SFInput(driver, "Shipping Country").write(account.getShippingCountry());
+        return this;
     }
 
     public AccountDetailsPage clickSaveButton() {

@@ -3,6 +3,7 @@ package com.itechart.pages.lead;
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -11,7 +12,7 @@ public class LeadDetailsPage extends BasePage {
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
     private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
-    private final By DELETE_MODAL__BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
+    private final By DELETE_MODAL_BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
 
     public LeadDetailsPage(WebDriver driver) {
         super(driver);
@@ -20,7 +21,7 @@ public class LeadDetailsPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DETAILS_TAB));
-        return driver.findElement(DETAILS_TAB).isDisplayed();
+        return getTitle().contains("Lead");
     }
 
 
@@ -53,7 +54,12 @@ public class LeadDetailsPage extends BasePage {
     }
 
     public LeadDetailsPage clickDeleteButton() {
-        driver.findElement(DELETE_BUTTON).click();
+        try {
+            driver.findElement(DELETE_BUTTON).click();
+        } catch (StaleElementReferenceException e) {
+            e.printStackTrace();
+            driver.findElement(DELETE_BUTTON).click();
+        }
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
         return this;
     }
@@ -65,7 +71,7 @@ public class LeadDetailsPage extends BasePage {
 
     public LeadListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
-        driver.findElement(DELETE_MODAL__BUTTON).click();
+        driver.findElement(DELETE_MODAL_BUTTON).click();
         return new LeadListViewPage(driver);
     }
 }

@@ -11,8 +11,8 @@ public class ContactListViewPage extends BasePage {
         super(driver);
     }
 
-    public ContactListViewPage clickNewButton() {
+    public ContactModalPage clickNewButton() {
         driver.findElement(NEW_BUTTON_LOCATOR).click();
-        return new ContactListViewPage(driver);
+        return new ContactModalPage(driver);
     }
 }

@@ -26,7 +26,7 @@ public abstract class BasePage {
         return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
     }
 
-    public void goToPage(String link) {
+    public void open(String link) {
         driver.get(link);
     }
 

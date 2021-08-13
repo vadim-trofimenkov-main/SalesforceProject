@@ -16,10 +16,9 @@ public class AccountDetailsPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(DETAILS_TAB));
-        return driver.findElement(DETAILS_TAB).isDisplayed();
+        wait.until(ExpectedConditions.presenceOfElementLocated(ACCOUNT_TITLE));
+        return getTitle().contains("Account");
     }
-
 
     public String getTitle() {
         wait.until(ExpectedConditions.presenceOfElementLocated(ACCOUNT_TITLE));

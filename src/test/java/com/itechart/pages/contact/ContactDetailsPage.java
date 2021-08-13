@@ -3,6 +3,7 @@ package com.itechart.pages.contact;
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ContactDetailsPage extends BasePage {
     private static final By TITLE_CONTACT_LOCATOR = By.xpath("//div[@class='entityNameTitle slds-line-height--reset']");
@@ -12,12 +13,19 @@ public class ContactDetailsPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(TITLE_CONTACT_LOCATOR));
+        return getTitle().contains("Contact");
+    }
+
     public String getTitle() {
         return driver.findElement(TITLE_CONTACT_LOCATOR).getText();
     }
 
-    public void openDetails() {
+    public ContactDetailsPage openDetails() {
         driver.findElement(TAB_CONTACT_DETAILS_LOCATOR).click();
+        return this;
     }
 
     public void validate(String name, String accountName, String reportsTo, String title, String department, String email,
