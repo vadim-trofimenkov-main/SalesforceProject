@@ -51,7 +51,8 @@ public class LeadDetailsPage extends BasePage {
         validateInput("Address", lead.getAddress());
         return this;
     }
-    public LeadDetailsPage clickDeleteButton(){
+
+    public LeadDetailsPage clickDeleteButton() {
         driver.findElement(DELETE_BUTTON).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
         return this;
