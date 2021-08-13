@@ -13,7 +13,6 @@ public class CreateNewContactTest extends BaseTest {
                 "Test5", "Contact6", "Test7", "Test Account",
                 "Test4 Test5 Contact6 Test7", "Test8",
                 "Test9", "test@tes.t", "12945678", "+3751730000", "+3752930000");
-
         ContactDetailsPage detailsPage =
                 homePage
                         .openContactListViewPage()
