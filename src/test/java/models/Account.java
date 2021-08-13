@@ -24,7 +24,7 @@ public class Account {
     final String shippingCountry;
     String billingAddress;
     String shippingAddress;
-    String accountOwner = "Vadim Trofimenkov";
+    final String accountOwner;
 
     public String getAccountName() {
         return accountName;

@@ -1,4 +1,3 @@
-//contacts
 package com.itechart.elements;
 
 import org.openqa.selenium.By;
@@ -39,12 +38,12 @@ public class LightInput {
         driver.findElement(By.xpath(String.format(inputLocator, label))).clear();
     }
 
-    public void clearLookUp (){
+    public void clearLookUp() {
         System.out.printf("Deleting lookup %s\n", label);
         driver.findElement(DELETE_ACTION_LOCATOR).click();
     }
 
-    public void clearDropDown (){
+    public void clearDropDown() {
         driver.findElement(By.xpath(String.format(inputLocator, label))).click();
         System.out.printf("Clearing option in drop-down %s\n", label);
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions

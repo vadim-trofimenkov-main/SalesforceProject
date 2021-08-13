@@ -54,12 +54,12 @@ public class AccountModalPage extends BasePage {
 
     public AccountModalPage clearData() {
         new SFInput(driver, "Account Name").clearInput();
-        new DropDown(driver, "Type").clearDropDown();
+        new DropDown(driver, "Type").clear();
         new SFInput(driver, "Website").clearInput();
         new TextArea(driver, "Description").clearTextArea();
         new SFInput(driver, "Parent Account").clearLookUp();
         new SFInput(driver, "Phone").clearInput();
-        new DropDown(driver, "Industry").clearDropDown();
+        new DropDown(driver, "Industry").clear();
         new SFInput(driver, "Employees").clearInput();
         new TextArea(driver, "Billing Street").clearTextArea();
         new SFInput(driver, "Billing City").clearInput();

@@ -1,17 +1,12 @@
 package com.itechart.pages.contact;
 
 import com.itechart.elements.LightInput;
-import com.itechart.elements.SFInput;
-import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
-import com.itechart.pages.account.AccountModalPage;
 import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ContactModalPage extends BasePage {
-    private static final By SALUTATION_PICKLIST_LOCATOR = By.xpath("//input[@name='salutation']");
-    private String SALUTATION_VALUE = "//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item[contains(@data-value, '%s')]";
     private static final By SAVE_BUTTON_LOCATOR = By.xpath("//button[@name='SaveEdit']");
 
     public ContactModalPage(WebDriver driver) {
