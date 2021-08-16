@@ -21,8 +21,8 @@ public class CreateNewAccountTest extends BaseTest {
                         .enterData(account)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Account is not created");
-        Account account2 = new Account("Test Account1", "Test Account", "Analyst", "test1", "Apparel",
-                "1234", "test descr", "1234", "Test Address1", "Test Address1",
+        Account account2 = new Account("Test Account1", "Account Test", "Analyst", "test1", "Apparel",
+                "1234", "test descr", "456", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));
         detailsPage

@@ -24,7 +24,7 @@ public class CreateNewContactTest extends BaseTest {
         Assert.assertTrue(detailsPage.isPageOpened(), "Title is not correct");
         Contact contact2 = new Contact("Ms.", "Test4",
                 "Test5", "Contact6", "Test77", "Test Account",
-                "Test4 Test5 Contact6 Test7", "Test88",
+                "AContact", "Test88",
                 "Test99", "test@tes.t", "129456789", "+3751733000", "+3752933000");
         detailsPage.openDetails();
         detailsPage.validate(contact);

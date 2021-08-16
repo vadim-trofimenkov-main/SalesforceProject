@@ -58,7 +58,7 @@ public class AccountModalPage extends BasePage {
         new SFDropDown(driver, "Type").clear();
         new SFInput(driver, "Website").clear();
         new TextArea(driver, "Description").clear();
-        new SFInput(driver, "Parent Account").clear();
+        new SFLookUp(driver, "Parent Account").clear();
         new SFInput(driver, "Phone").clear();
         new SFDropDown(driver, "Industry").clear();
         new SFInput(driver, "Employees").clear();
