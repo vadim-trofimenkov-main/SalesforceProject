@@ -1,4 +1,4 @@
-package models;
+package com.itechart.models;
 
 import lombok.Data;
 

@@ -10,7 +10,7 @@ public class SFInput {
     WebDriver driver;
     String label;
     String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::div[contains(@class,'uiInput')]//input";
-    private String lookupOption = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
+    String lookupOption = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
     String DELETE_ACTION_LOCATOR = "//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::*[contains(@class,'uiInput')]//a[@class='deleteAction']";
 
     public SFInput(WebDriver driver, String label) {

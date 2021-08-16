@@ -11,7 +11,7 @@ public class LightInput {
     WebDriver driver;
     String label;
     String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
-    private String lookupOption = "(//*[contains(@class, 'modal-body')]//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item) [1]";
+    String lookupOption = "(//*[contains(@class, 'modal-body')]//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item) [1]";
     private final By DELETE_ACTION_LOCATOR = By.xpath("//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::*[@class='slds-form-element']//button[@title='Clear Selection']");
 
     public LightInput(WebDriver driver, String label) {

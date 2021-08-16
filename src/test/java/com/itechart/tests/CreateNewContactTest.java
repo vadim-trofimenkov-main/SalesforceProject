@@ -3,8 +3,7 @@ package com.itechart.tests;
 import com.itechart.pages.contact.ContactDetailsPage;
 import com.itechart.pages.contact.ContactListViewPage;
 import com.itechart.pages.contact.ContactModalPage;
-import com.itechart.tests.BaseTest;
-import models.Contact;
+import com.itechart.models.Contact;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

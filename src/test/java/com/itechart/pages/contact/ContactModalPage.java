@@ -2,7 +2,7 @@ package com.itechart.pages.contact;
 
 import com.itechart.elements.LightInput;
 import com.itechart.pages.BasePage;
-import models.Contact;
+import com.itechart.models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,7 +14,7 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactModalPage enterData(Contact contact) {
-        new LightInput(driver,"Salutation").selectLookupOption(contact.getSalutation());
+        new LightInput(driver, "Salutation").selectLookupOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
         new LightInput(driver, "Middle Name").write(contact.getMiddleName());
         new LightInput(driver, "Last Name").write(contact.getLastName());

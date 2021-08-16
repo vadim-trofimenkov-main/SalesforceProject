@@ -3,7 +3,7 @@ package com.itechart.tests;
 import com.itechart.pages.account.AccountDetailsPage;
 import com.itechart.pages.account.AccountListViewPage;
 import com.itechart.pages.account.AccountModalPage;
-import models.Account;
+import com.itechart.models.Account;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
