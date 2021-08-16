@@ -17,4 +17,9 @@ public class Contact {
     final String fax;
     final String phone;
     final String mobile;
+    String name;
+
+    public String getName() {
+        return getSalutation() +" "+ getFirstName() +" "+ getMiddleName() +" "+ getLastName() +" "+ getSuffix();
+    }
 }

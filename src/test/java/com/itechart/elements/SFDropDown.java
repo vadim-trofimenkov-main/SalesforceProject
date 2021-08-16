@@ -25,4 +25,12 @@ public class SFDropDown {
                 .presenceOfElementLocated(By.xpath(String.format(optionLocator, option))));
         driver.findElement(By.xpath(String.format(optionLocator, option))).click();
     }
+
+    public void clear() {
+        driver.findElement(By.xpath(String.format(locator, label))).click();
+        System.out.printf("Clearing option in drop-down %s\n", label);
+        WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
+                .presenceOfElementLocated(By.xpath(String.format(optionLocator, "--None--"))));
+        driver.findElement(By.xpath(String.format(optionLocator, "--None--"))).click();
+    }
 }

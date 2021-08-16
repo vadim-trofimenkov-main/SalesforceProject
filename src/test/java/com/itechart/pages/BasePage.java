@@ -1,5 +1,6 @@
 package com.itechart.pages;
 
+import com.itechart.utils.PropertyReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ public abstract class BasePage {
     protected final By HOME_BUTTON_LOCATOR = By.xpath("//one-app-nav-bar-item-root[@data-id='home']");
     protected final By APP_LAUNCHER_LOCATOR = By.xpath("//div[@class ='appLauncher slds-context-bar__icon-action']");
     protected final By APP_LAUNCHER_SEARCH_LOCATOR = By.xpath("//input[@class='slds-input']");
-    protected final By APP_LAUNCHER_SEARCH_First_Result_LOCATOR = By.xpath("//a[@data-label='Apples']");
+    protected final By APP_LAUNCHER_SEARCH_FIRST_RESULT_LOCATOR = By.xpath("//a[@data-label='Apples']");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -32,7 +33,7 @@ public abstract class BasePage {
         if (isPageOpened()) {
             driver.findElement(APP_LAUNCHER_LOCATOR).click();
             driver.findElement(APP_LAUNCHER_SEARCH_LOCATOR).sendKeys(tab);
-            WebElement element = driver.findElement(APP_LAUNCHER_SEARCH_First_Result_LOCATOR);
+            WebElement element = driver.findElement(APP_LAUNCHER_SEARCH_FIRST_RESULT_LOCATOR);
             JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click();", element);
             return new AppLauncherSearchResultPage(driver);
