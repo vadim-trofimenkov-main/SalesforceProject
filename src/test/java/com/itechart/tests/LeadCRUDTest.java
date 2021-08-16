@@ -2,6 +2,7 @@ package com.itechart.tests;
 
 import com.itechart.models.Lead;
 import com.itechart.pages.lead.LeadDetailsPage;
+import com.itechart.pages.lead.LeadListViewPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,9 +15,10 @@ public class LeadCRUDTest extends BaseTest {
                 "Hot", "test.com", "Google", "Banking",
                 "10", "Partner", "Test Street", "Test City", "02240",
                 "NY", "NY");
+        LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadDetailsPage detailsPage =
-                homePage
-                        .openLeadListViewPage()
+                leadListViewPage
+                        .open()
                         .clickNewButton()
                         .enterData(lead)
                         .clickSaveButton();

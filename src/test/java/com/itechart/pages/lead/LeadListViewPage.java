@@ -15,6 +15,12 @@ public class LeadListViewPage extends BasePage {
     }
 
     @Override
+    public LeadListViewPage open() {
+        driver.get("https://itechart4.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
+        return this;
+    }
+
+    @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(BREADCRUMB_LOCATOR));
         return driver.findElement(BREADCRUMB_LOCATOR).getText().contains("Leads");

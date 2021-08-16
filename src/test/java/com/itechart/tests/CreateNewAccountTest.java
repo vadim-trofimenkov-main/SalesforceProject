@@ -2,6 +2,7 @@ package com.itechart.tests;
 
 import com.itechart.pages.account.AccountDetailsPage;
 import com.itechart.models.Account;
+import com.itechart.pages.account.AccountListViewPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,9 +13,10 @@ public class CreateNewAccountTest extends BaseTest {
                 "123", "test desc", "123", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address");
+        AccountListViewPage accountListViewPage = new AccountListViewPage(driver);
         AccountDetailsPage detailsPage =
-                homePage
-                        .openAccountListViewPage()
+                accountListViewPage
+                        .open()
                         .clickNewButton()
                         .enterData(account)
                         .clickSaveButton();

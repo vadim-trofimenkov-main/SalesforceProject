@@ -20,6 +20,12 @@ public class AccountListViewPage extends BasePage {
         return driver.findElement(BREADCRUMB_LOCATOR).getText().contains("Accounts");
     }
 
+    @Override
+    public AccountListViewPage open() {
+        driver.get("https://itechart4.lightning.force.com/lightning/o/Account/list?filterName=Recent");
+        return this;
+    }
+
     public AccountModalPage clickNewButton() {
         wait.until(ExpectedConditions.presenceOfElementLocated(NEW_BUTTON_LOCATOR));
         driver.findElement(NEW_BUTTON_LOCATOR).click();

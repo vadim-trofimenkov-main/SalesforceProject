@@ -26,9 +26,7 @@ public abstract class BasePage {
         return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
     }
 
-    public void open(String link) {
-        driver.get(link);
-    }
+    public abstract BasePage open();
 
     public AppLauncherSearchResultPage goToTabFromAppLauncher(String tab) {
         if (isPageOpened()) {
