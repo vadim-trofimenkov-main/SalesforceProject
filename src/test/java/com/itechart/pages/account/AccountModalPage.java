@@ -1,7 +1,8 @@
 package com.itechart.pages.account;
 
-import com.itechart.elements.DropDown;
+import com.itechart.elements.SFDropDown;
 import com.itechart.elements.SFInput;
+import com.itechart.elements.SFLookUp;
 import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
 import com.itechart.models.Account;
@@ -30,14 +31,14 @@ public class AccountModalPage extends BasePage {
         }
     }
 
-    public void enterData(Account account) {
+    public AccountModalPage enterData(Account account) {
         new SFInput(driver, "Account Name").write(account.getAccountName());
-        new DropDown(driver, "Type").select(account.getType());
+        new SFDropDown(driver, "Type").select(account.getType());
         new SFInput(driver, "Website").write(account.getWebsite());
         new TextArea(driver, "Description").write(account.getDescription());
-        new SFInput(driver, "Parent Account").selectLookupOption(account.getParentAccount());
+        new SFLookUp(driver, "Parent Account").selectOption(account.getParentAccount());
         new SFInput(driver, "Phone").write(account.getPhone());
-        new DropDown(driver, "Industry").select(account.getIndustry());
+        new SFDropDown(driver, "Industry").select(account.getIndustry());
         new SFInput(driver, "Employees").write(account.getEmployees());
         new TextArea(driver, "Billing Street").write(account.getBillingStreet());
         new SFInput(driver, "Billing City").write(account.getBillingCity());
@@ -49,27 +50,28 @@ public class AccountModalPage extends BasePage {
         new SFInput(driver, "Shipping State/Province").write(account.getShippingState());
         new SFInput(driver, "Shipping Zip/Postal Code").write(account.getShippingPostalCode());
         new SFInput(driver, "Shipping Country").write(account.getShippingCountry());
+        return this;
     }
 
     public AccountModalPage clearData() {
-        new SFInput(driver, "Account Name").clearInput();
-        new DropDown(driver, "Type").clear();
-        new SFInput(driver, "Website").clearInput();
-        new TextArea(driver, "Description").clearTextArea();
-        new SFInput(driver, "Parent Account").clearLookUp();
-        new SFInput(driver, "Phone").clearInput();
-        new DropDown(driver, "Industry").clear();
-        new SFInput(driver, "Employees").clearInput();
-        new TextArea(driver, "Billing Street").clearTextArea();
-        new SFInput(driver, "Billing City").clearInput();
-        new SFInput(driver, "Billing State/Province").clearInput();
-        new SFInput(driver, "Billing Zip/Postal Code").clearInput();
-        new SFInput(driver, "Billing Country").clearInput();
-        new TextArea(driver, "Shipping Street").clearTextArea();
-        new SFInput(driver, "Shipping City").clearInput();
-        new SFInput(driver, "Shipping State/Province").clearInput();
-        new SFInput(driver, "Shipping Zip/Postal Code").clearInput();
-        new SFInput(driver, "Shipping Country").clearInput();
+        new SFInput(driver, "Account Name").clear();
+        new SFDropDown(driver, "Type").clear();
+        new SFInput(driver, "Website").clear();
+        new TextArea(driver, "Description").clear();
+        new SFLookUp(driver, "Parent Account").clear();
+        new SFInput(driver, "Phone").clear();
+        new SFDropDown(driver, "Industry").clear();
+        new SFInput(driver, "Employees").clear();
+        new TextArea(driver, "Billing Street").clear();
+        new SFInput(driver, "Billing City").clear();
+        new SFInput(driver, "Billing State/Province").clear();
+        new SFInput(driver, "Billing Zip/Postal Code").clear();
+        new SFInput(driver, "Billing Country").clear();
+        new TextArea(driver, "Shipping Street").clear();
+        new SFInput(driver, "Shipping City").clear();
+        new SFInput(driver, "Shipping State/Province").clear();
+        new SFInput(driver, "Shipping Zip/Postal Code").clear();
+        new SFInput(driver, "Shipping Country").clear();
         return this;
     }
 

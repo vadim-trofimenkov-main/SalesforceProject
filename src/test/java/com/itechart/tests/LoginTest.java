@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void login() {
+    public void loginTest() {
         HomePage homePage = loginPage.login(USERNAME, PASSWORD);
         Assert.assertTrue(homePage.isPageOpened(), "Login is not completed");
     }

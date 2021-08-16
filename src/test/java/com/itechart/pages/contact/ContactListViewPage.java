@@ -11,8 +11,13 @@ public class ContactListViewPage extends BasePage {
         super(driver);
     }
 
-    public ContactListViewPage clickNewButton() {
+    public ContactListViewPage open() {
+        driver.get("https://itechart4.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
+        return this;
+    }
+
+    public ContactModalPage clickNewButton() {
         driver.findElement(NEW_BUTTON_LOCATOR).click();
-        return new ContactListViewPage(driver);
+        return new ContactModalPage(driver);
     }
 }

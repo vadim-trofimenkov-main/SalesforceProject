@@ -19,7 +19,7 @@ public class TextArea {
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).sendKeys(text);
     }
 
-    public void clearTextArea() {
+    public void clear() {
         System.out.printf("Deleting text from text-area field with label %s \n", label);
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).clear();
     }

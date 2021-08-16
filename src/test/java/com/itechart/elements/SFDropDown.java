@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DropDown {
+public class SFDropDown {
     WebDriver driver;
     String label;
     String locator = "//*[contains(@class, 'modal-body')]//span[text()='%s']" +
             "/ancestor::div[contains(@class,'uiInput')]//a";
     String optionLocator = "//*[contains(@class, 'uiMenuList') and contains(@class, 'visible')]//a[@title='%s']";
 
-    public DropDown(WebDriver driver, String label) {
+    public SFDropDown(WebDriver driver, String label) {
         this.driver = driver;
         this.label = label;
     }
