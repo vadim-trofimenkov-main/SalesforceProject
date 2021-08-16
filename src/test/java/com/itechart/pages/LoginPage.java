@@ -24,6 +24,11 @@ public class LoginPage extends BasePage {
         return driver.findElement(LOGO_LOCATOR).isDisplayed();
     }
 
+    public LoginPage open() {
+        driver.get("https://itechart4.my.salesforce.com/");
+        return this;
+    }
+
     public HomePage login(String username, String password) {
         driver.findElement(USERNAME_LOCATOR).sendKeys(username);
         driver.findElement(PASSWORD_LOCATOR).sendKeys(password);

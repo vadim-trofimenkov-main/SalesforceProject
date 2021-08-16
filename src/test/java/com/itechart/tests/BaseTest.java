@@ -21,8 +21,6 @@ public abstract class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/main/resources/configuration.properties");
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
-    protected final String LOGINURL = propertyReader.getPropertyValueByKey("baseUrl");
-    protected final String HOMEPAGEURL = propertyReader.getPropertyValueByKey("homepage");
 
     @BeforeClass
     public void setUp() {
@@ -34,15 +32,17 @@ public abstract class BaseTest {
         login();
     }
 
-    public void login() {
-        driver.get(LOGINURL);
+    public HomePage login() {
         loginPage = new LoginPage(driver);
-        homePage = loginPage.login(USERNAME, PASSWORD);
+        homePage =
+                loginPage.open()
+                         .login(USERNAME, PASSWORD);
+        return homePage;
     }
 
     @BeforeMethod
     public void goToHomePage() {
-        driver.get(HOMEPAGEURL);
+        homePage.open();
     }
 
     @AfterClass(alwaysRun = true)

@@ -32,6 +32,6 @@ public class CreateNewContactTest extends BaseTest {
                 .clearData()
                 .enterData(contact2)
                 .clickSaveButton()
-                .validate(contact2)
+                .validate(contact2);
     }
 }

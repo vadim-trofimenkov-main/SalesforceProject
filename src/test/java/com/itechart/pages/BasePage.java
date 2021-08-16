@@ -1,6 +1,5 @@
 package com.itechart.pages;
 
-import com.itechart.utils.PropertyReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +25,6 @@ public abstract class BasePage {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(HOME_BUTTON_LOCATOR));
         return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
     }
-
-    public abstract BasePage open();
 
     public AppLauncherSearchResultPage goToTabFromAppLauncher(String tab) {
         if (isPageOpened()) {

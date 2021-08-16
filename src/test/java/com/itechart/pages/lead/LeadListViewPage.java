@@ -2,6 +2,7 @@ package com.itechart.pages.lead;
 
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -14,7 +15,6 @@ public class LeadListViewPage extends BasePage {
         super(driver);
     }
 
-    @Override
     public LeadListViewPage open() {
         driver.get("https://itechart4.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
         return this;
@@ -33,7 +33,14 @@ public class LeadListViewPage extends BasePage {
     }
 
     public boolean isSuccessDeleteMessageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESS_DELETE_MESSAGE));
-        return driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
+        boolean isSuccessMessageDisplayed;
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESS_DELETE_MESSAGE));
+            isSuccessMessageDisplayed = driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
+        } catch (StaleElementReferenceException e) {
+            e.printStackTrace();
+            isSuccessMessageDisplayed = driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
+        }
+        return isSuccessMessageDisplayed;
     }
 }

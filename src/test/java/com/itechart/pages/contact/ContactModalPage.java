@@ -32,27 +32,25 @@ public class ContactModalPage extends BasePage {
         return this;
     }
 
-    public ContactDetailsPage clickSaveButton() {
-        public ContactModalPage clearData () {
-            new LightInput(driver, "Salutation").clearDropDown();
-            new LightInput(driver, "First Name").clearLightInput();
-            new LightInput(driver, "Middle Name").clearLightInput();
-            new LightInput(driver, "Last Name").clearLightInput();
-            new LightInput(driver, "Suffix").clearLightInput();
-            new LightInput(driver, "Account Name").clearLookUp();
-            new LightInput(driver, "Reports To").clearLookUp();
-            new LightInput(driver, "Title").clearLightInput();
-            new LightInput(driver, "Email").clearLightInput();
-            new LightInput(driver, "Phone").clearLightInput();
-            new LightInput(driver, "Mobile").clearLightInput();
-            new LightInput(driver, "Department").clearLightInput();
-            new LightInput(driver, "Fax").clearLightInput();
-            return this;
-        }
+    public ContactModalPage clearData() {
+        new LightDropDown(driver, "Salutation").clear();
+        new LightInput(driver, "First Name").clear();
+        new LightInput(driver, "Middle Name").clear();
+        new LightInput(driver, "Last Name").clear();
+        new LightInput(driver, "Suffix").clear();
+        new LightLookup(driver, "Account Name").clear();
+        new LightLookup(driver, "Reports To").clear();
+        new LightInput(driver, "Title").clear();
+        new LightInput(driver, "Email").clear();
+        new LightInput(driver, "Phone").clear();
+        new LightInput(driver, "Mobile").clear();
+        new LightInput(driver, "Department").clear();
+        new LightInput(driver, "Fax").clear();
+        return this;
+    }
 
-        public ContactDetailsPage clickSaveButton () {
-            driver.findElement(SAVE_BUTTON_LOCATOR).click();
-            return new ContactDetailsPage(driver);
-        }
+    public ContactDetailsPage clickSaveButton() {
+        driver.findElement(SAVE_BUTTON_LOCATOR).click();
+        return new ContactDetailsPage(driver);
     }
 }

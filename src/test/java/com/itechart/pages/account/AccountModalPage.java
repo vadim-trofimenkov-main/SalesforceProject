@@ -54,24 +54,24 @@ public class AccountModalPage extends BasePage {
     }
 
     public AccountModalPage clearData() {
-        new SFInput(driver, "Account Name").clearInput();
-        new DropDown(driver, "Type").clear();
-        new SFInput(driver, "Website").clearInput();
-        new TextArea(driver, "Description").clearTextArea();
-        new SFInput(driver, "Parent Account").clearLookUp();
-        new SFInput(driver, "Phone").clearInput();
-        new DropDown(driver, "Industry").clear();
-        new SFInput(driver, "Employees").clearInput();
-        new TextArea(driver, "Billing Street").clearTextArea();
-        new SFInput(driver, "Billing City").clearInput();
-        new SFInput(driver, "Billing State/Province").clearInput();
-        new SFInput(driver, "Billing Zip/Postal Code").clearInput();
-        new SFInput(driver, "Billing Country").clearInput();
-        new TextArea(driver, "Shipping Street").clearTextArea();
-        new SFInput(driver, "Shipping City").clearInput();
-        new SFInput(driver, "Shipping State/Province").clearInput();
-        new SFInput(driver, "Shipping Zip/Postal Code").clearInput();
-        new SFInput(driver, "Shipping Country").clearInput();
+        new SFInput(driver, "Account Name").clear();
+        new SFDropDown(driver, "Type").clear();
+        new SFInput(driver, "Website").clear();
+        new TextArea(driver, "Description").clear();
+        new SFInput(driver, "Parent Account").clear();
+        new SFInput(driver, "Phone").clear();
+        new SFDropDown(driver, "Industry").clear();
+        new SFInput(driver, "Employees").clear();
+        new TextArea(driver, "Billing Street").clear();
+        new SFInput(driver, "Billing City").clear();
+        new SFInput(driver, "Billing State/Province").clear();
+        new SFInput(driver, "Billing Zip/Postal Code").clear();
+        new SFInput(driver, "Billing Country").clear();
+        new TextArea(driver, "Shipping Street").clear();
+        new SFInput(driver, "Shipping City").clear();
+        new SFInput(driver, "Shipping State/Province").clear();
+        new SFInput(driver, "Shipping Zip/Postal Code").clear();
+        new SFInput(driver, "Shipping Country").clear();
         return this;
     }
 

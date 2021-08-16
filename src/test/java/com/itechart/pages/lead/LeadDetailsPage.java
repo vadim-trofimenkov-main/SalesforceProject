@@ -24,7 +24,6 @@ public class LeadDetailsPage extends BasePage {
         return getTitle().contains("Lead");
     }
 
-
     public String getTitle() {
         wait.until(ExpectedConditions.presenceOfElementLocated(LEAD_TITLE));
         return driver.findElement(LEAD_TITLE).getText();

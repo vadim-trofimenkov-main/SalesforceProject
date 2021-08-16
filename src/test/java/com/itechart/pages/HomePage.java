@@ -7,7 +7,6 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    @Override
     public HomePage open() {
         driver.get("https://itechart4.lightning.force.com/lightning/page/home");
         return this;

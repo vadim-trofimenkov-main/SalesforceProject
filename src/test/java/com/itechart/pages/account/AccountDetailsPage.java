@@ -1,7 +1,7 @@
 package com.itechart.pages.account;
 
+import com.itechart.models.Account;
 import com.itechart.pages.BasePage;
-import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +41,7 @@ public class AccountDetailsPage extends BasePage {
         return new AccountModalPage(driver);
     }
 
-    public void validate(Account account){
+    public AccountDetailsPage validate(Account account){
         validateInput("Account Name", account.getAccountName());
         validateInput("Type", account.getType());
         validateInput("Description", account.getDescription());
@@ -53,5 +53,6 @@ public class AccountDetailsPage extends BasePage {
         validateInput("Shipping Address", account.getShippingAddress());
         validateInput("Account Owner", account.getAccountOwner());
         validateInput("Parent Account", account.getParentAccount());
+        return this;
     }
 }

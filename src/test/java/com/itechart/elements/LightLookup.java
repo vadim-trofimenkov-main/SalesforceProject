@@ -10,6 +10,7 @@ public class LightLookup {
     String label;
     String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
     String lookupOption = "(//*[contains(@class, 'modal-body')]//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item) [1]";
+    private final By DELETE_ACTION_LOCATOR = By.xpath("//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::*[@class='slds-form-element']//button[@title='Clear Selection']");
 
     public LightLookup(WebDriver driver, String label) {
         this.driver = driver;
@@ -23,5 +24,9 @@ public class LightLookup {
         executor.executeScript("arguments[0].click();", element);
         WebElement element1 = driver.findElement(By.xpath(String.format(lookupOption, option)));
         executor.executeScript("arguments[0].click();", element1);
+    }
+    public void clear() {
+        System.out.printf("Deleting lookup %s\n", label);
+        driver.findElement(DELETE_ACTION_LOCATOR).click();
     }
 }
