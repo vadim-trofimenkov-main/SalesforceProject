@@ -22,8 +22,13 @@ public class CreateNewContactTest extends BaseTest {
         ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
         Assert.assertEquals(contactDetailsPage.getTitle(), "Contact", "Title is not correct");
         contactDetailsPage.openDetails();
-        contactDetailsPage.validate("Mr. Test4 Test5 Contact6 Test7", "Test Account",
-                "Test4 Test5 Contact6 Test7", "Test8", "Test9", "test@tes.t", "12945678",
-                "+3751730000", "+3752930000");
+        contactDetailsPage.validate(contact);
+        Contact contact2 = new Contact("Ms.", "Test4",
+                "Test5", "Contact6", "Test77", "Test Account",
+                "Test4 Test5 Contact6 Test7", "Test88",
+                "Test99", "test@tes.t", "129456789", "+3751733000", "+3752933000");
+        contactDetailsPage.clickEditDetailsButton().clearData();
+        contactModalPage.enterData(contact2).clickSaveButton();
+        contactDetailsPage.validate(contact2);
     }
 }

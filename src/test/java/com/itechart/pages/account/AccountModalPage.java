@@ -51,6 +51,28 @@ public class AccountModalPage extends BasePage {
         new SFInput(driver, "Shipping Country").write(account.getShippingCountry());
     }
 
+    public AccountModalPage clearData() {
+        new SFInput(driver, "Account Name").clearInput();
+        new DropDown(driver, "Type").clear();
+        new SFInput(driver, "Website").clearInput();
+        new TextArea(driver, "Description").clearTextArea();
+        new SFInput(driver, "Parent Account").clearLookUp();
+        new SFInput(driver, "Phone").clearInput();
+        new DropDown(driver, "Industry").clear();
+        new SFInput(driver, "Employees").clearInput();
+        new TextArea(driver, "Billing Street").clearTextArea();
+        new SFInput(driver, "Billing City").clearInput();
+        new SFInput(driver, "Billing State/Province").clearInput();
+        new SFInput(driver, "Billing Zip/Postal Code").clearInput();
+        new SFInput(driver, "Billing Country").clearInput();
+        new TextArea(driver, "Shipping Street").clearTextArea();
+        new SFInput(driver, "Shipping City").clearInput();
+        new SFInput(driver, "Shipping State/Province").clearInput();
+        new SFInput(driver, "Shipping Zip/Postal Code").clearInput();
+        new SFInput(driver, "Shipping Country").clearInput();
+        return this;
+    }
+
     public AccountDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new AccountDetailsPage(driver);

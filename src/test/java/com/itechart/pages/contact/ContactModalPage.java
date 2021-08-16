@@ -30,7 +30,25 @@ public class ContactModalPage extends BasePage {
         return new ContactModalPage(driver);
     }
 
-    public void clickSaveButton() {
+    public ContactModalPage clearData() {
+        new LightInput(driver, "Salutation").clearDropDown();
+        new LightInput(driver, "First Name").clearLightInput();
+        new LightInput(driver, "Middle Name").clearLightInput();
+        new LightInput(driver, "Last Name").clearLightInput();
+        new LightInput(driver, "Suffix").clearLightInput();
+        new LightInput(driver, "Account Name").clearLookUp();
+        new LightInput(driver, "Reports To").clearLookUp();
+        new LightInput(driver, "Title").clearLightInput();
+        new LightInput(driver, "Email").clearLightInput();
+        new LightInput(driver, "Phone").clearLightInput();
+        new LightInput(driver, "Mobile").clearLightInput();
+        new LightInput(driver, "Department").clearLightInput();
+        new LightInput(driver, "Fax").clearLightInput();
+        return this;
+    }
+
+    public ContactDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
+        return new ContactDetailsPage(driver);
     }
 }

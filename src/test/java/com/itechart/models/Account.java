@@ -22,4 +22,21 @@ public class Account {
     final String shippingState;
     final String shippingPostalCode;
     final String shippingCountry;
+    String billingAddress;
+    String shippingAddress;
+    final String accountOwner;
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public String getBillingAddress() {
+        return getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
+                getBillingPostalCode() + "\n" + getBillingCountry();
+    }
+
+    public String getShippingAddress() {
+        return getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
+                getShippingPostalCode() + "\n" + getShippingCountry();
+    }
 }
