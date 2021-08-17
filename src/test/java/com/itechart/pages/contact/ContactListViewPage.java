@@ -2,10 +2,13 @@ package com.itechart.pages.contact;
 
 import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ContactListViewPage extends BasePage {
     private static final By NEW_BUTTON_LOCATOR = By.xpath("//a[@title='New']");
+    private final By SUCCESS_DELETE_MESSAGE = By.xpath("//*[contains(@class, 'slds-theme--success')]");
 
     public ContactListViewPage(WebDriver driver) {
         super(driver);
@@ -19,5 +22,17 @@ public class ContactListViewPage extends BasePage {
     public ContactModalPage clickNewButton() {
         driver.findElement(NEW_BUTTON_LOCATOR).click();
         return new ContactModalPage(driver);
+    }
+
+    public boolean isSuccessDeleteMessageDisplayed() {
+        boolean isSuccessMessageDisplayed;
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESS_DELETE_MESSAGE));
+            isSuccessMessageDisplayed = driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
+        } catch (StaleElementReferenceException e) {
+            e.printStackTrace();
+            isSuccessMessageDisplayed = driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
+        }
+        return isSuccessMessageDisplayed;
     }
 }

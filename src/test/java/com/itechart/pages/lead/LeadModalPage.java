@@ -40,6 +40,31 @@ public class LeadModalPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
+    public LeadModalPage clearData(){
+        new LightDropDown(driver, "Lead Status").clear();
+        new LightDropDown(driver, "Salutation").clear();
+        new LightInput(driver, "First Name").clear();
+        new LightInput(driver, "Middle Name").clear();
+        new LightInput(driver, "Last Name").clear();
+        new LightInput(driver, "Suffix").clear();
+        new LightInput(driver, "Title").clear();
+        new LightInput(driver, "Email").clear();
+        new LightInput(driver, "Phone").clear();
+        new LightInput(driver, "Mobile").clear();
+        new LightDropDown(driver, "Rating").clear();
+        new LightInput(driver, "Website").clear();
+        new LightInput(driver, "Company").clear();
+        new LightDropDown(driver, "Industry").clear();
+        new LightInput(driver, "No. of Employees").clear();
+        new LightDropDown(driver, "Lead Source").clear();
+        new TextArea(driver, "Street").clear();
+        new LightInput(driver, "City").clear();
+        new LightInput(driver, "State/Province").clear();
+        new LightInput(driver, "Zip/Postal Code").clear();
+        new LightInput(driver, "Country").clear();
+        return this;
+    }
+
     public LeadDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new LeadDetailsPage(driver);

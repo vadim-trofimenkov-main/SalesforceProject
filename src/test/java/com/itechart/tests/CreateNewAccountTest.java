@@ -21,18 +21,23 @@ public class CreateNewAccountTest extends BaseTest {
                         .enterData(account)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Account is not created");
-        Account account2 = new Account("Test Account1", "Account Test", "Analyst", "test1", "Apparel",
+        Account account2 = new Account("Test Account1", "Ac47 Test", "Analyst", "test1", "Apparel",
                 "1234", "test descr", "456", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));
-        detailsPage
-                .openDetails()
-                .validate(account)
-                .clickEditDetailsButton()
-                .clearData()
-                .enterData(account2)
-                .clickSaveButton()
-                .openDetails()
-                .validate(account2);
+        boolean isRecordDeleted =
+                detailsPage
+                        .openDetails()
+                        .validate(account)
+                        .clickEditDetailsButton()
+                        .clearData()
+                        .enterData(account2)
+                        .clickSaveButton()
+                        .openDetails()
+                        .validate(account2)
+                        .clickDeleteButton()
+                        .delete()
+                        .isSuccessDeleteMessageDisplayed();
+        Assert.assertTrue(isRecordDeleted, "Record deletion failed");
     }
 }
