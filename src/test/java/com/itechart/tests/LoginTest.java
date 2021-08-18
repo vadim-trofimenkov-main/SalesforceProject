@@ -7,19 +7,19 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "Login with correct credentials")
     public void loginTest() {
         HomePage homePage = loginPage.login(USERNAME, PASSWORD);
         Assert.assertTrue(homePage.isPageOpened(), "Login is not completed");
     }
 
-    @Test
+    @Test(description = "Login with incorrect username")
     public void usernameShouldBeRequired() {
         loginPage.login("", PASSWORD);
         Assert.assertTrue(loginPage.isUsernameDisplayed(), "Username validation is not working.");
     }
 
-    @Test
+    @Test(description = "Login with incorrect password")
     public void passwordShouldBeRequired() {
         loginPage.login(USERNAME, "");
         Assert.assertEquals(loginPage.getErrorMessage(), "Please enter your password.",
