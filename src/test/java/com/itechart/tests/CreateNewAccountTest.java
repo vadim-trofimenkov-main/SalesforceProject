@@ -7,7 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CreateNewAccountTest extends BaseTest {
-    @Test
+
+    @Test(description = "Create Read Update Account record")
     public void createNewAccountRecord() {
         Account account = new Account("Test Account", "Test Account", "Investor", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
@@ -22,7 +23,7 @@ public class CreateNewAccountTest extends BaseTest {
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Account is not created");
         Account account2 = new Account("Test Account1", "Ac47 Test", "Analyst", "test1", "Apparel",
-                "1234", "test descr", "456", "Test Address1", "Test Address1",
+                "1234", "test description", "456", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));
         boolean isRecordDeleted =

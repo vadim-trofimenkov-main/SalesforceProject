@@ -1,6 +1,7 @@
 package com.itechart.pages.lead;
 
 import com.itechart.pages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class LeadListViewPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open List View for Lead")
     public LeadListViewPage open() {
         driver.get("https://itechart4.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
         return this;
@@ -26,12 +28,14 @@ public class LeadListViewPage extends BasePage {
         return driver.findElement(BREADCRUMB_LOCATOR).getText().contains("Leads");
     }
 
+    @Step("Click on New button")
     public LeadModalPage clickNewButton() {
         wait.until(ExpectedConditions.presenceOfElementLocated(NEW_BUTTON_LOCATOR));
         driver.findElement(NEW_BUTTON_LOCATOR).click();
         return new LeadModalPage(driver);
     }
 
+    @Step("Check that Lead was deleted successfully")
     public boolean isSuccessDeleteMessageDisplayed() {
         boolean isSuccessMessageDisplayed;
         try {

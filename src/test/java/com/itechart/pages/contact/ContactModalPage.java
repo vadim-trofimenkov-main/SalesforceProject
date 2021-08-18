@@ -5,6 +5,7 @@ import com.itechart.elements.LightInput;
 import com.itechart.elements.LightLookup;
 import com.itechart.models.Contact;
 import com.itechart.pages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,6 +16,7 @@ public class ContactModalPage extends BasePage {
         super(driver);
     }
 
+    @Step("User enter values in fields")
     public ContactModalPage enterData(Contact contact) {
         new LightDropDown(driver, "Salutation").selectOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
@@ -32,6 +34,7 @@ public class ContactModalPage extends BasePage {
         return this;
     }
 
+    @Step("Clear all fields with values")
     public ContactModalPage clearData() {
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();
@@ -49,6 +52,7 @@ public class ContactModalPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Save button")
     public ContactDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new ContactDetailsPage(driver);

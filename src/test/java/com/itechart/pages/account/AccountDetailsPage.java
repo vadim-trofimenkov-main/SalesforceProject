@@ -2,6 +2,7 @@ package com.itechart.pages.account;
 
 import com.itechart.models.Account;
 import com.itechart.pages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,7 @@ public class AccountDetailsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Check that Account Details page was opened")
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(ACCOUNT_TITLE));
@@ -33,6 +35,7 @@ public class AccountDetailsPage extends BasePage {
         return driver.findElement(ACCOUNT_TITLE).getText();
     }
 
+    @Step("Open Details tab")
     public AccountDetailsPage openDetails() {
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .elementToBeClickable(DETAILS_TAB));
@@ -40,11 +43,13 @@ public class AccountDetailsPage extends BasePage {
         return this;
     }
 
+    @Step("Click Edit button")
     public AccountModalPage clickEditDetailsButton() {
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
         return new AccountModalPage(driver);
     }
 
+    @Step("Check all entering values in fields")
     public AccountDetailsPage validate(Account account) {
         validateInput("Account Name", account.getAccountName());
         validateInput("Type", account.getType());
@@ -60,6 +65,7 @@ public class AccountDetailsPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Delete button")
     public AccountDetailsPage clickDeleteButton() {
         try {
             driver.findElement(DELETE_BUTTON).click();
@@ -76,6 +82,7 @@ public class AccountDetailsPage extends BasePage {
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
+    @Step("Confirm deleting account")
     public AccountListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();

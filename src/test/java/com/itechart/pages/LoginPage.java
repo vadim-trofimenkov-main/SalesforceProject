@@ -1,5 +1,6 @@
 package com.itechart.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,17 +19,20 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Check that page was opened")
     @Override
     public boolean isPageOpened() {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(LOGO_LOCATOR));
         return driver.findElement(LOGO_LOCATOR).isDisplayed();
     }
 
+    @Step("Open Login Page")
     public LoginPage open() {
         driver.get("https://itechart4.my.salesforce.com/");
         return this;
     }
 
+    @Step("Login by user: {username}")
     public HomePage login(String username, String password) {
         driver.findElement(USERNAME_LOCATOR).sendKeys(username);
         driver.findElement(PASSWORD_LOCATOR).sendKeys(password);
@@ -36,10 +40,12 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 
+    @Step("Password validation. User get error message")
     public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE_LOCATOR).getText();
     }
 
+    @Step("Check that username was displayed")
     public boolean isUsernameDisplayed() {
         return driver.findElement(USERNAME_LABEL_LOCATOR).isDisplayed();
     }

@@ -5,6 +5,7 @@ import com.itechart.elements.LightInput;
 import com.itechart.elements.TextArea;
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,6 +16,7 @@ public class LeadModalPage extends BasePage {
         super(driver);
     }
 
+    @Step("User enter values in fields")
     public LeadModalPage enterData(Lead lead) {
         new LightDropDown(driver, "Lead Status").selectOption(lead.getLeadStatus());
         new LightDropDown(driver, "Salutation").selectOption(lead.getSalutation());
@@ -40,6 +42,7 @@ public class LeadModalPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
+    @Step("Clear all fields with values")
     public LeadModalPage clearData() {
         new LightDropDown(driver, "Lead Status").clear();
         new LightDropDown(driver, "Salutation").clear();
@@ -65,6 +68,7 @@ public class LeadModalPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Save button")
     public LeadDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new LeadDetailsPage(driver);

@@ -6,8 +6,10 @@ import com.itechart.elements.SFLookUp;
 import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
 import com.itechart.models.Account;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
 
 public class AccountModalPage extends BasePage {
     private final By SAVE_BUTTON_LOCATOR = By.cssSelector("[title='Save']");
@@ -31,6 +33,7 @@ public class AccountModalPage extends BasePage {
         }
     }
 
+    @Step("User enter values in fields")
     public AccountModalPage enterData(Account account) {
         new SFInput(driver, "Account Name").write(account.getAccountName());
         new SFDropDown(driver, "Type").select(account.getType());
@@ -53,6 +56,7 @@ public class AccountModalPage extends BasePage {
         return this;
     }
 
+    @Step("Clear all fields with values")
     public AccountModalPage clearData() {
         new SFInput(driver, "Account Name").clear();
         new SFDropDown(driver, "Type").clear();
@@ -75,6 +79,7 @@ public class AccountModalPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Save button")
     public AccountDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new AccountDetailsPage(driver);

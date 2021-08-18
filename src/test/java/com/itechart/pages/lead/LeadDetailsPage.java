@@ -2,6 +2,7 @@ package com.itechart.pages.lead;
 
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class LeadDetailsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Check that Lead Details page was opened")
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DETAILS_TAB));
@@ -37,6 +39,7 @@ public class LeadDetailsPage extends BasePage {
         return this;
     }
 
+    @Step("Click Edit button")
     public LeadModalPage clickEditDetailsButton() {
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
@@ -44,6 +47,7 @@ public class LeadDetailsPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
+    @Step("Check all entering values in fields")
     public LeadDetailsPage validate(Lead lead) {
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");
         validateInput("Lead Status", lead.getLeadStatus());
@@ -62,6 +66,7 @@ public class LeadDetailsPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Delete button")
     public LeadDetailsPage clickDeleteButton() {
         try {
             driver.findElement(DELETE_BUTTON).click();
@@ -78,6 +83,7 @@ public class LeadDetailsPage extends BasePage {
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
+    @Step("Confirm deleting account")
     public LeadListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();
