@@ -27,6 +27,7 @@ public class SFLookUp {
                 .until(ExpectedConditions.presenceOfElementLocated(LOOKUP_OPTION));
         driver.findElement(LOOKUP_OPTION).click();
     }
+
     public void clear() {
         System.out.printf("Deleting lookup of %s \n", label);
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions

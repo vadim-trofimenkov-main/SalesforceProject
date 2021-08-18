@@ -29,6 +29,7 @@ public class LightLookup {
         WebElement element1 = driver.findElement(By.xpath(String.format(lookupOption, option)));
         executor.executeScript("arguments[0].click();", element1);
     }
+
     public void clear() {
         System.out.printf("Deleting lookup %s\n", label);
         driver.findElement(By.xpath(String.format(DELETE_ACTION_LOCATOR, label))).click();

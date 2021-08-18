@@ -5,11 +5,14 @@ import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LeadDetailsPage extends BasePage {
     private final By LEAD_TITLE = By.xpath("//div[@class='entityNameTitle slds-line-height--reset' and contains(text(), 'Lead')]");
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
+    private static final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
     private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
     private final By DELETE_MODAL_BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
@@ -32,6 +35,13 @@ public class LeadDetailsPage extends BasePage {
     public LeadDetailsPage openDetails() {
         driver.findElement(DETAILS_TAB).click();
         return this;
+    }
+
+    public LeadModalPage clickEditDetailsButton() {
+        WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
+                .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
+        driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
+        return new LeadModalPage(driver);
     }
 
     public LeadDetailsPage validate(Lead lead) {
