@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class AccountCRUDTest extends BaseTest {
 
-    @Test(testName = "Create read update delete new Account record")
+    @Test(description = "Create read update delete new Account record")
     public void createNewAccountRecord() {
         Account account = new Account("Test Account", "Test Account", "Investor", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
