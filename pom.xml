@@ -14,6 +14,7 @@
         <selenium.version>3.141.59</selenium.version>
         <testng.version>7.4.0</testng.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <faker.version>1.0.2</faker.version>
     </properties>
     <dependencies>
         <dependency>
@@ -39,6 +40,10 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
+        </dependency>
     </dependencies>
-
 </project>

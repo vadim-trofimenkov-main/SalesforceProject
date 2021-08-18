@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class LeadCRUDTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Create read update delete new Lead record")
     public void createReadUpdateDeleteLeadRecord() {
         Lead lead = new Lead("New", "Mr.", "Record", "for", "Success",
                 "Delete", "Boss", "pp41@mailinator.com", "54321", "12345",

@@ -6,9 +6,9 @@ import com.itechart.models.Contact;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateNewContactTest extends BaseTest {
+public class ContactCRUDTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Create read update delete new Contact record")
     public void testCreateNewContact() {
         Contact contact = new Contact("Mr.", "Test4",
                 "Test5", "Contact6", "Test7", "Test Account",

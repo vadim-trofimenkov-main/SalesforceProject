@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Regression test suite" parallel="tests">
+    <test name="Create Read Update Delete Account">
+        <classes>
+            <class name="com.itechart.tests.AccountCRUDTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Create Read Update Delete Contact">
+        <classes>
+            <class name="com.itechart.tests.ContactCRUDTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Create Read Update Delete Lead">
+        <classes>
+            <class name="com.itechart.tests.LeadCRUDTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
