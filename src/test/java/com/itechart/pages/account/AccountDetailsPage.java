@@ -40,12 +40,12 @@ public class AccountDetailsPage extends BasePage {
         return this;
     }
 
-    public AccountModalPage clickEditDetailsButton (){
+    public AccountModalPage clickEditDetailsButton() {
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
         return new AccountModalPage(driver);
     }
 
-    public AccountDetailsPage validate(Account account){
+    public AccountDetailsPage validate(Account account) {
         validateInput("Account Name", account.getAccountName());
         validateInput("Type", account.getType());
         validateInput("Description", account.getDescription());

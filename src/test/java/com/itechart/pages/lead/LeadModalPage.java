@@ -40,7 +40,7 @@ public class LeadModalPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
-    public LeadModalPage clearData(){
+    public LeadModalPage clearData() {
         new LightDropDown(driver, "Lead Status").clear();
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();

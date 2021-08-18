@@ -26,12 +26,13 @@ public class LightDropDown {
         WebElement element1 = driver.findElement(By.xpath(String.format(lookupOption, option)));
         executor.executeScript("arguments[0].click();", element1);
     }
+
     public void clear() {
-        WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
+        WebElement waitInputVisibility = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .visibilityOfElementLocated(By.xpath(String.format(inputLocator, label))));
         driver.findElement(By.xpath(String.format(inputLocator, label))).click();
         System.out.printf("Clearing option in drop-down %s\n", label);
-        WebElement element2 = new WebDriverWait(driver, 5).until(ExpectedConditions
+        WebElement waitOptionPresence = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(String.format(lookupOption, "--None--"))));
         driver.findElement(By.xpath(String.format(lookupOption, "--None--"))).click();
     }

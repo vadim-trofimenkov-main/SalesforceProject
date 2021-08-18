@@ -3,8 +3,8 @@ package com.itechart.pages.contact;
 import com.itechart.elements.LightDropDown;
 import com.itechart.elements.LightInput;
 import com.itechart.elements.LightLookup;
-import com.itechart.pages.BasePage;
 import com.itechart.models.Contact;
+import com.itechart.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

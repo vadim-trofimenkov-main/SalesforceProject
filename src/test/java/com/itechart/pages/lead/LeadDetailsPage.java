@@ -2,7 +2,6 @@ package com.itechart.pages.lead;
 
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
-import com.itechart.pages.contact.ContactModalPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -38,7 +37,7 @@ public class LeadDetailsPage extends BasePage {
         return this;
     }
 
-    public LeadModalPage clickEditDetailsButton (){
+    public LeadModalPage clickEditDetailsButton() {
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
