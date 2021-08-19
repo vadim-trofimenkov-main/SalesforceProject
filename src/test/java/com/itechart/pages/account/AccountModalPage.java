@@ -6,11 +6,13 @@ import com.itechart.elements.SFLookUp;
 import com.itechart.elements.TextArea;
 import com.itechart.pages.BasePage;
 import com.itechart.models.Account;
+import lombok.extern.log4j.Log4j2;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class AccountModalPage extends BasePage {
     private final By SAVE_BUTTON_LOCATOR = By.cssSelector("[title='Save']");
     private final By CANCEL_BUTTON_LOCATOR = By.cssSelector("[title='Cancel']");
@@ -29,12 +31,15 @@ public class AccountModalPage extends BasePage {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(MODAL_HEADER_LOCATOR));
             return false;
         } catch (TimeoutException | NoSuchElementException e) {
+            log.warn("Account Modal is not open");
+            log.warn(e.getLocalizedMessage());
             return true;
         }
     }
 
     @Step("Enter data into fields")
     public AccountModalPage enterData(Account account) {
+        log.info("Entering Account Data: {}", account);
         new SFInput(driver, "Account Name").write(account.getAccountName());
         new SFDropDown(driver, "Type").select(account.getType());
         new SFInput(driver, "Website").write(account.getWebsite());

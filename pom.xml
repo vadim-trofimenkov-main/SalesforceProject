@@ -14,6 +14,9 @@
         <selenium.version>3.141.59</selenium.version>
         <testng.version>7.4.0</testng.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <faker.version>1.0.2</faker.version>
+        <log4j-core.version>2.14.1</log4j-core.version>
+        <jackson-dataformat-yaml.version>2.12.3</jackson-dataformat-yaml.version>
         <aspect.version>1.9.6</aspect.version>
     </properties>
 
@@ -40,6 +43,21 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson-dataformat-yaml.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>

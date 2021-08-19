@@ -1,7 +1,10 @@
 package com.itechart.elements;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+@Log4j2
 public class LightInput {
     WebDriver driver;
     String label;
@@ -13,12 +16,12 @@ public class LightInput {
     }
 
     public void write(String text) {
-        System.out.printf("Writing text '%s' into input with label %s \n", text, label);
+        log.debug("Writing text '{}' into input with label {}", text, label);
         driver.findElement(By.xpath(String.format(inputLocator, label))).sendKeys(text);
     }
 
     public void clear() {
-        System.out.printf("Deleting text from input with label %s \n", label);
+        log.debug("Deleting text from input with label {}", label);
         driver.findElement(By.xpath(String.format(inputLocator, label))).clear();
     }
 }

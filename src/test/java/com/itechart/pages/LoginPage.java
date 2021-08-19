@@ -1,12 +1,15 @@
 package com.itechart.pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+@Log4j2
 public class LoginPage extends BasePage {
+    private final String loginUrl = propertyReader.getPropertyValueByKey("loginUrl");
     private static final By USERNAME_LOCATOR = By.id("username");
     private static final By PASSWORD_LOCATOR = By.id("password");
     private static final By LOGIN_BUTTON_LOCATOR = By.id("Login");
@@ -28,12 +31,14 @@ public class LoginPage extends BasePage {
 
     @Step("Open Login Page")
     public LoginPage open() {
-        driver.get("https://itechart4.my.salesforce.com/");
+        log.info("Opening Login page: {}", loginUrl);
+        driver.get(loginUrl);
         return this;
     }
 
     @Step("Login by user: {username}")
     public HomePage login(String username, String password) {
+        log.info("Logging into Salesforce with username: {} and password: {}", username, password);
         driver.findElement(USERNAME_LOCATOR).sendKeys(username);
         driver.findElement(PASSWORD_LOCATOR).sendKeys(password);
         driver.findElement(LOGIN_BUTTON_LOCATOR).click();

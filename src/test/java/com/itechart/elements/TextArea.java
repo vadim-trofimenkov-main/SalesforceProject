@@ -1,8 +1,10 @@
 package com.itechart.elements;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class TextArea {
     WebDriver driver;
     String label;
@@ -15,12 +17,12 @@ public class TextArea {
     }
 
     public void write(String text) {
-        System.out.printf("Writing text '%s' into text-area field with label %s \n", text, label);
+        log.debug("Writing text '{}' into text-area field with label {}", text, label);
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).sendKeys(text);
     }
 
     public void clear() {
-        System.out.printf("Deleting text from text-area field with label %s \n", label);
+        log.debug("Deleting text from text-area field with label {}", label);
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).clear();
     }
 }

@@ -1,7 +1,9 @@
 package com.itechart.models;
 
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Data
 public class Lead {
     final String leadStatus;
@@ -29,10 +31,14 @@ public class Lead {
     String address;
 
     public String getName() {
-        return getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName();
+        name = getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName();
+        log.warn("Compiling Lead Name: {}", name);
+        return name;
     }
 
     public String getAddress() {
-        return getStreet() + "\n" + getCity() + ", " + getStateOrProvince() + " " + getZipOrPostalCode() + "\n" + getCountry();
+        address = getStreet() + "\n" + getCity() + ", " + getStateOrProvince() + " " + getZipOrPostalCode() + "\n" + getCountry();
+        log.warn("Compiling Lead Address: {}", address);
+        return address;
     }
 }
