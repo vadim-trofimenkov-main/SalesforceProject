@@ -40,7 +40,7 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 
-    @Step("Password validation. User get error message")
+    @Step("Get error message")
     public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE_LOCATOR).getText();
     }

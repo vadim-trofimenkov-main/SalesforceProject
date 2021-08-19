@@ -49,7 +49,7 @@ public class ContactDetailsPage extends BasePage {
         return this;
     }
 
-    @Step("Check all entering values in fields")
+    @Step("Validation of entered data")
     public ContactDetailsPage validate(Contact contact) {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         validateInput("Name", contact.getName());
@@ -81,7 +81,7 @@ public class ContactDetailsPage extends BasePage {
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
-    @Step("Confirm deleting account")
+    @Step("Confirm deletion of an contact")
     public ContactListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();

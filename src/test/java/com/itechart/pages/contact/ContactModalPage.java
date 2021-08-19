@@ -16,7 +16,7 @@ public class ContactModalPage extends BasePage {
         super(driver);
     }
 
-    @Step("User enter values in fields")
+    @Step("Enter data into fields")
     public ContactModalPage enterData(Contact contact) {
         new LightDropDown(driver, "Salutation").selectOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
@@ -34,7 +34,7 @@ public class ContactModalPage extends BasePage {
         return this;
     }
 
-    @Step("Clear all fields with values")
+    @Step("Clear data from fields")
     public ContactModalPage clearData() {
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();

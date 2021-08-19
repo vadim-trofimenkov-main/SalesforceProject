@@ -33,7 +33,7 @@ public class AccountModalPage extends BasePage {
         }
     }
 
-    @Step("User enter values in fields")
+    @Step("Enter data into fields")
     public AccountModalPage enterData(Account account) {
         new SFInput(driver, "Account Name").write(account.getAccountName());
         new SFDropDown(driver, "Type").select(account.getType());
@@ -56,7 +56,7 @@ public class AccountModalPage extends BasePage {
         return this;
     }
 
-    @Step("Clear all fields with values")
+    @Step("Clear data from fields")
     public AccountModalPage clearData() {
         new SFInput(driver, "Account Name").clear();
         new SFDropDown(driver, "Type").clear();

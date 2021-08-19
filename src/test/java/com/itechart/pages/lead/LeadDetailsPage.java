@@ -47,7 +47,7 @@ public class LeadDetailsPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
-    @Step("Check all entering values in fields")
+    @Step("Validation of entered data")
     public LeadDetailsPage validate(Lead lead) {
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");
         validateInput("Lead Status", lead.getLeadStatus());
@@ -83,7 +83,7 @@ public class LeadDetailsPage extends BasePage {
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
-    @Step("Confirm deleting account")
+    @Step("Confirm deletion of an lead")
     public LeadListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();

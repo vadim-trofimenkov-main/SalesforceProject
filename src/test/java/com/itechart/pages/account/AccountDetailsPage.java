@@ -49,7 +49,7 @@ public class AccountDetailsPage extends BasePage {
         return new AccountModalPage(driver);
     }
 
-    @Step("Check all entering values in fields")
+    @Step("Validation of entered data")
     public AccountDetailsPage validate(Account account) {
         validateInput("Account Name", account.getAccountName());
         validateInput("Type", account.getType());
@@ -82,7 +82,7 @@ public class AccountDetailsPage extends BasePage {
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
-    @Step("Confirm deleting account")
+    @Step("Confirm deletion of an account")
     public AccountListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();
