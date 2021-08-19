@@ -2,6 +2,7 @@ package com.itechart.pages.account;
 
 import com.itechart.models.Account;
 import com.itechart.pages.BasePage;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Log4j2
 public class AccountDetailsPage extends BasePage {
 
     private final By ACCOUNT_TITLE = By.xpath("//div[@class='entityNameTitle slds-line-height--reset' and contains(text(), 'Account')]");
@@ -46,6 +48,7 @@ public class AccountDetailsPage extends BasePage {
     }
 
     public AccountDetailsPage validate(Account account) {
+        log.info("Validating Account Data: {}", account);
         validateInput("Account Name", account.getAccountName());
         validateInput("Type", account.getType());
         validateInput("Description", account.getDescription());
@@ -64,7 +67,8 @@ public class AccountDetailsPage extends BasePage {
         try {
             driver.findElement(DELETE_BUTTON).click();
         } catch (StaleElementReferenceException e) {
-            e.printStackTrace();
+            log.warn("Cannot find Delete button");
+            log.warn(e.getLocalizedMessage());
             driver.findElement(DELETE_BUTTON).click();
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));

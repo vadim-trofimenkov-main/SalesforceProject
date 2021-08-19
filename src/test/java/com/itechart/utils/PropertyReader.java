@@ -1,12 +1,15 @@
 package com.itechart.utils;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+@Log4j2
 public class PropertyReader {
 
-    private Properties properties = new Properties();
+    private final Properties properties = new Properties();
 
     public PropertyReader(String filepath) {
         try {
@@ -22,8 +25,8 @@ public class PropertyReader {
         if (properties.getProperty(key) != null) {
             return properties.getProperty(key);
         } else {
-            System.out.println("Cannot find properly by key: " + key);
-            throw new RuntimeException("Cannot find properly by key: " + key);
+            log.error("Cannot find properly by key: {}", key);
+            throw new RuntimeException();
         }
     }
 }

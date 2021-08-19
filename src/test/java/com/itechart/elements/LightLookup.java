@@ -1,5 +1,6 @@
 package com.itechart.elements;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Log4j2
 public class LightLookup {
     WebDriver driver;
     String label;
@@ -20,8 +22,8 @@ public class LightLookup {
     }
 
     public void selectOption(String option) {
+        log.debug("Selecting option '{}' from {} lookup", option, label);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-        System.out.printf("Selecting option '%s' from %s lookup \n", option, label);
         WebElement element = driver.findElement(By.xpath(String.format(inputLocator, label)));
         executor.executeScript("arguments[0].click();", element);
         WebElement element3 = new WebDriverWait(driver,5)
@@ -31,7 +33,7 @@ public class LightLookup {
     }
 
     public void clear() {
-        System.out.printf("Deleting lookup %s\n", label);
+        log.debug("Deleting lookup {}", label);
         driver.findElement(By.xpath(String.format(DELETE_ACTION_LOCATOR, label))).click();
     }
 }

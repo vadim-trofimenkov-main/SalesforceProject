@@ -5,9 +5,11 @@ import com.itechart.elements.LightInput;
 import com.itechart.elements.LightLookup;
 import com.itechart.models.Contact;
 import com.itechart.pages.BasePage;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class ContactModalPage extends BasePage {
     private static final By SAVE_BUTTON_LOCATOR = By.xpath("//button[@name='SaveEdit']");
 
@@ -16,6 +18,7 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactModalPage enterData(Contact contact) {
+        log.info("Entering Contact Data: {}", contact);
         new LightDropDown(driver, "Salutation").selectOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
         new LightInput(driver, "Middle Name").write(contact.getMiddleName());

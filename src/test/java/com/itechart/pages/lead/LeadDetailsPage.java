@@ -2,6 +2,7 @@ package com.itechart.pages.lead;
 
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Log4j2
 public class LeadDetailsPage extends BasePage {
     private final By LEAD_TITLE = By.xpath("//div[@class='entityNameTitle slds-line-height--reset' and contains(text(), 'Lead')]");
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
@@ -33,6 +35,8 @@ public class LeadDetailsPage extends BasePage {
     }
 
     public LeadDetailsPage openDetails() {
+        WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
+                .elementToBeClickable(DETAILS_TAB));
         driver.findElement(DETAILS_TAB).click();
         return this;
     }
@@ -45,6 +49,7 @@ public class LeadDetailsPage extends BasePage {
     }
 
     public LeadDetailsPage validate(Lead lead) {
+        log.info("Validating Lead Data: {}", lead);
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");
         validateInput("Lead Status", lead.getLeadStatus());
         validateInput("Name", lead.getName());
@@ -66,7 +71,8 @@ public class LeadDetailsPage extends BasePage {
         try {
             driver.findElement(DELETE_BUTTON).click();
         } catch (StaleElementReferenceException e) {
-            e.printStackTrace();
+            log.warn("Cannot find Delete button");
+            log.warn(e.getLocalizedMessage());
             driver.findElement(DELETE_BUTTON).click();
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));

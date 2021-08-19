@@ -1,20 +1,20 @@
 package com.itechart.pages;
 
+import com.itechart.utils.PropertyReader;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+@Log4j2
 public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final By HOME_BUTTON_LOCATOR = By.xpath("//one-app-nav-bar-item-root[@data-id='home']");
-    protected final By APP_LAUNCHER_LOCATOR = By.xpath("//div[@class ='appLauncher slds-context-bar__icon-action']");
-    protected final By APP_LAUNCHER_SEARCH_LOCATOR = By.xpath("//input[@class='slds-input']");
-    protected final By APP_LAUNCHER_SEARCH_FIRST_RESULT_LOCATOR = By.xpath("//a[@data-label='Apples']");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -26,23 +26,13 @@ public abstract class BasePage {
         return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
     }
 
-    public AppLauncherSearchResultPage goToTabFromAppLauncher(String tab) {
-        if (isPageOpened()) {
-            driver.findElement(APP_LAUNCHER_LOCATOR).click();
-            driver.findElement(APP_LAUNCHER_SEARCH_LOCATOR).sendKeys(tab);
-            WebElement element = driver.findElement(APP_LAUNCHER_SEARCH_FIRST_RESULT_LOCATOR);
-            JavascriptExecutor executor = (JavascriptExecutor) driver;
-            executor.executeScript("arguments[0].click();", element);
-            return new AppLauncherSearchResultPage(driver);
-        } else throw new RuntimeException("Page is not opened");
-    }
-
-    public void validateInput(String label, String expected) {
+    public void validateInput(String label, String expectedInput) {
         String locator = "//div[contains(@class, 'active')]//span[text()='%s']/ancestor::force-record-layout-item//" +
-                "*[@data-output-element-id='output-field']";
-        Assert.assertTrue(
-                driver.findElement(By.xpath(String.format(locator, label))).getText().contains(expected),
-                String.format("%s input is not correct", label)
+        "*[@data-output-element-id='output-field']";
+        WebElement input = driver.findElement(By.xpath(String.format(locator, label)));
+        String actualInput = input.getText();
+        log.debug("Validating Expected input: {} and actual input: {}", expectedInput, actualInput);
+        Assert.assertTrue(input.getText().contains(expectedInput), String.format("%s input is not correct", label)
         );
     }
 }
