@@ -1,7 +1,9 @@
 package com.itechart.models;
 
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Data
 public class Account {
     final String accountName;
@@ -31,11 +33,13 @@ public class Account {
     }
 
     public String getBillingAddress() {
+        log.warn("Compiling Account Billing Address");
         return getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
                 getBillingPostalCode() + "\n" + getBillingCountry();
     }
 
     public String getShippingAddress() {
+        log.warn("Compiling Account Shipping Address");
         return getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
                 getShippingPostalCode() + "\n" + getShippingCountry();
     }

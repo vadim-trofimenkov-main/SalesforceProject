@@ -5,9 +5,11 @@ import com.itechart.elements.LightInput;
 import com.itechart.elements.TextArea;
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class LeadModalPage extends BasePage {
     private final By SAVE_BUTTON_LOCATOR = By.xpath("//*[@title='Save']");
 
@@ -16,6 +18,7 @@ public class LeadModalPage extends BasePage {
     }
 
     public LeadModalPage enterData(Lead lead) {
+        log.info("Entering Lead Data");
         new LightDropDown(driver, "Lead Status").selectOption(lead.getLeadStatus());
         new LightDropDown(driver, "Salutation").selectOption(lead.getSalutation());
         new LightInput(driver, "First Name").write(lead.getFirstName());
@@ -41,6 +44,7 @@ public class LeadModalPage extends BasePage {
     }
 
     public LeadModalPage clearData() {
+        log.info("Clearing Lead Data");
         new LightDropDown(driver, "Lead Status").clear();
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();
@@ -66,6 +70,7 @@ public class LeadModalPage extends BasePage {
     }
 
     public LeadDetailsPage clickSaveButton() {
+        log.info("Clicking Save button");
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new LeadDetailsPage(driver);
     }

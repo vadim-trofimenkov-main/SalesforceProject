@@ -1,7 +1,9 @@
 package com.itechart.models;
 
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Data
 public class Contact {
     final String salutation;
@@ -20,6 +22,7 @@ public class Contact {
     String name;
 
     public String getName() {
+        log.warn("Compiling Contact Name");
         return getSalutation() +" "+ getFirstName() +" "+ getMiddleName() +" "+ getLastName() +" "+ getSuffix();
     }
 }

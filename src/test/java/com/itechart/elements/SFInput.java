@@ -1,11 +1,13 @@
 package com.itechart.elements;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Log4j2
 public class SFInput {
     WebDriver driver;
     String label;
@@ -17,14 +19,14 @@ public class SFInput {
     }
 
     public void write(String text) {
-        System.out.printf("Writing text '%s' into input with label %s \n", text, label);
+        log.debug(String.format("Writing text '%s' into input with label %s \n", text, label));
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(String.format(inputLocator, label))));
         driver.findElement(By.xpath(String.format(inputLocator, label))).sendKeys(text);
     }
 
     public void clear() {
-        System.out.printf("Deleting text from input with label %s \n", label);
+        log.debug(String.format("Deleting text from input with label %s \n", label));
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(inputLocator, label))));
         driver.findElement(By.xpath(String.format(inputLocator, label))).clear();
     }
