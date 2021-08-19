@@ -23,7 +23,7 @@ public class AccountCRUDTest extends BaseTest {
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Account is not created");
         Account account2 = new Account("Test Account1", "Ac47 Test", "Analyst", "test1", "Apparel",
-                "1234", "test descr", "456", "Test Address1", "Test Address1",
+                "1234", "test description", "456", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));
         boolean isRecordDeleted =

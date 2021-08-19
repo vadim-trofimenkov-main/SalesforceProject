@@ -3,12 +3,13 @@ package com.itechart.tests;
 import com.itechart.pages.contact.ContactDetailsPage;
 import com.itechart.pages.contact.ContactListViewPage;
 import com.itechart.models.Contact;
+import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactCRUDTest extends BaseTest {
 
-    @Test(description = "Create read update delete new Contact record")
+    @Test (retryAnalyzer = Retry.class, description = "Create Read Update Contact record")
     public void testCreateNewContact() {
         Contact contact = new Contact("Mr.", "Test4",
                 "Test5", "Contact6", "Test7", "Test Account",

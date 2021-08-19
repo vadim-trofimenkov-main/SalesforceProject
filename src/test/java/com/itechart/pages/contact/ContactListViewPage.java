@@ -2,6 +2,7 @@ package com.itechart.pages.contact;
 
 import com.itechart.pages.BasePage;
 import lombok.extern.log4j.Log4j2;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -16,16 +17,19 @@ public class ContactListViewPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open List View for Contact")
     public ContactListViewPage open() {
         driver.get("https://itechart4.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
         return this;
     }
 
+    @Step("Click on New button")
     public ContactModalPage clickNewButton() {
         driver.findElement(NEW_BUTTON_LOCATOR).click();
         return new ContactModalPage(driver);
     }
 
+    @Step("Check that Contact was deleted successfully")
     public boolean isSuccessDeleteMessageDisplayed() {
         boolean isSuccessMessageDisplayed;
         try {

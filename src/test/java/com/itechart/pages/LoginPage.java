@@ -1,5 +1,6 @@
 package com.itechart.pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,18 +22,21 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Check that page was opened")
     @Override
     public boolean isPageOpened() {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(LOGO_LOCATOR));
         return driver.findElement(LOGO_LOCATOR).isDisplayed();
     }
 
+    @Step("Open Login Page")
     public LoginPage open() {
         log.info("Opening Login page: {}", loginUrl);
         driver.get(loginUrl);
         return this;
     }
 
+    @Step("Login by user: {username}")
     public HomePage login(String username, String password) {
         log.info("Logging into Salesforce with username: {} and password: {}", username, password);
         driver.findElement(USERNAME_LOCATOR).sendKeys(username);
@@ -41,10 +45,12 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 
+    @Step("Get error message")
     public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE_LOCATOR).getText();
     }
 
+    @Step("Check that username was displayed")
     public boolean isUsernameDisplayed() {
         return driver.findElement(USERNAME_LABEL_LOCATOR).isDisplayed();
     }

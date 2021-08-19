@@ -2,6 +2,7 @@ package com.itechart.pages.contact;
 
 import com.itechart.pages.BasePage;
 import com.itechart.models.Contact;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -24,6 +25,7 @@ public class ContactDetailsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Click Edit button")
     public ContactModalPage clickEditDetailsButton() {
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
@@ -31,6 +33,7 @@ public class ContactDetailsPage extends BasePage {
         return new ContactModalPage(driver);
     }
 
+    @Step("Check that Contact Details page was opened")
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(TITLE_CONTACT_LOCATOR));
@@ -41,13 +44,15 @@ public class ContactDetailsPage extends BasePage {
         return driver.findElement(TITLE_CONTACT_LOCATOR).getText();
     }
 
+    @Step("Open Details tab")
     public ContactDetailsPage openDetails() {
-        WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
+        WebElement waitDetailsTab = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .elementToBeClickable(TAB_CONTACT_DETAILS_LOCATOR));
         driver.findElement(TAB_CONTACT_DETAILS_LOCATOR).click();
         return this;
     }
 
+    @Step("Validation of entered data")
     public ContactDetailsPage validate(Contact contact) {
         log.info("Validating Contact Data: {}", contact);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -63,6 +68,7 @@ public class ContactDetailsPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Delete button")
     public ContactDetailsPage clickDeleteButton() {
         try {
             driver.findElement(DELETE_BUTTON).click();
@@ -80,6 +86,7 @@ public class ContactDetailsPage extends BasePage {
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
+    @Step("Confirm deletion of an contact")
     public ContactListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();

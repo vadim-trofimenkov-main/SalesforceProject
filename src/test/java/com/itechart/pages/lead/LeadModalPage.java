@@ -5,6 +5,7 @@ import com.itechart.elements.LightInput;
 import com.itechart.elements.TextArea;
 import com.itechart.models.Lead;
 import com.itechart.pages.BasePage;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ public class LeadModalPage extends BasePage {
         super(driver);
     }
 
+    @Step("Enter data into fields")
     public LeadModalPage enterData(Lead lead) {
         log.info("Entering Lead Data: {}", lead);
         new LightDropDown(driver, "Lead Status").selectOption(lead.getLeadStatus());
@@ -43,6 +45,7 @@ public class LeadModalPage extends BasePage {
         return new LeadModalPage(driver);
     }
 
+    @Step("Clear data from fields")
     public LeadModalPage clearData() {
         new LightDropDown(driver, "Lead Status").clear();
         new LightDropDown(driver, "Salutation").clear();
@@ -68,6 +71,7 @@ public class LeadModalPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Save button")
     public LeadDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new LeadDetailsPage(driver);

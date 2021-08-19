@@ -28,7 +28,7 @@ public abstract class BaseTest {
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
 
-    @BeforeClass
+    @BeforeClass(description = "Open browser")
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -50,7 +50,7 @@ public abstract class BaseTest {
         homePage.open();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass(alwaysRun = true, description = "Close browser")
     public void tearDown() {
         driver.quit();
     }

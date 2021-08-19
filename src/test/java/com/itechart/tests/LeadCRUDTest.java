@@ -3,12 +3,13 @@ package com.itechart.tests;
 import com.itechart.models.Lead;
 import com.itechart.pages.lead.LeadDetailsPage;
 import com.itechart.pages.lead.LeadListViewPage;
+import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LeadCRUDTest extends BaseTest {
 
-    @Test(description = "Create read update delete new Lead record")
+    @Test (retryAnalyzer = Retry.class, description = "Create Read Update Lead record")
     public void createReadUpdateDeleteLeadRecord() {
         Lead lead = new Lead("New", "Mr.", "Record", "for", "Success",
                 "Delete", "Boss", "pp41@mailinator.com", "54321", "12345",
