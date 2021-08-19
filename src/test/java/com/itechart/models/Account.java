@@ -33,14 +33,16 @@ public class Account {
     }
 
     public String getBillingAddress() {
-        log.warn("Compiling Account Billing Address");
-        return getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
+        billingAddress = getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
                 getBillingPostalCode() + "\n" + getBillingCountry();
+        log.warn("Compiling Account Billing Address: {}", billingAddress);
+        return billingAddress;
     }
 
     public String getShippingAddress() {
-        log.warn("Compiling Account Shipping Address");
-        return getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
+        shippingAddress = getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
                 getShippingPostalCode() + "\n" + getShippingCountry();
+        log.warn("Compiling Account Shipping Address: {}", shippingAddress);
+        return shippingAddress;
     }
 }

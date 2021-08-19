@@ -26,7 +26,6 @@ public class LeadDetailsPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DETAILS_TAB));
-        log.info("Lead Details page is open");
         return getTitle().contains("Lead");
     }
 
@@ -36,7 +35,6 @@ public class LeadDetailsPage extends BasePage {
     }
 
     public LeadDetailsPage openDetails() {
-        log.info("Opening Lead Details");
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .elementToBeClickable(DETAILS_TAB));
         driver.findElement(DETAILS_TAB).click();
@@ -44,7 +42,6 @@ public class LeadDetailsPage extends BasePage {
     }
 
     public LeadModalPage clickEditDetailsButton() {
-        log.info("Clicking Lead Edit button");
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
@@ -52,7 +49,7 @@ public class LeadDetailsPage extends BasePage {
     }
 
     public LeadDetailsPage validate(Lead lead) {
-        log.info("Validating Lead Data");
+        log.info("Validating Lead Data: {}", lead);
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");
         validateInput("Lead Status", lead.getLeadStatus());
         validateInput("Name", lead.getName());
@@ -72,7 +69,6 @@ public class LeadDetailsPage extends BasePage {
 
     public LeadDetailsPage clickDeleteButton() {
         try {
-            log.info("Clicking Contact Delete button");
             driver.findElement(DELETE_BUTTON).click();
         } catch (StaleElementReferenceException e) {
             log.warn("Cannot find Delete button");
@@ -85,12 +81,10 @@ public class LeadDetailsPage extends BasePage {
 
     public boolean isModalOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
-        log.info("Lead modal is open");
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
     public LeadListViewPage delete() {
-        log.info("Deleting Lead");
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();
         return new LeadListViewPage(driver);

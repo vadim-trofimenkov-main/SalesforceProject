@@ -17,13 +17,11 @@ public class ContactListViewPage extends BasePage {
     }
 
     public ContactListViewPage open() {
-        log.info("Opening Contact List View page");
         driver.get("https://itechart4.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
         return this;
     }
 
     public ContactModalPage clickNewButton() {
-        log.info("Clicking Contact New button");
         driver.findElement(NEW_BUTTON_LOCATOR).click();
         return new ContactModalPage(driver);
     }
@@ -32,7 +30,6 @@ public class ContactListViewPage extends BasePage {
         boolean isSuccessMessageDisplayed;
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESS_DELETE_MESSAGE));
-            log.info("Contact record successfully deleted message is displayed");
             isSuccessMessageDisplayed = driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
         } catch (StaleElementReferenceException e) {
             log.warn("Contact record successfully deleted message is not found");

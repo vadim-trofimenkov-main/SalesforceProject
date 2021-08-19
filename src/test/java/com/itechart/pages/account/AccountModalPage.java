@@ -27,7 +27,6 @@ public class AccountModalPage extends BasePage {
     public boolean isPageOpened() {
         try {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(MODAL_HEADER_LOCATOR));
-            log.info("Account Modal is open");
             return false;
         } catch (TimeoutException | NoSuchElementException e) {
             log.warn("Account Modal is not open");
@@ -37,7 +36,7 @@ public class AccountModalPage extends BasePage {
     }
 
     public AccountModalPage enterData(Account account) {
-        log.info("Entering Account Data");
+        log.info("Entering Account Data: {}", account);
         new SFInput(driver, "Account Name").write(account.getAccountName());
         new SFDropDown(driver, "Type").select(account.getType());
         new SFInput(driver, "Website").write(account.getWebsite());
@@ -60,7 +59,6 @@ public class AccountModalPage extends BasePage {
     }
 
     public AccountModalPage clearData() {
-        log.info("Clearing Account Data");
         new SFInput(driver, "Account Name").clear();
         new SFDropDown(driver, "Type").clear();
         new SFInput(driver, "Website").clear();
@@ -83,31 +81,26 @@ public class AccountModalPage extends BasePage {
     }
 
     public AccountDetailsPage clickSaveButton() {
-        log.info("Clicking Save button");
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new AccountDetailsPage(driver);
     }
 
     public AccountDetailsPage clickSaveAndNewButton() {
-        log.info("Clicking Save And New button");
         driver.findElement(SAVE_AND_NEW_BUTTON_LOCATOR).click();
         return new AccountDetailsPage(driver);
     }
 
     public AccountListViewPage clickCancelButton() {
-        log.info("Clicking Cancel button");
         driver.findElement(CANCEL_BUTTON_LOCATOR).click();
         return new AccountListViewPage(driver);
     }
 
     public AccountListViewPage clickCrossButton() {
-        log.info("Clicking Cross button");
         driver.findElement(CROSS_BUTTON_LOCATOR).click();
         return new AccountListViewPage(driver);
     }
 
     public boolean isEmptyRequiredFieldsValidationError() {
-        log.info("Checking whether all required fields are not blank");
         return driver.findElement(EMPTY_REQUIRED_FIELD_LOCATOR).isDisplayed();
     }
 }

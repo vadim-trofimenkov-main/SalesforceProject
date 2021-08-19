@@ -5,13 +5,14 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class HomePage extends BasePage {
+    private final String homeUrl = propertyReader.getPropertyValueByKey("homepage");
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
     public HomePage open() {
-        log.info("Opening Home page");
-        driver.get("https://itechart4.lightning.force.com/lightning/page/home");
+        log.info("Opening Home page: {}", homeUrl);
+        driver.get(homeUrl);
         return this;
     }
 }

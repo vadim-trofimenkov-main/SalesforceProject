@@ -25,7 +25,6 @@ public class ContactDetailsPage extends BasePage {
     }
 
     public ContactModalPage clickEditDetailsButton() {
-        log.info("Clicking Contact Edit button");
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
@@ -35,7 +34,6 @@ public class ContactDetailsPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(TITLE_CONTACT_LOCATOR));
-        log.info("Contact Details page is open");
         return getTitle().contains("Contact");
     }
 
@@ -44,7 +42,6 @@ public class ContactDetailsPage extends BasePage {
     }
 
     public ContactDetailsPage openDetails() {
-        log.info("Opening Contact Details");
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .elementToBeClickable(TAB_CONTACT_DETAILS_LOCATOR));
         driver.findElement(TAB_CONTACT_DETAILS_LOCATOR).click();
@@ -52,7 +49,7 @@ public class ContactDetailsPage extends BasePage {
     }
 
     public ContactDetailsPage validate(Contact contact) {
-        log.info("Validating Contact Data");
+        log.info("Validating Contact Data: {}", contact);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         validateInput("Name", contact.getName());
         validateInput("Account Name", contact.getAccountName());
@@ -68,7 +65,6 @@ public class ContactDetailsPage extends BasePage {
 
     public ContactDetailsPage clickDeleteButton() {
         try {
-            log.info("Clicking Contact Delete button");
             driver.findElement(DELETE_BUTTON).click();
         } catch (StaleElementReferenceException e) {
             log.warn("Cannot find Delete button");
@@ -81,12 +77,10 @@ public class ContactDetailsPage extends BasePage {
 
     public boolean isModalOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
-        log.info("Contact modal is open");
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 
     public ContactListViewPage delete() {
-        log.info("Deleting Contact");
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
         driver.findElement(DELETE_MODAL_BUTTON).click();
         return new ContactListViewPage(driver);

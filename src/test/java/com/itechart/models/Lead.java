@@ -31,12 +31,14 @@ public class Lead {
     String address;
 
     public String getName() {
-        log.warn("Compiling Lead Name");
-        return getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName();
+        name = getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName();
+        log.warn("Compiling Lead Name: {}", name);
+        return name;
     }
 
     public String getAddress() {
-        log.warn("Compiling Lead Address");
-        return getStreet() + "\n" + getCity() + ", " + getStateOrProvince() + " " + getZipOrPostalCode() + "\n" + getCountry();
+        address = getStreet() + "\n" + getCity() + ", " + getStateOrProvince() + " " + getZipOrPostalCode() + "\n" + getCountry();
+        log.warn("Compiling Lead Address: {}", address);
+        return address;
     }
 }

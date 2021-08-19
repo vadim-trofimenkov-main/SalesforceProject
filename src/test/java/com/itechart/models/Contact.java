@@ -22,7 +22,8 @@ public class Contact {
     String name;
 
     public String getName() {
-        log.warn("Compiling Contact Name");
-        return getSalutation() +" "+ getFirstName() +" "+ getMiddleName() +" "+ getLastName() +" "+ getSuffix();
+        name = getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName() + " " + getSuffix();
+        log.warn("Compiling Contact Name: {}", name);
+        return name;
     }
 }

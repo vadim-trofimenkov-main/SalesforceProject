@@ -18,7 +18,6 @@ public class LeadListViewPage extends BasePage {
     }
 
     public LeadListViewPage open() {
-        log.info("Opening Lead List View page");
         driver.get("https://itechart4.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
         return this;
     }
@@ -26,12 +25,10 @@ public class LeadListViewPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(BREADCRUMB_LOCATOR));
-        log.info("Lead List View page is open");
         return driver.findElement(BREADCRUMB_LOCATOR).getText().contains("Leads");
     }
 
     public LeadModalPage clickNewButton() {
-        log.info("Clicking Lead New button");
         wait.until(ExpectedConditions.presenceOfElementLocated(NEW_BUTTON_LOCATOR));
         driver.findElement(NEW_BUTTON_LOCATOR).click();
         return new LeadModalPage(driver);
@@ -41,7 +38,6 @@ public class LeadListViewPage extends BasePage {
         boolean isSuccessMessageDisplayed;
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESS_DELETE_MESSAGE));
-            log.info("Lead record successfully deleted message is displayed");
             isSuccessMessageDisplayed = driver.findElement(SUCCESS_DELETE_MESSAGE).isDisplayed();
         } catch (StaleElementReferenceException e) {
             log.warn("Lead record successfully deleted message is not found");

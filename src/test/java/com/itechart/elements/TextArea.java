@@ -17,12 +17,12 @@ public class TextArea {
     }
 
     public void write(String text) {
-        log.debug(String.format("Writing text '%s' into text-area field with label %s \n", text, label));
+        log.debug("Writing text '{}' into text-area field with label {}", text, label);
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).sendKeys(text);
     }
 
     public void clear() {
-        log.debug(String.format("Deleting text from text-area field with label %s \n", label));
+        log.debug("Deleting text from text-area field with label {}", label);
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).clear();
     }
 }

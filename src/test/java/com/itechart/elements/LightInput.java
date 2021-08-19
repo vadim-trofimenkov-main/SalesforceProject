@@ -16,12 +16,12 @@ public class LightInput {
     }
 
     public void write(String text) {
-        log.debug(String.format("Writing text '%s' into input with label %s \n", text, label));
+        log.debug("Writing text '{}' into input with label {}", text, label);
         driver.findElement(By.xpath(String.format(inputLocator, label))).sendKeys(text);
     }
 
     public void clear() {
-        log.debug(String.format("Deleting text from input with label %s \n", label));
+        log.debug("Deleting text from input with label {}", label);
         driver.findElement(By.xpath(String.format(inputLocator, label))).clear();
     }
 }

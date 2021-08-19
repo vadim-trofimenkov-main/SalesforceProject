@@ -21,7 +21,7 @@ public class SFDropDown {
     }
 
     public void select(String option) {
-        log.debug(String.format("Selecting option '%s' in drop-down %s\n", option, label));
+        log.debug("Selecting option '{}' in drop-down {}", option, label);
         driver.findElement(By.xpath(String.format(locator, label))).click();
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(String.format(optionLocator, option))));
@@ -29,7 +29,7 @@ public class SFDropDown {
     }
 
     public void clear() {
-        log.debug(String.format("Clearing option in drop-down %s\n", label));
+        log.debug("Clearing option in drop-down {}", label);
         driver.findElement(By.xpath(String.format(locator, label))).click();
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(String.format(optionLocator, "--None--"))));

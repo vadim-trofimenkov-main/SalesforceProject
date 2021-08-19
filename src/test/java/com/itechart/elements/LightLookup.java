@@ -22,7 +22,7 @@ public class LightLookup {
     }
 
     public void selectOption(String option) {
-        log.debug(String.format("Selecting option '%s' from %s lookup \n", option, label));
+        log.debug("Selecting option '{}' from {} lookup", option, label);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         WebElement element = driver.findElement(By.xpath(String.format(inputLocator, label)));
         executor.executeScript("arguments[0].click();", element);
@@ -33,7 +33,7 @@ public class LightLookup {
     }
 
     public void clear() {
-        log.debug(String.format("Deleting lookup %s\n", label));
+        log.debug("Deleting lookup {}", label);
         driver.findElement(By.xpath(String.format(DELETE_ACTION_LOCATOR, label))).click();
     }
 }

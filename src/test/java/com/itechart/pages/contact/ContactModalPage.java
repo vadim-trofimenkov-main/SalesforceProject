@@ -18,7 +18,7 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactModalPage enterData(Contact contact) {
-        log.info("Entering Contact Data");
+        log.info("Entering Contact Data: {}", contact);
         new LightDropDown(driver, "Salutation").selectOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
         new LightInput(driver, "Middle Name").write(contact.getMiddleName());
@@ -36,7 +36,6 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactModalPage clearData() {
-        log.info("Clearing Contact Data");
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();
         new LightInput(driver, "Middle Name").clear();
@@ -54,7 +53,6 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactDetailsPage clickSaveButton() {
-        log.info("Clicking Save button");
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
         return new ContactDetailsPage(driver);
     }

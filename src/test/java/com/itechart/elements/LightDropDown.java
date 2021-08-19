@@ -21,7 +21,7 @@ public class LightDropDown {
     }
 
     public void selectOption(String option) {
-        log.info(String.format("Selecting option '%s' from %s lookup \n", option, label));
+        log.info("Selecting option '{}' from {} lookup", option, label);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         WebElement element = driver.findElement(By.xpath(String.format(inputLocator, label)));
         executor.executeScript("arguments[0].click();", element);
@@ -30,7 +30,7 @@ public class LightDropDown {
     }
 
     public void clear() {
-        log.info(String.format("Clearing option in drop-down %s\n", label));
+        log.info("Clearing option in drop-down {}", label);
         WebElement waitInputVisibility = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .visibilityOfElementLocated(By.xpath(String.format(inputLocator, label))));
         driver.findElement(By.xpath(String.format(inputLocator, label))).click();

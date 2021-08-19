@@ -22,7 +22,7 @@ public class SFLookUp {
     }
 
     public void selectOption(String option) {
-        log.debug(String.format("Selecting option '%s' from %s lookup \n", option, label));
+        log.debug("Selecting option '{}' from {} lookup", option, label);
         By LOOKUP_OPTION = By.xpath(String.format(lookupOption, option));
         driver.findElement(By.xpath(String.format(inputLocator, label))).click();
         WebElement element = new WebDriverWait(driver, 10)
@@ -31,7 +31,7 @@ public class SFLookUp {
     }
 
     public void clear() {
-        log.debug(String.format("Deleting lookup of %s \n", label));
+        log.debug("Deleting lookup of {}", label);
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(String.format(DELETE_ACTION_LOCATOR, label))));
         driver.findElement(By.xpath(String.format(DELETE_ACTION_LOCATOR, label))).click();

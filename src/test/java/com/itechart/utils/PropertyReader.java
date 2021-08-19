@@ -22,11 +22,10 @@ public class PropertyReader {
     }
 
     public String getPropertyValueByKey(String key) {
-        log.debug("Getting Property Value from properties file");
         if (properties.getProperty(key) != null) {
             return properties.getProperty(key);
         } else {
-            log.error("Cannot find properly by key: " + key);
+            log.error("Cannot find properly by key: {}", key);
             throw new RuntimeException();
         }
     }
