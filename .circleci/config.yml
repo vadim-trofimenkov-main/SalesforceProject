@@ -19,10 +19,6 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      # run tests
-      - run:
-          name: Get Chrome version
-          command: google-chrome --version
       - run:
           name: Running tests
           command: mvn clean test
