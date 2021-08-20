@@ -52,6 +52,7 @@ public abstract class BaseTest {
 
     @AfterClass(alwaysRun = true, description = "Close browser")
     public void tearDown() {
+        if(driver!=null)
         driver.quit();
     }
 }
