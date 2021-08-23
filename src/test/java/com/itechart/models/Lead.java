@@ -6,39 +6,35 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Data
 public class Lead {
-    final String leadStatus;
-    final String salutation;
-    final String firstName;
-    final String middleName;
-    final String lastName;
-    final String suffix;
-    final String title;
-    final String email;
-    final String phone;
-    final String mobile;
-    final String rating;
-    final String website;
-    final String company;
-    final String industry;
-    final String noOfEmployees;
-    final String leadSource;
+    final String Status;
+    final String Salutation;
+    final String FirstName;
+    final String LastName;
+    final String Title;
+    final String Email;
+    final String Phone;
+    final String MobilePhone;
+    final String Rating;
+    final String Website;
+    final String Company;
+    final String Industry;
+    final String NumberOfEmployees;
+    final String LeadSource;
     final String street;
     final String city;
-    final String zipOrPostalCode;
-    final String stateOrProvince;
     final String country;
-    String name;
-    String address;
+    String Name;
+    String Address;
 
     public String getName() {
-        name = getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName();
-        log.warn("Compiling Lead Name: {}", name);
-        return name;
+        Name = getSalutation() + " " + getFirstName() + " " + getLastName();
+        log.warn("Compiling Lead Name: {}", Name);
+        return Name;
     }
 
     public String getAddress() {
-        address = getStreet() + "\n" + getCity() + ", " + getStateOrProvince() + " " + getZipOrPostalCode() + "\n" + getCountry();
-        log.warn("Compiling Lead Address: {}", address);
-        return address;
+        Address = getStreet() + "\n" + getCity() + ", " + "\n" + getCountry();
+        log.warn("Compiling Lead Address: {}", Address);
+        return Address;
     }
 }

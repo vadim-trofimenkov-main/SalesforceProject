@@ -13,7 +13,7 @@ public class AccountCRUDTest extends BaseTest {
         Account account = new Account("Test Account", "Test Account", "Investor", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address",
-                "Test Address", "Test Address", "Test Address", "Test Address", propertyReader.getPropertyValueByKey("user"));
+                "Test Address", "Test Address", "Test Address", "Test Address");
         AccountListViewPage accountListViewPage = new AccountListViewPage(driver);
         AccountDetailsPage detailsPage =
                 accountListViewPage
@@ -25,7 +25,7 @@ public class AccountCRUDTest extends BaseTest {
         Account account2 = new Account("Test Account1", "Ac47 Test", "Analyst", "test1", "Apparel",
                 "1234", "test description", "456", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1",
-                "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));
+                "Test Address1", "Test Address1", "Test Address1", "Test Address1");
         boolean isRecordDeleted =
                 detailsPage
                         .openDetails()

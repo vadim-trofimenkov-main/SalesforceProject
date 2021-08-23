@@ -54,17 +54,17 @@ public class AccountDetailsPage extends BasePage {
     @Step("Validation of entered data")
     public AccountDetailsPage validate(Account account) {
         log.info("Validating Account Data: {}", account);
-        validateInput("Account Name", account.getAccountName());
+        validateInput("Account Name", account.getName());
         validateInput("Type", account.getType());
         validateInput("Description", account.getDescription());
         validateInput("Industry", account.getIndustry());
         validateInput("Website", account.getWebsite());
         validateInput("Phone", account.getPhone());
-        validateInput("Employees", account.getEmployees());
+        validateInput("Employees", account.getNumberOfEmployees());
         validateInput("Billing Address", account.getBillingAddress());
         validateInput("Shipping Address", account.getShippingAddress());
-        validateInput("Account Owner", account.getAccountOwner());
-        validateInput("Parent Account", account.getParentAccount());
+        validateInput("Account Owner", account.getOwnerId());
+        validateInput("Parent Account", account.getParentId());
         return this;
     }
 

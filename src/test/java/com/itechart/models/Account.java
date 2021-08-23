@@ -6,14 +6,14 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Data
 public class Account {
-    final String accountName;
-    final String parentAccount;
-    final String type;
-    final String website;
-    final String industry;
-    final String phone;
-    final String description;
-    final String employees;
+    final String Name;
+    final String ParentId;
+    final String Type;
+    final String Website;
+    final String Industry;
+    final String Phone;
+    final String Description;
+    final String NumberOfEmployees;
     final String billingStreet;
     final String billingCity;
     final String billingPostalCode;
@@ -24,25 +24,25 @@ public class Account {
     final String shippingState;
     final String shippingPostalCode;
     final String shippingCountry;
-    String billingAddress;
-    String shippingAddress;
-    final String accountOwner;
+    String BillingAddress;
+    String ShippingAddress;
+    String OwnerId;
 
-    public String getAccountName() {
-        return accountName;
+    public String getName() {
+        return Name;
     }
 
     public String getBillingAddress() {
-        billingAddress = getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
+        BillingAddress = getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
                 getBillingPostalCode() + "\n" + getBillingCountry();
-        log.warn("Compiling Account Billing Address: {}", billingAddress);
-        return billingAddress;
+        log.warn("Compiling Account Billing Address: {}", BillingAddress);
+        return BillingAddress;
     }
 
     public String getShippingAddress() {
-        shippingAddress = getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
+        ShippingAddress = getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
                 getShippingPostalCode() + "\n" + getShippingCountry();
-        log.warn("Compiling Account Shipping Address: {}", shippingAddress);
-        return shippingAddress;
+        log.warn("Compiling Account Shipping Address: {}", ShippingAddress);
+        return ShippingAddress;
     }
 }

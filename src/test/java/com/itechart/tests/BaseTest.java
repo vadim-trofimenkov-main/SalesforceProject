@@ -3,6 +3,7 @@ package com.itechart.tests;
 import com.github.javafaker.Faker;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
+import com.itechart.tests.configurations.TestListener;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
@@ -33,6 +34,7 @@ public abstract class BaseTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         login();
