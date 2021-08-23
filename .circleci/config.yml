@@ -6,7 +6,7 @@ version: 2
 jobs:
   ui-tests:
     docker:
-      - image: cimg/openjdk:11.0.12-browsers
+      - image: cimg/openjdk:11.0.12
     steps:
       - checkout
       - restore_cache:
