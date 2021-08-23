@@ -67,7 +67,6 @@ public class LeadDetailsPage extends BasePage {
         validateInput("Industry", lead.getIndustry());
         validateInput("No. of Employees", lead.getNumberOfEmployees());
         validateInput("Lead Source", lead.getLeadSource());
-        validateInput("Address", lead.getAddress());
         return this;
     }
 

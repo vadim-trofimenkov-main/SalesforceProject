@@ -58,8 +58,8 @@ public class ContactDetailsPage extends BasePage {
         log.info("Validating Contact Data: {}", contact);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         validateInput("Name", contact.getName());
-        validateInput("Account Name", contact.getAccountId());
-        validateInput("Reports To", contact.getReportsToId());
+        validateInput("Account Name", contact.getAccountName());
+        validateInput("Reports To", contact.getReportsTo());
         validateInput("Title", contact.getTitle());
         validateInput("Department", contact.getDepartment());
         validateInput("Email", contact.getEmail());

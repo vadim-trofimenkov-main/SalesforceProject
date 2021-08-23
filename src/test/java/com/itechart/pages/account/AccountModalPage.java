@@ -43,7 +43,7 @@ public class AccountModalPage extends BasePage {
         new SFDropDown(driver, "Type").select(account.getType());
         new SFInput(driver, "Website").write(account.getWebsite());
         new TextArea(driver, "Description").write(account.getDescription());
-        new SFLookUp(driver, "Parent Account").selectOption(account.getParentId());
+        new SFLookUp(driver, "Parent Account").selectOption(account.getParentAccount());
         new SFInput(driver, "Phone").write(account.getPhone());
         new SFDropDown(driver, "Industry").select(account.getIndustry());
         new SFInput(driver, "Employees").write(account.getNumberOfEmployees());

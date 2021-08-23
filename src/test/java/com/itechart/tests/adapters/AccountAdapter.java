@@ -1,7 +1,6 @@
 package com.itechart.tests.adapters;
 
 import com.itechart.models.Account;
-import com.itechart.models.ResponseAccount;
 import com.itechart.models.ResponseStatus;
 
 public class AccountAdapter extends BaseAdapter {
@@ -12,8 +11,8 @@ public class AccountAdapter extends BaseAdapter {
         return jsonReader.fromJson(response, ResponseStatus.class);
     }
 
-    public ResponseAccount getAccount(String accountId) {
+    public Account getAccount(String accountId) {
         String response = get("https://ap5.salesforce.com/services/data/v42.0/sobjects/account/" + accountId, 200);
-        return jsonReader.fromJson(response, ResponseAccount.class);
+        return jsonReader.fromJson(response, Account.class);
     }
 }

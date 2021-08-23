@@ -24,8 +24,8 @@ public class ContactModalPage extends BasePage {
         new LightDropDown(driver, "Salutation").selectOption(contact.getSalutation());
         new LightInput(driver, "First Name").write(contact.getFirstName());
         new LightInput(driver, "Last Name").write(contact.getLastName());
-        new LightLookup(driver, "Account Name").selectOption(contact.getAccountId());
-        new LightLookup(driver, "Reports To").selectOption(contact.getReportsToId());
+        new LightLookup(driver, "Account Name").selectOption(contact.getAccountName());
+        new LightLookup(driver, "Reports To").selectOption(contact.getReportsTo());
         new LightInput(driver, "Title").write(contact.getTitle());
         new LightInput(driver, "Email").write(contact.getEmail());
         new LightInput(driver, "Phone").write(contact.getPhone());

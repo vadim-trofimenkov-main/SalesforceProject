@@ -1,19 +1,29 @@
 package com.itechart.models;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Data
 public class Account {
-    final String Name;
-    final String ParentId;
-    final String Type;
-    final String Website;
-    final String Industry;
-    final String Phone;
-    final String Description;
-    final String NumberOfEmployees;
+    @SerializedName("Name")
+    final String accountName;
+    @SerializedName("ParentId")
+    final String parentAccount;
+    @SerializedName("Type")
+    final String type;
+    @SerializedName("Website")
+    final String website;
+    @SerializedName("Industry")
+    final String industry;
+    @SerializedName("Phone")
+    final String phone;
+    @SerializedName("Description")
+    final String description;
+    @SerializedName("NumberOfEmployees")
+    final String numberOfEmployees;
     final String billingStreet;
     final String billingCity;
     final String billingPostalCode;
@@ -24,25 +34,38 @@ public class Account {
     final String shippingState;
     final String shippingPostalCode;
     final String shippingCountry;
-    String BillingAddress;
-    String ShippingAddress;
+    BillingAddress billingAddress;
+    ShippingAddress shippingAddress;
+    @SerializedName("OwnerId")
     String OwnerId;
 
     public String getName() {
-        return Name;
+        return accountName;
     }
 
-    public String getBillingAddress() {
-        BillingAddress = getBillingStreet() + "\n" + getBillingCity() + ", " + getBillingState() + " " +
-                getBillingPostalCode() + "\n" + getBillingCountry();
-        log.warn("Compiling Account Billing Address: {}", BillingAddress);
-        return BillingAddress;
+    @Data
+    @AllArgsConstructor
+    public static class BillingAddress {
+        String city;
+        String country;
+        String geocodeAccuracy;
+        String latitude;
+        String longitude;
+        String postalCode;
+        String state;
+        String street;
     }
 
-    public String getShippingAddress() {
-        ShippingAddress = getShippingStreet() + "\n" + getShippingCity() + ", " + getShippingState() + " " +
-                getShippingPostalCode() + "\n" + getShippingCountry();
-        log.warn("Compiling Account Shipping Address: {}", ShippingAddress);
-        return ShippingAddress;
+    @Data
+    @AllArgsConstructor
+    public static class ShippingAddress {
+        String city;
+        String country;
+        String geocodeAccuracy;
+        String latitude;
+        String longitude;
+        String postalCode;
+        String state;
+        String street;
     }
 }
