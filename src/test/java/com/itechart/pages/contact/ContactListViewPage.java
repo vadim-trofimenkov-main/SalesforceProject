@@ -19,7 +19,7 @@ public class ContactListViewPage extends BasePage {
 
     @Step("Open List View for Contact")
     public ContactListViewPage open() {
-        driver.get("https://itechart4.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
+        driver.get("https://itechart42-dev-ed.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
         return this;
     }
 

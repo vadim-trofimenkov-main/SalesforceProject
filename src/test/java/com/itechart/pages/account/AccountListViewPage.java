@@ -26,7 +26,7 @@ public class AccountListViewPage extends BasePage {
 
     @Step("Open List View for Account")
     public AccountListViewPage open() {
-        driver.get("https://itechart4.lightning.force.com/lightning/o/Account/list?filterName=Recent");
+        driver.get("https://itechart42-dev-ed.lightning.force.com/lightning/o/Account/list?filterName=Recent");
         return this;
     }
 
