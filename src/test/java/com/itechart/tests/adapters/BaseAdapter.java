@@ -10,6 +10,7 @@ public class BaseAdapter {
     protected Gson jsonReader = new Gson();
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     private final String ACCESS_TOKEN = propertyReader.getPropertyValueByKey("access_token");
+    protected final String API_BASE_URL = propertyReader.getPropertyValueByKey("api_base_url");
 
     public String post(String url, String body, int status) {
         log.debug("Sending post request with {} url and {} body", url, body);
