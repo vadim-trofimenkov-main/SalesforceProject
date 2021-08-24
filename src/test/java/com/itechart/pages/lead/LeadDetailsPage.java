@@ -55,19 +55,18 @@ public class LeadDetailsPage extends BasePage {
     public LeadDetailsPage validate(Lead lead) {
         log.info("Validating Lead Data: {}", lead);
         if (!isPageOpened()) throw new RuntimeException("Page is not opened");
-        validateInput("Lead Status", lead.getLeadStatus());
+        validateInput("Lead Status", lead.getStatus());
         validateInput("Name", lead.getName());
         validateInput("Title", lead.getTitle());
         validateInput("Email", lead.getEmail());
         validateInput("Phone", lead.getPhone());
-        validateInput("Mobile", lead.getMobile());
+        validateInput("Mobile", lead.getMobilePhone());
         validateInput("Rating", lead.getRating());
         validateInput("Website", lead.getWebsite());
         validateInput("Company", lead.getCompany());
         validateInput("Industry", lead.getIndustry());
-        validateInput("No. of Employees", lead.getNoOfEmployees());
+        validateInput("No. of Employees", lead.getNumberOfEmployees());
         validateInput("Lead Source", lead.getLeadSource());
-        validateInput("Address", lead.getAddress());
         return this;
     }
 

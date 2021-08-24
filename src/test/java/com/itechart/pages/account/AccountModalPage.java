@@ -10,7 +10,6 @@ import lombok.extern.log4j.Log4j2;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Test;
 
 @Log4j2
 public class AccountModalPage extends BasePage {
@@ -40,14 +39,14 @@ public class AccountModalPage extends BasePage {
     @Step("Enter data into fields")
     public AccountModalPage enterData(Account account) {
         log.info("Entering Account Data: {}", account);
-        new SFInput(driver, "Account Name").write(account.getAccountName());
+        new SFInput(driver, "Account Name").write(account.getName());
         new SFDropDown(driver, "Type").select(account.getType());
         new SFInput(driver, "Website").write(account.getWebsite());
         new TextArea(driver, "Description").write(account.getDescription());
         new SFLookUp(driver, "Parent Account").selectOption(account.getParentAccount());
         new SFInput(driver, "Phone").write(account.getPhone());
         new SFDropDown(driver, "Industry").select(account.getIndustry());
-        new SFInput(driver, "Employees").write(account.getEmployees());
+        new SFInput(driver, "Employees").write(account.getNumberOfEmployees());
         new TextArea(driver, "Billing Street").write(account.getBillingStreet());
         new SFInput(driver, "Billing City").write(account.getBillingCity());
         new SFInput(driver, "Billing State/Province").write(account.getBillingState());

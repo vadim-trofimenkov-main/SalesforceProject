@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
@@ -64,7 +65,7 @@ public class ContactDetailsPage extends BasePage {
         validateInput("Email", contact.getEmail());
         validateInput("Phone", contact.getPhone());
         validateInput("Fax", contact.getFax());
-        validateInput("Mobile", contact.getMobile());
+        validateInput("Mobile", contact.getMobilePhone());
         return this;
     }
 

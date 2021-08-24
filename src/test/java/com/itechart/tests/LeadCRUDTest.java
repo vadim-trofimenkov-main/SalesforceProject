@@ -9,13 +9,13 @@ import org.testng.annotations.Test;
 
 public class LeadCRUDTest extends BaseTest {
 
-    @Test (retryAnalyzer = Retry.class, description = "Create Read Update Lead record")
+    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Lead record")
     public void createReadUpdateDeleteLeadRecord() {
-        Lead lead = new Lead("New", "Mr.", "Record", "for", "Success",
-                "Delete", "Boss", "pp41@mailinator.com", "54321", "12345",
+        Lead lead = new Lead("New", "Mr.", "Record", "Success",
+                "Boss", "pp41@mailinator.com", "54321", "12345",
                 "Hot", "test.com", "Google", "Banking",
-                "10", "Partner", "Test Street", "Test City", "02240",
-                "NY", "NY");
+                "10", "Partner", "Test Street", "Test City",
+                "NY");
         LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadDetailsPage detailsPage =
                 leadListViewPage
@@ -24,11 +24,11 @@ public class LeadCRUDTest extends BaseTest {
                         .enterData(lead)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Title is not correct");
-        Lead lead2 = new Lead("New", "Mr.", "Record", "for", "Success",
-                "Delete", "Boss", "pp41@mailinator.com", "54321", "12345",
+        Lead lead2 = new Lead("New", "Mr.", "Record", "Success",
+                "Boss", "pp41@mailinator.com", "54321", "12345",
                 "Hot", "test.com", "Google", "Banking",
-                "10", "Partner", "Test Street", "Test City", "02240",
-                "NY", "NY");
+                "10", "Partner", "Test Street", "Test City",
+                "NY");
         boolean isRecordDeleted =
                 detailsPage
                         .openDetails()

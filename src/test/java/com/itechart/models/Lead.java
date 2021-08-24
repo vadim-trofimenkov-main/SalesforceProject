@@ -1,44 +1,68 @@
 package com.itechart.models;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Data
 public class Lead {
-    final String leadStatus;
+    @SerializedName("Status")
+    final String status;
+    @SerializedName("Salutation")
     final String salutation;
+    @SerializedName("FirstName")
     final String firstName;
-    final String middleName;
+    @SerializedName("LastName")
     final String lastName;
-    final String suffix;
+    @SerializedName("Title")
     final String title;
+    @SerializedName("Email")
     final String email;
+    @SerializedName("Phone")
     final String phone;
-    final String mobile;
+    @SerializedName("MobilePhone")
+    final String mobilePhone;
+    @SerializedName("Rating")
     final String rating;
+    @SerializedName("Website")
     final String website;
+    @SerializedName("Company")
     final String company;
+    @SerializedName("Industry")
     final String industry;
-    final String noOfEmployees;
+    @SerializedName("NumberOfEmployees")
+    final String numberOfEmployees;
+    @SerializedName("LeadSource")
     final String leadSource;
+    @SerializedName("street")
     final String street;
+    @SerializedName("city")
     final String city;
-    final String zipOrPostalCode;
-    final String stateOrProvince;
+    @SerializedName("country")
     final String country;
+    @SerializedName("Name")
     String name;
-    String address;
+    @SerializedName("Address")
+    Address address;
 
     public String getName() {
-        name = getSalutation() + " " + getFirstName() + " " + getMiddleName() + " " + getLastName();
+        name = getSalutation() + " " + getFirstName() + " " + getLastName();
         log.warn("Compiling Lead Name: {}", name);
         return name;
     }
 
-    public String getAddress() {
-        address = getStreet() + "\n" + getCity() + ", " + getStateOrProvince() + " " + getZipOrPostalCode() + "\n" + getCountry();
-        log.warn("Compiling Lead Address: {}", address);
-        return address;
+    @Data
+    @AllArgsConstructor
+    public static class Address {
+        String city;
+        String country;
+        String geocodeAccuracy;
+        String latitude;
+        String longitude;
+        String postalCode;
+        String state;
+        String street;
     }
 }

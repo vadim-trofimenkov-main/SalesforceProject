@@ -1,4 +1,4 @@
-package com.itechart.tests;
+package com.itechart.tests.configurations;
 
 import lombok.extern.log4j.Log4j2;
 import org.testng.ITestContext;
