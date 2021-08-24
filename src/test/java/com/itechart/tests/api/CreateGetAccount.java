@@ -13,7 +13,7 @@ public class CreateGetAccount extends BaseTest {
         Account account = new Account("Test Account7", "0015g00000OYQYgAAP", "Investor", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address",
-                "Test Address", "Test Address", "Test Address", "Test Address");
+                "Test Address", "Test Address", "Test Address", "Test Address", "0055g00000CA2c5AAD");
         ResponseStatus actual = new AccountAdapter().create(account);
         Assert.assertTrue(actual.isSuccess(), "Response is not correct");
     }

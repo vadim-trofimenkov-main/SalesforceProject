@@ -37,7 +37,7 @@ public class Account {
     BillingAddress billingAddress;
     ShippingAddress shippingAddress;
     @SerializedName("OwnerId")
-    String OwnerId;
+    final String accountOwner;
 
     public String getName() {
         return accountName;
