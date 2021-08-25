@@ -14,8 +14,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-
-
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
@@ -37,24 +35,24 @@ public abstract class BaseTest {
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        loginPage = new LoginPage(driver);
         login();
     }
 
     public void login() {
-        loginPage = new LoginPage(driver);
         homePage =
                 loginPage.open()
-                        .login(USERNAME, PASSWORD);
+                         .login(USERNAME, PASSWORD);
     }
 
-    @BeforeMethod
+    @BeforeMethod()
     public void goToHomePage() {
         homePage.open();
     }
 
     @AfterClass(alwaysRun = true, description = "Close browser")
     public void tearDown() {
-        if(driver!=null)
-        driver.quit();
+        if (driver != null)
+            driver.quit();
     }
 }

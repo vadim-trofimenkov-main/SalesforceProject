@@ -9,19 +9,26 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Login with correct credentials")
     public void loginTest() {
-        HomePage homePage = loginPage.login(USERNAME, PASSWORD);
+        HomePage homePage =
+                loginPage.
+                        open().
+                        login(USERNAME, PASSWORD);
         Assert.assertTrue(homePage.isPageOpened(), "Login is not completed");
     }
 
     @Test(description = "Login with incorrect username")
     public void usernameShouldBeRequired() {
-        loginPage.login("", PASSWORD);
+        loginPage.
+                open().
+                login("", PASSWORD);
         Assert.assertTrue(loginPage.isUsernameDisplayed(), "Username validation is not working.");
     }
 
     @Test(description = "Login with incorrect password")
     public void passwordShouldBeRequired() {
-        loginPage.login(USERNAME, "");
+        loginPage.
+                open().
+                login(USERNAME, "");
         Assert.assertEquals(loginPage.getErrorMessage(), "Please enter your password.",
                 "Password validation is not working.");
     }

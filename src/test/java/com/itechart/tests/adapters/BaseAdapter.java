@@ -2,6 +2,7 @@ package com.itechart.tests.adapters;
 
 import com.google.gson.Gson;
 import com.itechart.utils.PropertyReader;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import static io.restassured.RestAssured.given;
 
@@ -12,6 +13,7 @@ public class BaseAdapter {
     private final String ACCESS_TOKEN = propertyReader.getPropertyValueByKey("access_token");
     protected final String API_BASE_URL = propertyReader.getPropertyValueByKey("api_base_url");
 
+    @Step("Make post request")
     public String post(String url, String body, int status) {
         log.debug("Sending post request with {} url and {} body", url, body);
         return
@@ -28,6 +30,7 @@ public class BaseAdapter {
                         extract().body().asString();
     }
 
+    @Step("Make get request")
     public String get(String url, int status) {
         log.debug("Sending get request with {} url", url);
         return

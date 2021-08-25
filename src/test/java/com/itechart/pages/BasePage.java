@@ -14,7 +14,7 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
-    protected final By HOME_BUTTON_LOCATOR = By.xpath("//one-app-nav-bar-item-root[@data-id='home']");
+    protected final By USERPROFILE_BUTTON_LOCATOR = By.xpath("//*[contains(@class, 'slds-global-actions__item')]//ancestor::button[contains(@class, 'branding-userProfile-button')]");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -22,8 +22,8 @@ public abstract class BasePage {
     }
 
     public boolean isPageOpened() {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(HOME_BUTTON_LOCATOR));
-        return driver.findElement(HOME_BUTTON_LOCATOR).isDisplayed();
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(USERPROFILE_BUTTON_LOCATOR));
+        return driver.findElement(USERPROFILE_BUTTON_LOCATOR).isDisplayed();
     }
 
     public void validateInput(String label, String expectedInput) {
