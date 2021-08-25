@@ -11,10 +11,10 @@ public class LeadCRUDTest extends BaseTest {
 
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Lead record")
     public void createReadUpdateDeleteLeadRecord() {
-        Lead lead = new Lead("New", "Mr.", "Record", "Success",
+        Lead lead = new Lead("Open - Not Contacted", "Mr.", "Record", "Success",
                 "Boss", "pp41@mailinator.com", "54321", "12345",
-                "Hot", "test.com", "Google", "Banking",
-                "10", "Partner", "Test Street", "Test City",
+                "Cold", "test.com", "Google", "Banking",
+                "10", "Web", "Test Street", "Test City",
                 "NY");
         LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadDetailsPage detailsPage =
@@ -24,11 +24,11 @@ public class LeadCRUDTest extends BaseTest {
                         .enterData(lead)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Title is not correct");
-        Lead lead2 = new Lead("New", "Mr.", "Record", "Success",
-                "Boss", "pp41@mailinator.com", "54321", "12345",
-                "Hot", "test.com", "Google", "Banking",
-                "10", "Partner", "Test Street", "Test City",
-                "NY");
+        Lead lead2 = new Lead("Working - Contacted", "Mr.", "Record", "Success Updated",
+                "Boss", "pp42@mailinator.com", "64321", "52345",
+                "Hot", "test.com", "Tesla", "Chemicals",
+                "11", "Partner Referral", "Test Street Updated", "Test City Updated",
+                "CA");
         boolean isRecordDeleted =
                 detailsPage
                         .openDetails()
