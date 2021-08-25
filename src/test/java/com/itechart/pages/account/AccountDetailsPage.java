@@ -3,6 +3,7 @@ package com.itechart.pages.account;
 import com.itechart.models.Account;
 import com.itechart.pages.BasePage;
 import io.qameta.allure.Step;
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -16,8 +17,9 @@ public class AccountDetailsPage extends BasePage {
 
     private final By ACCOUNT_TITLE = By.xpath("//div[@class='entityNameTitle slds-line-height--reset' and contains(text(), 'Account')]");
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
-    private static final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
+    private final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
     private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
+    private final By SUCCESS_MESSAGE = By.xpath("//*[contains(@class, 'slds-theme--success')]");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
     private final By DELETE_MODAL_BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
 
@@ -66,6 +68,7 @@ public class AccountDetailsPage extends BasePage {
         return this;
     }
 
+    @SneakyThrows
     @Step("Click on Delete button")
     public AccountDetailsPage clickDeleteButton() {
         try {
@@ -75,7 +78,6 @@ public class AccountDetailsPage extends BasePage {
             log.warn(e.getLocalizedMessage());
             driver.findElement(DELETE_BUTTON).click();
         }
-        wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
         return this;
     }
 
@@ -88,6 +90,7 @@ public class AccountDetailsPage extends BasePage {
     @Step("Confirm deletion of an account")
     public AccountListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(SUCCESS_MESSAGE));
         driver.findElement(DELETE_MODAL_BUTTON).click();
         return new AccountListViewPage(driver);
     }

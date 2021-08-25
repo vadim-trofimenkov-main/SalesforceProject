@@ -15,8 +15,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LeadDetailsPage extends BasePage {
     private final By LEAD_TITLE = By.xpath("//div[@class='entityNameTitle slds-line-height--reset' and contains(text(), 'Lead')]");
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
-    private static final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
+    private final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
     private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
+    private final By SUCCESS_MESSAGE = By.xpath("//*[contains(@class, 'slds-theme--success')]");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
     private final By DELETE_MODAL_BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
 
@@ -91,6 +92,7 @@ public class LeadDetailsPage extends BasePage {
     @Step("Confirm deletion of an lead")
     public LeadListViewPage delete() {
         if (!isModalOpened()) throw new RuntimeException("Delete modal is not opened");
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(SUCCESS_MESSAGE));
         driver.findElement(DELETE_MODAL_BUTTON).click();
         return new LeadListViewPage(driver);
     }
