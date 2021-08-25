@@ -3,12 +3,13 @@ package com.itechart.tests;
 import com.itechart.pages.account.AccountDetailsPage;
 import com.itechart.pages.account.AccountListViewPage;
 import com.itechart.models.Account;
+import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AccountCRUDTest extends BaseTest {
 
-    @Test(description = "Create read update delete new Account record")
+    @Test(retryAnalyzer = Retry.class, description = "Create read update delete new Account record")
     public void createNewAccountRecord() {
         Account account = new Account("Test Account", "Test Account", "Prospect", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
@@ -22,7 +23,7 @@ public class AccountCRUDTest extends BaseTest {
                         .enterData(account)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Account is not created");
-        Account account2 = new Account("Test Account1", "Test Updated", "Technology Partner", "test1", "Apparel",
+        Account account2 = new Account("Test Account Not Deleted", "Test Updated", "Technology Partner", "test1", "Apparel",
                 "1234", "test description", "456", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1",
                 "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));

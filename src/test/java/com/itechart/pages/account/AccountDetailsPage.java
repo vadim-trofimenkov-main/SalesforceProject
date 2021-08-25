@@ -81,6 +81,7 @@ public class AccountDetailsPage extends BasePage {
 
     public boolean isModalOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
+        wait.until(ExpectedConditions.elementToBeClickable(DELETE_MODAL_BUTTON));
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 

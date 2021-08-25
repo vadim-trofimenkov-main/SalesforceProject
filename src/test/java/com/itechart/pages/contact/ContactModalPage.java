@@ -6,6 +6,7 @@ import com.itechart.elements.LightLookup;
 import com.itechart.models.Contact;
 import com.itechart.pages.BasePage;
 import io.qameta.allure.Step;
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,20 +41,22 @@ public class ContactModalPage extends BasePage {
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();
         new LightInput(driver, "Last Name").clear();
-        new LightLookup(driver, "Account Name").clear();
         new LightLookup(driver, "Reports To").clear();
+        new LightLookup(driver, "Account Name").clear();
         new LightInput(driver, "Title").clear();
         new LightInput(driver, "Email").clear();
-        new LightInput(driver, "Department").clear();
-        new LightInput(driver, "Fax").clear();
         new LightInput(driver, "Phone").clear();
         new LightInput(driver, "Mobile").clear();
+        new LightInput(driver, "Department").clear();
+        new LightInput(driver, "Fax").clear();
         return this;
     }
 
+    @SneakyThrows
     @Step("Click on Save button")
     public ContactDetailsPage clickSaveButton() {
         driver.findElement(SAVE_BUTTON_LOCATOR).click();
+        Thread.sleep(1000);
         return new ContactDetailsPage(driver);
     }
 }
