@@ -17,7 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class ContactDetailsPage extends BasePage {
     private static final By TITLE_CONTACT_LOCATOR = By.xpath("//div[@class='entityNameTitle slds-line-height--reset']");
     private static final By TAB_CONTACT_DETAILS_LOCATOR = By.xpath("//a[@data-label='Details']");
-    private static final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
+    private static final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//a[@name='Edit']");
+    private static final By DROPDOWN_MENU_LOCATOR = By.xpath("//span[contains(text(),'Show more actions')]/ancestor::button");
     private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
     private final By DELETE_MODAL_BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
@@ -28,6 +29,7 @@ public class ContactDetailsPage extends BasePage {
 
     @Step("Click Edit button")
     public ContactModalPage clickEditDetailsButton() {
+        driver.findElement(DROPDOWN_MENU_LOCATOR).click();
         WebElement element = new WebDriverWait(driver, 5).until(ExpectedConditions
                 .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();

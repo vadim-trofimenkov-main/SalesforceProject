@@ -39,17 +39,15 @@ public class ContactModalPage extends BasePage {
     public ContactModalPage clearData() {
         new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();
-        new LightInput(driver, "Middle Name").clear();
         new LightInput(driver, "Last Name").clear();
-        new LightInput(driver, "Suffix").clear();
         new LightLookup(driver, "Account Name").clear();
         new LightLookup(driver, "Reports To").clear();
         new LightInput(driver, "Title").clear();
         new LightInput(driver, "Email").clear();
-        new LightInput(driver, "Phone").clear();
-        new LightInput(driver, "Mobile").clear();
         new LightInput(driver, "Department").clear();
         new LightInput(driver, "Fax").clear();
+        new LightInput(driver, "Phone").clear();
+        new LightInput(driver, "Mobile").clear();
         return this;
     }
 
