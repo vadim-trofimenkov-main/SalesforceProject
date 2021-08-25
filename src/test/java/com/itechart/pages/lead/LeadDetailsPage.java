@@ -79,12 +79,12 @@ public class LeadDetailsPage extends BasePage {
             log.warn(e.getLocalizedMessage());
             driver.findElement(DELETE_BUTTON).click();
         }
-        wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
         return this;
     }
 
     public boolean isModalOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
+        wait.until(ExpectedConditions.elementToBeClickable(DELETE_MODAL_BUTTON));
         return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
     }
 

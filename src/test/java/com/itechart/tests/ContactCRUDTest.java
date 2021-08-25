@@ -12,8 +12,8 @@ public class ContactCRUDTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record")
     public void testCreateNewContact() {
         Contact contact = new Contact("Mr.", "Test4", "Contact6", "Test Account",
-                "Test4 Contact6", "Test8",
-                "pp421@mailinator.com", "test", "12945678", "+3751730000", "+3752930000");
+                "Test4 Test5 Contact6 Test7", "Test title",
+                "test@tes.t", "test Department", "12945678", "+3751730000", "+3752930000");
         ContactListViewPage contactListViewPage = new ContactListViewPage(driver);
         ContactDetailsPage detailsPage =
                 contactListViewPage
@@ -23,9 +23,9 @@ public class ContactCRUDTest extends BaseTest {
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Title is not correct");
         Contact contact2 = new Contact("Ms.", "Test4",
-                "Contact6", "Test Account",
-                "Test4 Contact6", "Test88",
-                "pp41@mailinator.com", "test", "129456789", "+3751733000", "+3752933000");
+                "Contact Not Deleted", "Test Account",
+                "Alex Svitkin", "Boss",
+                "test@tes.updated", "Department Updated", "129456789", "+3751733000", "+3752933000");
         boolean isRecordDeleted =
                 detailsPage
                         .openDetails()

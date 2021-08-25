@@ -7,10 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
@@ -28,8 +25,7 @@ public class ContactDetailsPage extends BasePage {
 
     @Step("Click Edit button")
     public ContactModalPage clickEditDetailsButton() {
-        WebElement element = new WebDriverWait(driver, 10).until(ExpectedConditions
-                .presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
+        wait.until(ExpectedConditions.presenceOfElementLocated(EDIT_DETAILS_BUTTON_LOCATOR));
         driver.findElement(EDIT_DETAILS_BUTTON_LOCATOR).click();
         return new ContactModalPage(driver);
     }
@@ -47,8 +43,7 @@ public class ContactDetailsPage extends BasePage {
 
     @Step("Open Details tab")
     public ContactDetailsPage openDetails() {
-        WebElement waitDetailsTab = new WebDriverWait(driver, 5).until(ExpectedConditions
-                .elementToBeClickable(TAB_CONTACT_DETAILS_LOCATOR));
+        wait.until(ExpectedConditions.elementToBeClickable(TAB_CONTACT_DETAILS_LOCATOR));
         driver.findElement(TAB_CONTACT_DETAILS_LOCATOR).click();
         return this;
     }
@@ -56,7 +51,6 @@ public class ContactDetailsPage extends BasePage {
     @Step("Validation of entered data")
     public ContactDetailsPage validate(Contact contact) {
         log.info("Validating Contact Data: {}", contact);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         validateInput("Name", contact.getName());
         validateInput("Account Name", contact.getAccountName());
         validateInput("Reports To", contact.getReportsTo());
@@ -78,13 +72,14 @@ public class ContactDetailsPage extends BasePage {
             log.warn(e.getLocalizedMessage());
             driver.findElement(DELETE_BUTTON).click();
         }
-        wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
+        driver.manage().timeouts().pageLoadTimeout(3,TimeUnit.SECONDS);
         return this;
     }
 
     public boolean isModalOpened() {
         wait.until(ExpectedConditions.presenceOfElementLocated(DELETE_MODAL_TITLE));
-        return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete");
+        wait.until(ExpectedConditions.elementToBeClickable(DELETE_MODAL_BUTTON));
+        return driver.findElement(DELETE_MODAL_TITLE).getText().contains("Delete Contact");
     }
 
     @Step("Confirm deletion of an contact")

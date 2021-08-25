@@ -24,7 +24,7 @@ public class LeadCRUDTest extends BaseTest {
                         .enterData(lead)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Title is not correct");
-        Lead lead2 = new Lead("Working - Contacted", "Mr.", "Record", "Success Updated",
+        Lead lead2 = new Lead("Working - Contacted", "Mr.", "Record", "Not Deleted",
                 "Boss", "pp42@mailinator.com", "64321", "52345",
                 "Hot", "test.com", "Tesla", "Chemicals",
                 "11", "Partner Referral", "Test Street Updated", "Test City Updated",
