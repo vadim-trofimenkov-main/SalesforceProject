@@ -43,12 +43,10 @@ public class LeadModalPage extends BasePage {
 
     @Step("Clear data from fields")
     public LeadModalPage clearData() {
-        new LightDropDown(driver, "Lead Status").clear();
-        new LightDropDown(driver, "Salutation").clear();
         new LightInput(driver, "First Name").clear();
-        new LightInput(driver, "Middle Name").clear();
+        new LightDropDown(driver, "Salutation").clear();
+        new LightDropDown(driver, "Lead Status").clear();
         new LightInput(driver, "Last Name").clear();
-        new LightInput(driver, "Suffix").clear();
         new LightInput(driver, "Title").clear();
         new LightInput(driver, "Email").clear();
         new LightInput(driver, "Phone").clear();
@@ -61,8 +59,6 @@ public class LeadModalPage extends BasePage {
         new LightDropDown(driver, "Lead Source").clear();
         new TextArea(driver, "Street").clear();
         new LightInput(driver, "City").clear();
-        new LightInput(driver, "State/Province").clear();
-        new LightInput(driver, "Zip/Postal Code").clear();
         new LightInput(driver, "Country").clear();
         return this;
     }
