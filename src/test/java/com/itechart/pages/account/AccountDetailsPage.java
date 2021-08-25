@@ -3,7 +3,6 @@ package com.itechart.pages.account;
 import com.itechart.models.Account;
 import com.itechart.pages.BasePage;
 import io.qameta.allure.Step;
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -68,7 +67,6 @@ public class AccountDetailsPage extends BasePage {
         return this;
     }
 
-    @SneakyThrows
     @Step("Click on Delete button")
     public AccountDetailsPage clickDeleteButton() {
         try {
