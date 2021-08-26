@@ -6,7 +6,7 @@ version: 2
 jobs:
   ui-tests:
     docker:
-      - image: cimg/openjdk:11.0.12-browsers
+      - image: circleci/openjdk:11.0.8-jdk-browsers
     steps:
       - checkout
       - restore_cache:
@@ -20,7 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
           name: Running tests
-          command: chrome --version
+          command: google-chrome --version
       - run:
           name: Running tests
           command: mvn clean test
