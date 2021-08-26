@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class CreateGetContact extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Contact")
+    @Test(retryAnalyzer = Retry.class, description = "Create Contact", priority = 2)
     public void createContactTest() {
         Contact contact = new Contact("Mr.", "Contact", "TestApi",
                 "0015g00000P50EYAAZ", "0035g00000CqrWIAAZ", "Test8",

@@ -9,13 +9,14 @@ import org.testng.annotations.Test;
 
 public class LeadCRUDTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Lead record")
+    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Lead record", priority = 1)
     public void createReadUpdateDeleteLeadRecord() {
         Lead lead = new Lead("Open - Not Contacted", "Mr.", "Record", "Success",
                 "Boss", "pp41@mailinator.com", "54321", "12345",
                 "Cold", "test.com", "Google", "Banking",
                 "10", "Web", "Test Street", "Test City",
                 "NY");
+        login();
         LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadDetailsPage detailsPage =
                 leadListViewPage

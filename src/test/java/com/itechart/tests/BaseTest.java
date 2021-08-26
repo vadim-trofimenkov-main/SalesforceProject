@@ -12,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import java.util.concurrent.TimeUnit;
 
@@ -36,7 +35,6 @@ public abstract class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
-        login();
     }
 
     public void login() {
@@ -45,7 +43,6 @@ public abstract class BaseTest {
                          .login(USERNAME, PASSWORD);
     }
 
-    @BeforeMethod()
     public void goToHomePage() {
         homePage.open();
     }

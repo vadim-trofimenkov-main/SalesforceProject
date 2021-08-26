@@ -1,13 +1,14 @@
 package com.itechart.tests;
 
 import com.itechart.pages.HomePage;
+import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Login with correct credentials")
+    @Test(retryAnalyzer = Retry.class, description = "Login with correct credentials")
     public void loginTest() {
         HomePage homePage =
                 loginPage.
@@ -16,7 +17,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(homePage.isPageOpened(), "Login is not completed");
     }
 
-    @Test(description = "Login with incorrect username")
+    @Test(retryAnalyzer = Retry.class, description = "Login with incorrect username")
     public void usernameShouldBeRequired() {
         loginPage.
                 open().
@@ -24,7 +25,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.isUsernameDisplayed(), "Username validation is not working.");
     }
 
-    @Test(description = "Login with incorrect password")
+    @Test(retryAnalyzer = Retry.class, description = "Login with incorrect password")
     public void passwordShouldBeRequired() {
         loginPage.
                 open().

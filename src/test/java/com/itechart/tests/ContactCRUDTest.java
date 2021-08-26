@@ -9,11 +9,12 @@ import org.testng.annotations.Test;
 
 public class ContactCRUDTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record")
+    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record", priority = 1)
     public void testCreateNewContact() {
         Contact contact = new Contact("Mr.", "Test4", "Contact6", "Test Account",
                 "Test4 Test5 Contact6 Test7", "Test title",
                 "test@tes.t", "test Department", "12945678", "+3751730000", "+3752930000");
+        login();
         ContactListViewPage contactListViewPage = new ContactListViewPage(driver);
         ContactDetailsPage detailsPage =
                 contactListViewPage

@@ -10,7 +10,7 @@
     <test name="Login Test and Create Read Update Delete Lead">
         <classes>
             <class name="com.itechart.tests.LeadCRUDTest"/>
-            <!--  <class name="com.itechart.tests.LoginTest"/> -->
+            <class name="com.itechart.tests.LoginTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="API Tests: Get and Create Account, Contact and Lead">

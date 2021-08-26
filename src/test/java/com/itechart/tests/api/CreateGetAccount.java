@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 public class CreateGetAccount extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Account")
+    @Test(retryAnalyzer = Retry.class, description = "Create Account", priority = 2)
     public void createAccountTest() {
-        Account account = new Account("Account TestApi", "0015g00000OYQYgAAP", "Investor", "test", "Banking",
+        Account account = new Account("Account TestApi", "0015g00000PrprjAAB", "Investor", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address", "0055g00000CA2c5AAD");

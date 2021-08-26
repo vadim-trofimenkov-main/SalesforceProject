@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class CreateGetLead extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Lead")
+    @Test(retryAnalyzer = Retry.class, description = "Create Lead", priority = 2)
     public void createLeadTest() {
         Lead lead = new Lead("New", "Mr.", "Lead", "TestApi",
                 "Boss", "pp41@mailinator.com", "54321", "12345",
