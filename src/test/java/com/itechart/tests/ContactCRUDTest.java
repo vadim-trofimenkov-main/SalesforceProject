@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class ContactCRUDTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record", priority = 1)
+    @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record")
     public void testCreateNewContact() {
         Contact contact = new Contact("Mr.", "Test4", "Contact6", "Test Account",
                 "Test4 Test5 Contact6 Test7", "Test title",
