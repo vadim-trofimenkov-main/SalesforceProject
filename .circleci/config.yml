@@ -7,8 +7,10 @@ orbs:
   browser-tools: circleci/browser-tools@1.2.1
 jobs:
   ui-tests:
+    parallelism: 3
     docker:
       - image: cimg/openjdk:11.0-browsers
+    working_directory: ~/repo
     steps:
       - browser-tools/install-browser-tools
       - checkout
@@ -25,16 +27,30 @@ jobs:
           name: Check browser version
           command: google-chrome --version
       - run:
-          name: Running tests
-          command: mvn clean test
+          name: Set access rights for test executor
+          command: chmod 777 ~/repo/src/test/resources/run-tests-parallel.sh
+      - run:
+          name: Running tests in parallel using test executor
+          command: ./~/repo/src/test/resources/run-tests-parallel.sh
       - run:
           name: Generate allure report
           command: mvn allure:report
           when: always
+      - run: mkdir -p allure-reports
+      - run:
+          name: Copy reports into shared folder
+          command: cp -r ~/repo/target/allure-reports/* allure-reports/
+      - persist_to_workspace:
+          root: allure-reports
+          paths:
+            - *
       - store_test_results:
           path: target/surefire-reports/junitreports
       - store_artifacts:
           path: target/site/allure-maven-plugin/
+      - store_artifacts:
+          path: allure-reports/
+          destination: allure-reports/
 workflows:
   version: 2
   commit:
