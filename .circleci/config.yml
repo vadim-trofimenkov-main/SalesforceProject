@@ -95,7 +95,7 @@ workflows:
   commit:
     jobs:
       - tests
-      - report-generation
+      - report-generation:
           requires:
             - tests
   periodical:
@@ -108,6 +108,6 @@ workflows:
                 - master
     jobs:
       - tests
-      - report-generation
-        requires:
-          - tests
+      - report-generation:
+          requires:
+            - tests
