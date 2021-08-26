@@ -24,24 +24,17 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
-          name: Check browser version
-          command: google-chrome --version
-      - run:
-          name: Set access rights for test executor
+          name: Setting access rights for test executor
           command: chmod 777 src/test/resources/run-tests-parallel.sh
       - run:
-          name: Running tests in parallel using test executor
+          name: Running tests
           command: ./src/test/resources/run-tests-parallel.sh
-      - run:
-          name: Generate allure report
-          command: mvn allure:report
-          when: always
       - run:
           name: Creation of shared reporting folder
           command: mkdir -p ~/repo/allure-reports
           when: always
       - run:
-          name: Copy reports into shared folder
+          name: Copying reports into shared folder
           command: cp -r target/allure-results/* allure-reports/
           when: always
       - persist_to_workspace:
@@ -50,8 +43,6 @@ jobs:
             - allure-reports
       - store_test_results:
           path: target/surefire-reports/junitreports
-      - store_artifacts:
-          path: target/site/allure-maven-plugin/
       - store_artifacts:
           path: allure-reports/
           destination: allure-reports/
@@ -77,15 +68,15 @@ jobs:
           command: mkdir -p ~/repo/target/allure-results
           when: always
       - run:
-          name: Creation of shared reporting folder
-          command: cp -r /tmp/workspace/* ~/target/allure-results/
+          name: Copying individual test results into shared folder
+          command: cp -r /tmp/workspace/* ~/repo/target/allure-results/
           when: always
       - run:
-          name: Creation of shared reporting folder
+          name: Checking list of report files collected
           command: ls -l ~/target/allure-results
           when: always
       - run:
-          name: Generate allure report
+          name: Generation of Allure Report
           command: mvn allure:report
           when: always
       - store_artifacts:
