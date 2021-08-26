@@ -5,7 +5,7 @@ NODE_INDEX=${CIRCLE_NODE_INDEX:-0}
 
 i=0
 tests=()
-for file in $(find ./src/test/java/com/seniorlink/tests -name "*Test.java" | sort)
+for file in $(find ./src/test/java/com/itechart/tests -name "*Test.java" | sort)
 do
   if [ $(($i % ${NODE_TOTAL})) -eq ${NODE_INDEX} ]
   then
