@@ -15,4 +15,4 @@ do
   ((i++))
 done
 
-mvn -Dtest=${tests} test
+mvn -Dtest=${tests} -Dmaven.test.failure.ignore=true test

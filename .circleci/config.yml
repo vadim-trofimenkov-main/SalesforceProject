@@ -111,4 +111,3 @@ workflows:
       - report-generation:
           requires:
             - tests
-          when: always
