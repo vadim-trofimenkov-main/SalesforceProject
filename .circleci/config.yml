@@ -69,7 +69,7 @@ jobs:
           when: always
       - run:
           name: Copying individual test results into shared folder
-          command: cp -r /tmp/workspace/* ~/repo/target/allure-results/
+          command: cp -r /tmp/workspace/allure-reports/* ~/repo/target/allure-results/
           when: always
       - run:
           name: Checking list of report files collected
