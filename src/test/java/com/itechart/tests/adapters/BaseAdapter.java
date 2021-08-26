@@ -30,6 +30,23 @@ public class BaseAdapter {
                         extract().body().asString();
     }
 
+    @Step("Make patch request")
+    public String patch(String url, String body, int status) {
+        log.debug("Sending patch request with {} url and {} body", url, body);
+        return
+                given().
+                        header("Authorization","Bearer " + ACCESS_TOKEN).
+                        header("Content-type", "application/json").
+                        body(body).
+                        log().all().
+                when().
+                        patch(url).
+                then().
+                        log().all().
+                        statusCode(status).
+                        extract().body().asString();
+    }
+
     @Step("Make get request")
     public String get(String url, int status) {
         log.debug("Sending get request with {} url", url);
@@ -40,6 +57,22 @@ public class BaseAdapter {
                         log().all().
                 when().
                         get(url).
+                then().
+                        log().all().
+                        statusCode(status).
+                        extract().body().asString();
+    }
+
+    @Step("Make delete request")
+    public String delete(String url, int status) {
+        log.debug("Sending delete request with {} url", url);
+        return
+                given().
+                        header("Authorization","Bearer " + ACCESS_TOKEN).
+                        header("Content-type", "application/json").
+                        log().all().
+                when().
+                        delete(url).
                 then().
                         log().all().
                         statusCode(status).

@@ -14,10 +14,20 @@ public class LeadAdapter extends BaseAdapter {
         return jsonReader.fromJson(response, ResponseStatus.class);
     }
 
+    public void update(Lead lead, String leadId) {
+        patch(API_BASE_URL + "/lead/" + leadId, jsonReader.toJson(lead), 204);
+    }
+
     @Step("Get Lead")
-    public Lead getLead(String leadId) {
+    public Lead get(String leadId) {
         log.info("Getting Lead by Id: {}", leadId);
         String response = get(API_BASE_URL + "/lead/" + leadId, 200);
         return jsonReader.fromJson(response, Lead.class);
+    }
+
+    @Step("Delete Lead")
+    public void delete(String leadId) {
+        log.info("Deleting Lead by Id: {}", leadId);
+        delete(API_BASE_URL + "/lead/" + leadId, 204);
     }
 }

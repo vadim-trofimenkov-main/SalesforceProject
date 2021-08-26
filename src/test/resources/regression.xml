@@ -15,9 +15,9 @@
     </test> <!-- Test -->
     <test name="API Tests: Get and Create Account, Contact and Lead">
         <classes>
-            <class name="com.itechart.tests.api.CreateGetAccount"/>
-            <class name="com.itechart.tests.api.CreateGetContact"/>
-            <class name="com.itechart.tests.api.CreateGetLead"/>
+            <class name="com.itechart.tests.api.CrudApiAccountTest"/>
+            <class name="com.itechart.tests.api.CrudApiContactTest"/>
+            <class name="com.itechart.tests.api.CrudApiLeadTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
