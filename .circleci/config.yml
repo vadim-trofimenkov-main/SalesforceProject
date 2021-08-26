@@ -28,10 +28,10 @@ jobs:
           command: google-chrome --version
       - run:
           name: Set access rights for test executor
-          command: chmod 777 ~/repo/src/test/resources/run-tests-parallel.sh
+          command: chmod 777 src/test/resources/run-tests-parallel.sh
       - run:
           name: Running tests in parallel using test executor
-          command: ./~/repo/src/test/resources/run-tests-parallel.sh
+          command: ./src/test/resources/run-tests-parallel.sh
       - run:
           name: Generate allure report
           command: mvn allure:report
