@@ -6,7 +6,7 @@ version: 2
 jobs:
   ui-tests:
     docker:
-      - image: cimg/openjdk:11.0.12
+      - image: cimg/openjdk:11.0.12-browsers
     steps:
       - checkout
       - restore_cache:
@@ -18,7 +18,9 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-
+      - run:
+          name: Running tests
+          command: chrome --version
       - run:
           name: Running tests
           command: mvn clean test
@@ -28,7 +30,6 @@ jobs:
           when: always
       - store_test_results:
           path: target/surefire-reports/junitreports
-          when: always
       - store_artifacts:
           path: target/site/allure-maven-plugin/
 workflows:
@@ -39,7 +40,7 @@ workflows:
   periodical:
     triggers:
       - schedule:
-          cron: "1 4,8,12 * * *"
+          cron: "1 8 * * *"
           filters:
             branches:
               only:
