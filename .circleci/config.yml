@@ -96,6 +96,8 @@ workflows:
     jobs:
       - tests
       - report-generation
+          requires:
+            - tests
   periodical:
     triggers:
       - schedule:
@@ -107,3 +109,5 @@ workflows:
     jobs:
       - tests
       - report-generation
+        requires:
+          - tests
