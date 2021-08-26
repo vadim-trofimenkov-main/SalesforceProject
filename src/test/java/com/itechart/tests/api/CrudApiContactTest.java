@@ -2,12 +2,11 @@ package com.itechart.tests.api;
 
 import com.itechart.models.Contact;
 import com.itechart.models.ResponseStatus;
-import com.itechart.tests.BaseTest;
 import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CrudApiContactTest extends BaseTest {
+public class CrudApiContactTest extends BaseApiTest {
 
     @Test(retryAnalyzer = Retry.class, description = "Create Contact")
     public void createGetUpdateDeleteContact() {

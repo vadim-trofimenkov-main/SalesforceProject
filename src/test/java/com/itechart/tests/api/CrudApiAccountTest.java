@@ -2,12 +2,11 @@ package com.itechart.tests.api;
 
 import com.itechart.models.Account;
 import com.itechart.models.ResponseStatus;
-import com.itechart.tests.BaseTest;
 import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CrudApiAccountTest extends BaseTest {
+public class CrudApiAccountTest extends BaseApiTest {
 
     @Test(retryAnalyzer = Retry.class, description = "CRUD API Account")
     public void createGetUpdateDeleteAccount() {
