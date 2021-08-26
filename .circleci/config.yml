@@ -57,13 +57,15 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Creation of shared reporting folder
-          command: mkdir -p ~/repo/target/allure-results
+          command: |
+            REPORT_FOLDER="~/repo/target/allure-results/"
+            mkdir -p $REPORT_FOLDER
       - run:
           name: Copying individual test results into shared folder
-          command: cp -r /tmp/workspace/target/allure-results/* ~/repo/target/allure-results/
+          command: cp -r /tmp/workspace/target/allure-results/* $REPORT_FOLDER
       - run:
           name: Checking list of report files collected
-          command: ls ~/repo/target/allure-results
+          command: ls $REPORT_FOLDER
       - run:
           name: Generation of Allure Report
           command: mvn allure:report
