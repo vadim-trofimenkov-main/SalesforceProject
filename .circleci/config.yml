@@ -40,7 +40,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - allure-reports
+            - allure-reports/*
       - store_test_results:
           path: target/surefire-reports/junitreports
       - store_artifacts:
@@ -73,7 +73,7 @@ jobs:
           when: always
       - run:
           name: Checking list of report files collected
-          command: ls -l ~/repo/target/allure-results
+          command: ls ~/repo/target/allure-results
           when: always
       - run:
           name: Generation of Allure Report
