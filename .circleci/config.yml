@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Copy reports into shared folder
           command: cp -r target/allure-results/* allure-reports/
-            when: always
+          when: always
       - persist_to_workspace:
           root: ~/repo
           paths:
