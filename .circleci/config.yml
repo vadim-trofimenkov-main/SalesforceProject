@@ -36,12 +36,12 @@ jobs:
           name: Generate allure report
           command: mvn allure:report
           when: always
-      - run: mkdir -p allure-reports
+      - run: mkdir -p ~/repo/allure-reports
       - run:
           name: Copy reports into shared folder
-          command: cp -r ~/repo/target/allure-reports/* allure-reports/
+          command: cp -r target/allure-results/* allure-reports/
       - persist_to_workspace:
-          root: ~/repo/target
+          root: ~/repo
           paths:
             - allure-reports
       - store_test_results:
