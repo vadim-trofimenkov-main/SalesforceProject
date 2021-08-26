@@ -41,9 +41,9 @@ jobs:
           name: Copy reports into shared folder
           command: cp -r ~/repo/target/allure-reports/* allure-reports/
       - persist_to_workspace:
-          root: allure-reports
+          root: ~/repo/target
           paths:
-            - *
+            - allure-reports
       - store_test_results:
           path: target/surefire-reports/junitreports
       - store_artifacts:
