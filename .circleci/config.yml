@@ -29,23 +29,15 @@ jobs:
       - run:
           name: Running tests
           command: ./src/test/resources/run-tests-parallel.sh
-      - run:
-          name: Creation of shared reporting folder
-          command: mkdir -p ~/repo/allure-reports
-          when: always
-      - run:
-          name: Copying reports into shared folder
-          command: cp -r target/allure-results/* allure-reports/
-          when: always
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - allure-reports/*
+            - target/allure-results/*
       - store_test_results:
           path: target/surefire-reports/junitreports
       - store_artifacts:
-          path: allure-reports/
-          destination: allure-reports/
+          path: target/allure-results/
+          destination: target/allure-results/
   report-generation:
     docker:
       - image: cimg/openjdk:11.0
@@ -66,19 +58,15 @@ jobs:
       - run:
           name: Creation of shared reporting folder
           command: mkdir -p ~/repo/target/allure-results
-          when: always
       - run:
           name: Copying individual test results into shared folder
-          command: cp -r /tmp/workspace/allure-reports/* ~/repo/target/allure-results/
-          when: always
+          command: cp -r /tmp/workspace/target/allure-results/* ~/repo/target/allure-results/
       - run:
           name: Checking list of report files collected
           command: ls ~/repo/target/allure-results
-          when: always
       - run:
           name: Generation of Allure Report
           command: mvn allure:report
-          when: always
       - store_artifacts:
           path: target/site/allure-maven-plugin/
 workflows:
