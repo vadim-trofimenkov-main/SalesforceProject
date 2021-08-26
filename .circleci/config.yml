@@ -6,7 +6,7 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.2.1
 jobs:
-  ui-tests:
+  tests:
     parallelism: 3
     docker:
       - image: cimg/openjdk:11.0-browsers
@@ -55,7 +55,7 @@ jobs:
       - store_artifacts:
           path: allure-reports/
           destination: allure-reports/
-generate-report:
+report-generation:
   docker:
     - image: cimg/openjdk:11.0
   working_directory: ~/repo
@@ -94,8 +94,8 @@ workflows:
   version: 2
   commit:
     jobs:
-      - ui-tests
-      - generate-report
+      - tests
+      - report-generation
   periodical:
     triggers:
       - schedule:
@@ -105,4 +105,5 @@ workflows:
               only:
                 - master
     jobs:
-      - ui-tests
+      - tests
+      - report-generation
