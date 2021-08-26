@@ -2,12 +2,15 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 # https://circleci.com/docs/2.0/browser-testing/#selenium
-version: 2
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.2.1
 jobs:
   ui-tests:
     docker:
-      - image: cimg/openjdk:11.0.12
+      - image: cimg/openjdk:11.0-browsers
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - restore_cache:
           keys:
@@ -18,7 +21,9 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-
+      - run:
+          name: Check browser version
+          command: google-chrome --version
       - run:
           name: Running tests
           command: mvn clean test
@@ -28,7 +33,6 @@ jobs:
           when: always
       - store_test_results:
           path: target/surefire-reports/junitreports
-          when: always
       - store_artifacts:
           path: target/site/allure-maven-plugin/
 workflows:
@@ -39,7 +43,7 @@ workflows:
   periodical:
     triggers:
       - schedule:
-          cron: "1 4,8,12 * * *"
+          cron: "1 8 * * *"
           filters:
             branches:
               only:
