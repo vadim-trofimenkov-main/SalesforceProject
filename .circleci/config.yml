@@ -55,11 +55,47 @@ jobs:
       - store_artifacts:
           path: allure-reports/
           destination: allure-reports/
+generate-report:
+  docker:
+    - image: cimg/openjdk:11.0
+  working_directory: ~/repo
+  steps:
+    - checkout
+    - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "pom.xml" }}
+          - v1-dependencies-
+    - run: mvn dependency:go-offline
+    - save_cache:
+        paths:
+          - ~/.m2
+        key: v1-dependencies-{{ checksum "pom.xml" }}
+    - attach_workspace:
+        at: /tmp/workspace
+    - run:
+        name: Creation of shared reporting folder
+        command: mkdir -p ~/repo/target/allure-results
+        when: always
+    - run:
+        name: Creation of shared reporting folder
+        command: cp -r /tmp/workspace/* ~/target/allure-results/
+        when: always
+    - run:
+        name: Creation of shared reporting folder
+        command: ls -l ~/target/allure-results
+        when: always
+    - run:
+        name: Generate allure report
+        command: mvn allure:report
+        when: always
+    - store_artifacts:
+        path: target/site/allure-maven-plugin/
 workflows:
   version: 2
   commit:
     jobs:
       - ui-tests
+      - generate-report
   periodical:
     triggers:
       - schedule:
