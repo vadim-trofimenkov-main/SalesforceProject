@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 public class CrudApiAccountTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "CRUD API Account", priority = 2)
-    public void CreateGetUpdateDeleteAccount() {
+    @Test(retryAnalyzer = Retry.class, description = "CRUD API Account")
+    public void createGetUpdateDeleteAccount() {
         Account account = new Account("Account TestApi", "0015g00000PrprjAAB", "Investor", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",
                 "Test Address", "Test Address", "Test Address", "Test Address",

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class AccountCRUDTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create read update delete new Account record", priority = 1)
+    @Test(retryAnalyzer = Retry.class, description = "Create read update delete new Account record")
     public void createNewAccountRecord() {
         Account account = new Account("Test Account", "Test Account", "Prospect", "test", "Banking",
                 "123", "test desc", "123", "Test Address", "Test Address",

@@ -4,7 +4,8 @@ import com.github.javafaker.Faker;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
 import com.itechart.tests.adapters.AccountAdapter;
-import com.itechart.tests.adapters.BaseAdapter;
+import com.itechart.tests.adapters.ContactAdapter;
+import com.itechart.tests.adapters.LeadAdapter;
 import com.itechart.tests.configurations.TestListener;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,6 +29,8 @@ public abstract class BaseTest {
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
     protected AccountAdapter accountAdapter = new AccountAdapter();
+    protected ContactAdapter contactAdapter = new ContactAdapter();
+    protected LeadAdapter leadAdapter = new LeadAdapter();
 
     @BeforeClass(description = "Open browser")
     public void setUp() {

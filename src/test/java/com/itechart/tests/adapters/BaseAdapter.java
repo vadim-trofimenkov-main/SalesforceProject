@@ -30,7 +30,7 @@ public class BaseAdapter {
                         extract().body().asString();
     }
 
-    @Step("Make post request")
+    @Step("Make patch request")
     public String patch(String url, String body, int status) {
         log.debug("Sending patch request with {} url and {} body", url, body);
         return
@@ -65,7 +65,7 @@ public class BaseAdapter {
 
     @Step("Make delete request")
     public String delete(String url, int status) {
-        log.debug("Sending get request with {} url", url);
+        log.debug("Sending delete request with {} url", url);
         return
                 given().
                         header("Authorization","Bearer " + ACCESS_TOKEN).

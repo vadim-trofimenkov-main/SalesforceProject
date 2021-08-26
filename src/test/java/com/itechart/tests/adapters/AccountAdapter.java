@@ -31,7 +31,7 @@ public class AccountAdapter extends BaseAdapter {
 
     @Step("Delete Account")
     public void delete(String accountId) {
-        log.info("Getting Account by Id: {}", accountId);
+        log.info("Deleting Account by Id: {}", accountId);
         delete(API_BASE_URL + "/account/" + accountId, 204);
     }
 }

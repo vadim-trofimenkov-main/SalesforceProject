@@ -14,10 +14,21 @@ public class ContactAdapter extends BaseAdapter {
         return jsonReader.fromJson(response, ResponseStatus.class);
     }
 
+    public void update(Contact contact, String contactId) {
+        patch(API_BASE_URL + "/contact/" + contactId, jsonReader.toJson(contact), 204);
+    }
+
     @Step("Get Contact")
-    public Contact getContact(String contactId) {
+    public Contact get(String contactId) {
         log.info("Getting Contact by Id: {}", contactId);
         String response = get(API_BASE_URL + "/contact/" + contactId, 200);
         return jsonReader.fromJson(response, Contact.class);
     }
+
+    @Step("Delete Contact")
+    public void delete(String contactId) {
+        log.info("Deleting Contact by Id: {}", contactId);
+        delete(API_BASE_URL + "/contact/" + contactId, 204);
+    }
 }
+
