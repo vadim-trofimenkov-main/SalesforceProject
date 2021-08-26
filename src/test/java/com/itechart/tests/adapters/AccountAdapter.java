@@ -16,10 +16,22 @@ public class AccountAdapter extends BaseAdapter {
         return jsonReader.fromJson(response, ResponseStatus.class);
     }
 
+    @Step("Update Account")
+    public void update(Account account, String accountId) {
+        log.info("Updating Account: {}", account);
+        patch(API_BASE_URL + "/account/" + accountId, jsonReader.toJson(account), 204);
+    }
+
     @Step("Get Account")
-    public Account getAccount(String accountId) {
+    public Account get(String accountId) {
         log.info("Getting Account by Id: {}", accountId);
         String response = get(API_BASE_URL + "/account/" + accountId, 200);
         return jsonReader.fromJson(response, Account.class);
+    }
+
+    @Step("Delete Account")
+    public void delete(String accountId) {
+        log.info("Getting Account by Id: {}", accountId);
+        delete(API_BASE_URL + "/account/" + accountId, 204);
     }
 }
