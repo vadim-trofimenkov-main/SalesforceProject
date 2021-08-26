@@ -1,4 +1,4 @@
-package com.itechart.tests.adapters;
+package com.itechart.adapters;
 
 import com.google.gson.Gson;
 import com.itechart.utils.PropertyReader;

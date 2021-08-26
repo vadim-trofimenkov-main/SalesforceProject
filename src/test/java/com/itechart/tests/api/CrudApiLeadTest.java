@@ -3,7 +3,7 @@ package com.itechart.tests.api;
 import com.itechart.models.Lead;
 import com.itechart.models.ResponseStatus;
 import com.itechart.tests.BaseTest;
-import com.itechart.tests.adapters.LeadAdapter;
+import com.itechart.adapters.LeadAdapter;
 import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
