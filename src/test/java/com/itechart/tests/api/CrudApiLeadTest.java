@@ -2,13 +2,12 @@ package com.itechart.tests.api;
 
 import com.itechart.models.Lead;
 import com.itechart.models.ResponseStatus;
-import com.itechart.tests.BaseTest;
 import com.itechart.tests.adapters.LeadAdapter;
 import com.itechart.tests.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CrudApiLeadTest extends BaseTest {
+public class CrudApiLeadTest extends BaseApiTest {
 
     @Test(retryAnalyzer = Retry.class, description = "Create Lead")
     public void createGetUpdateDeleteLead() {
@@ -17,7 +16,7 @@ public class CrudApiLeadTest extends BaseTest {
                 "Hot", "test.com", "Google", "Banking",
                 "10", "Partner", "Test Street", "Test City",
                 "NY");
-        ResponseStatus response = new LeadAdapter().create(lead);
+        ResponseStatus response = leadAdapter.create(lead);
         Assert.assertTrue(response.isSuccess(), "Response is not correct");
         lead = leadAdapter.get(response.getId());
         Assert.assertEquals(lead.getName(), "Mr. Lead TestApi", "Response is not correct");
