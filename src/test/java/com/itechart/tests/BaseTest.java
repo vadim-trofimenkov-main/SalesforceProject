@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -33,13 +34,14 @@ public abstract class BaseTest {
     protected LeadAdapter leadAdapter = new LeadAdapter();
 
     @BeforeClass(description = "Open browser")
-    public void setUp() {
+    public void setUp(ITestContext iTestContext) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        iTestContext.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
     }
 
