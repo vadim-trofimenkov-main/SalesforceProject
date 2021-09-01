@@ -29,9 +29,6 @@ public abstract class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
-    protected AccountAdapter accountAdapter = new AccountAdapter();
-    protected ContactAdapter contactAdapter = new ContactAdapter();
-    protected LeadAdapter leadAdapter = new LeadAdapter();
 
     @BeforeClass(description = "Open browser")
     public void setUp(ITestContext iTestContext) {
