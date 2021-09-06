@@ -27,6 +27,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
         //TODO Api request to set failed status of test case
         WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
+        if(driver != null)
         AllureUtils.takeScreenshot(driver);
         log.info("-------------- FAILED TEST {} Duration: {} ----------------", iTestResult.getName(),
                 getExecutionTime(iTestResult));
