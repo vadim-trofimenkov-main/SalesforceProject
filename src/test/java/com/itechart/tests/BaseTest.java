@@ -1,11 +1,10 @@
 package com.itechart.tests;
 
-import com.github.javafaker.Faker;
+import com.itechart.models.factory.AccountFactory;
+import com.itechart.models.factory.ContactFactory;
+import com.itechart.models.factory.LeadFactory;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
-import com.itechart.tests.adapters.AccountAdapter;
-import com.itechart.tests.adapters.ContactAdapter;
-import com.itechart.tests.adapters.LeadAdapter;
 import com.itechart.tests.configurations.TestListener;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -17,6 +16,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
@@ -25,7 +25,9 @@ public abstract class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected HomePage homePage;
-    protected Faker faker = new Faker();
+    protected AccountFactory accountFactory = new AccountFactory();
+    protected ContactFactory contactFactory = new ContactFactory();
+    protected LeadFactory leadFactory = new LeadFactory();
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
@@ -45,7 +47,7 @@ public abstract class BaseTest {
     public void login() {
         homePage =
                 loginPage.open()
-                         .login(USERNAME, PASSWORD);
+                        .login(USERNAME, PASSWORD);
     }
 
     public void goToHomePage() {

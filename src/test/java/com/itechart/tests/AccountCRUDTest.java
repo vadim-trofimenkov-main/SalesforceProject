@@ -11,10 +11,7 @@ public class AccountCRUDTest extends BaseTest {
 
     @Test(retryAnalyzer = Retry.class, description = "Create read update delete new Account record")
     public void createNewAccountRecord() {
-        Account account = new Account("Test Account", "Test Account", "Prospect", "test", "Banking",
-                "123", "test desc", "123", "Test Address", "Test Address",
-                "Test Address", "Test Address", "Test Address", "Test Address",
-                "Test Address", "Test Address", "Test Address", "Test Address", propertyReader.getPropertyValueByKey("user"));
+        Account account = accountFactory.createNewAccount(true);
         login();
         AccountListViewPage accountListViewPage = new AccountListViewPage(driver);
         AccountDetailsPage detailsPage =
@@ -24,20 +21,17 @@ public class AccountCRUDTest extends BaseTest {
                         .enterData(account)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Account is not created");
-        Account account2 = new Account("Test Account Not Deleted", "Test Updated", "Technology Partner", "test1", "Apparel",
-                "1234", "test description", "456", "Test Address1", "Test Address1",
-                "Test Address1", "Test Address1", "Test Address1", "Test Address1",
-                "Test Address1", "Test Address1", "Test Address1", "Test Address1", propertyReader.getPropertyValueByKey("user"));
+        Account updatedAccount = accountFactory.createNewAccount(true);
         boolean isRecordDeleted =
                 detailsPage
                         .openDetails()
                         .validate(account)
                         .clickEditDetailsButton()
                         .clearData()
-                        .enterData(account2)
+                        .enterData(updatedAccount)
                         .clickSaveButton()
                         .openDetails()
-                        .validate(account2)
+                        .validate(updatedAccount)
                         .clickDeleteButton()
                         .delete()
                         .isSuccessDeleteMessageDisplayed();
