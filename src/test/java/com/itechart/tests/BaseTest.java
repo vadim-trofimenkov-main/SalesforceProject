@@ -42,6 +42,10 @@ public abstract class BaseTest {
         accountSteps = new AccountSteps(driver);
     }
 
+    public void openHomePage() {
+        homePage.open();
+    }
+
     @AfterClass(alwaysRun = true, description = "Close browser")
     public void tearDown() {
         if (driver != null)

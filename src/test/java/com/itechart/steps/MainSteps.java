@@ -1,5 +1,6 @@
 package com.itechart.steps;
 
+import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
 import com.itechart.tests.BaseTest;
 import org.openqa.selenium.WebDriver;
@@ -11,16 +12,9 @@ public class MainSteps extends BaseTest {
         this.driver = driver;
     }
 
-    public void login(String username, String password) {
-        homePage = loginPage.login(username, password);
-    }
-
-    public void openLoginPage() {
+    public HomePage login(String username, String password) {
         loginPage = new LoginPage(driver);
-        loginPage.open();
-    }
-
-    public void openHomePage() {
-        homePage.open();
+        homePage = loginPage.open().login(username, password);
+        return homePage;
     }
 }
