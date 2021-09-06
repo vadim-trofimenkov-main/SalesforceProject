@@ -1,6 +1,8 @@
 package com.itechart.tests;
 
-import com.github.javafaker.Faker;
+import com.itechart.models.factory.AccountFactory;
+import com.itechart.models.factory.ContactFactory;
+import com.itechart.models.factory.LeadFactory;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
 import com.itechart.steps.AccountSteps;
@@ -12,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -25,19 +28,23 @@ public abstract class BaseTest {
     protected AccountSteps accountSteps;
     protected LoginPage loginPage;
     protected HomePage homePage;
-    protected Faker faker = new Faker();
+    protected AccountFactory accountFactory = new AccountFactory();
+    protected ContactFactory contactFactory = new ContactFactory();
+    protected LeadFactory leadFactory = new LeadFactory();
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = propertyReader.getPropertyValueByKey("username");
     protected final String PASSWORD = propertyReader.getPropertyValueByKey("password");
 
     @BeforeClass(description = "Open browser")
-    public void setUp() {
+    public void setUp(ITestContext iTestContext) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        iTestContext.setAttribute("driver", driver);
+        loginPage = new LoginPage(driver);
         mainSteps = new MainSteps(driver);
         accountSteps = new AccountSteps(driver);
     }

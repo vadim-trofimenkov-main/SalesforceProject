@@ -11,9 +11,7 @@ public class ContactCRUDTest extends BaseTest {
 
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record")
     public void testCreateNewContact() {
-        Contact contact = new Contact("Mr.", "Test4", "Contact6", "Test Account",
-                "Test4 Test5 Contact6 Test7", "Test title",
-                "test@tes.t", "test Department", "12945678", "+3751730000", "+3752930000");
+        Contact contact = contactFactory.createNewContact(true);
         mainSteps.login(USERNAME, PASSWORD);
         ContactListViewPage contactListViewPage = new ContactListViewPage(driver);
         ContactDetailsPage detailsPage =
@@ -23,19 +21,16 @@ public class ContactCRUDTest extends BaseTest {
                         .enterData(contact)
                         .clickSaveButton();
         Assert.assertTrue(detailsPage.isPageOpened(), "Title is not correct");
-        Contact contact2 = new Contact("Ms.", "Test4",
-                "Contact Not Deleted", "Test Account",
-                "Alex Svitkin", "Boss",
-                "test@tes.updated", "Department Updated", "129456789", "+3751733000", "+3752933000");
+        Contact updatedContact = contactFactory.createNewContact(true);
         boolean isRecordDeleted =
                 detailsPage
                         .openDetails()
                         .validate(contact)
                         .clickEditDetailsButton()
                         .clearData()
-                        .enterData(contact2)
+                        .enterData(updatedContact)
                         .clickSaveButton()
-                        .validate(contact2)
+                        .validate(updatedContact)
                         .clickDeleteButton()
                         .delete()
                         .isSuccessDeleteMessageDisplayed();
