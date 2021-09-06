@@ -13,9 +13,9 @@ public class AccountCRUDTest extends BaseTest {
         mainSteps.login(USERNAME, PASSWORD);
         accountSteps
                 .openAccountListViewPage()
-                .createAccount(account)
+                .create(account)
                 .validate(account)
-                .editAccount(updatedAccount)
+                .edit(updatedAccount)
                 .validate(updatedAccount)
                 .delete();
     }

@@ -16,7 +16,7 @@ public class AccountSteps extends BaseTest {
         accountDetailsPage = new AccountDetailsPage(driver);
     }
 
-    public AccountSteps createAccount(Account account) {
+    public AccountSteps create(Account account) {
         boolean isAccountCreated =
                 accountListViewPage
                         .clickNewButton()
@@ -27,7 +27,7 @@ public class AccountSteps extends BaseTest {
         return this;
     }
 
-    public AccountSteps editAccount(Account account) {
+    public AccountSteps edit(Account account) {
         accountDetailsPage
                 .clickEditDetailsButton()
                 .clearData()
