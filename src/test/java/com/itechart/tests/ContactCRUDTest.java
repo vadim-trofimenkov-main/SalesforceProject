@@ -14,7 +14,7 @@ public class ContactCRUDTest extends BaseTest {
         Contact contact = new Contact("Mr.", "Test4", "Contact6", "Test Account",
                 "Test4 Test5 Contact6 Test7", "Test title",
                 "test@tes.t", "test Department", "12945678", "+3751730000", "+3752930000");
-        login();
+        mainSteps.login(USERNAME, PASSWORD);
         ContactListViewPage contactListViewPage = new ContactListViewPage(driver);
         ContactDetailsPage detailsPage =
                 contactListViewPage

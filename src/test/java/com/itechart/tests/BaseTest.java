@@ -3,9 +3,8 @@ package com.itechart.tests;
 import com.github.javafaker.Faker;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
-import com.itechart.tests.adapters.AccountAdapter;
-import com.itechart.tests.adapters.ContactAdapter;
-import com.itechart.tests.adapters.LeadAdapter;
+import com.itechart.steps.AccountSteps;
+import com.itechart.steps.MainSteps;
 import com.itechart.tests.configurations.TestListener;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 @Listeners(TestListener.class)
 public abstract class BaseTest {
     protected WebDriver driver;
+    protected MainSteps mainSteps;
+    protected AccountSteps accountSteps;
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected Faker faker = new Faker();
@@ -37,17 +38,8 @@ public abstract class BaseTest {
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        loginPage = new LoginPage(driver);
-    }
-
-    public void login() {
-        homePage =
-                loginPage.open()
-                         .login(USERNAME, PASSWORD);
-    }
-
-    public void goToHomePage() {
-        homePage.open();
+        mainSteps = new MainSteps(driver);
+        accountSteps = new AccountSteps(driver);
     }
 
     @AfterClass(alwaysRun = true, description = "Close browser")

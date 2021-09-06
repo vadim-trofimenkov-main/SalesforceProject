@@ -16,7 +16,7 @@ public class LeadCRUDTest extends BaseTest {
                 "Cold", "test.com", "Google", "Banking",
                 "10", "Web", "Test Street", "Test City",
                 "NY");
-        login();
+        mainSteps.login(USERNAME, PASSWORD);
         LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadDetailsPage detailsPage =
                 leadListViewPage
