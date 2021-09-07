@@ -12,7 +12,7 @@ public class ContactCRUDTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Contact record")
     public void testCreateNewContact() {
         Contact contact = contactFactory.createNewContact(true);
-        login();
+        mainSteps.login(USERNAME, PASSWORD);
         ContactListViewPage contactListViewPage = new ContactListViewPage(driver);
         ContactDetailsPage detailsPage =
                 contactListViewPage

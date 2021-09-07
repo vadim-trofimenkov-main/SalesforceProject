@@ -5,6 +5,8 @@ import com.itechart.models.factory.ContactFactory;
 import com.itechart.models.factory.LeadFactory;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
+import com.itechart.steps.AccountSteps;
+import com.itechart.steps.MainSteps;
 import com.itechart.tests.configurations.TestListener;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -16,13 +18,14 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
-
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
 @Listeners(TestListener.class)
 public abstract class BaseTest {
     protected WebDriver driver;
+    protected MainSteps mainSteps;
+    protected AccountSteps accountSteps;
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected AccountFactory accountFactory = new AccountFactory();
@@ -42,15 +45,11 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         iTestContext.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
+        mainSteps = new MainSteps(driver);
+        accountSteps = new AccountSteps(driver);
     }
 
-    public void login() {
-        homePage =
-                loginPage.open()
-                        .login(USERNAME, PASSWORD);
-    }
-
-    public void goToHomePage() {
+    public void openHomePage() {
         homePage.open();
     }
 

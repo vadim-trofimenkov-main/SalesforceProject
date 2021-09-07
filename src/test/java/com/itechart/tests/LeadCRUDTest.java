@@ -12,7 +12,7 @@ public class LeadCRUDTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Lead record")
     public void createReadUpdateDeleteLeadRecord() {
         Lead lead = leadFactory.createNewLead();
-        login();
+        mainSteps.login(USERNAME, PASSWORD);
         LeadListViewPage leadListViewPage = new LeadListViewPage(driver);
         LeadDetailsPage detailsPage =
                 leadListViewPage
