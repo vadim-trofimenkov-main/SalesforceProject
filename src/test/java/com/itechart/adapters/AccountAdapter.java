@@ -1,4 +1,4 @@
-package com.itechart.tests.adapters;
+package com.itechart.adapters;
 
 import com.itechart.models.Account;
 import com.itechart.models.ResponseStatus;

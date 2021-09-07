@@ -1,4 +1,4 @@
-package com.itechart.tests.configurations;
+package com.itechart.configurations;
 
 import com.itechart.utils.AllureUtils;
 import lombok.extern.log4j.Log4j2;

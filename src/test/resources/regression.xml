@@ -3,14 +3,14 @@
 <suite thread-count="3" name="Regression test suite" parallel="tests">
     <test name="Create Read Update Delete Account and Contact">
         <classes>
-            <class name="com.itechart.tests.AccountCRUDTest"/>
-            <class name="com.itechart.tests.ContactCRUDTest"/>
+            <class name="com.itechart.tests.ui.AccountCRUDTest"/>
+            <class name="com.itechart.tests.ui.ContactCRUDTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Login Test and Create Read Update Delete Lead">
         <classes>
-            <class name="com.itechart.tests.LeadCRUDTest"/>
-            <class name="com.itechart.tests.LoginTest"/>
+            <class name="com.itechart.tests.ui.LeadCRUDTest"/>
+            <class name="com.itechart.tests.ui.LoginTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="API Tests: Get and Create Account, Contact and Lead">

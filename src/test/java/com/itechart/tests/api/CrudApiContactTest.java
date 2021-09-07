@@ -2,7 +2,7 @@ package com.itechart.tests.api;
 
 import com.itechart.models.Contact;
 import com.itechart.models.ResponseStatus;
-import com.itechart.tests.configurations.Retry;
+import com.itechart.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

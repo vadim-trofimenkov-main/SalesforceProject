@@ -1,4 +1,4 @@
-package com.itechart.tests;
+package com.itechart.tests.ui;
 
 import com.itechart.models.factory.AccountFactory;
 import com.itechart.models.factory.ContactFactory;
@@ -6,8 +6,10 @@ import com.itechart.models.factory.LeadFactory;
 import com.itechart.pages.HomePage;
 import com.itechart.pages.LoginPage;
 import com.itechart.steps.AccountSteps;
-import com.itechart.steps.MainSteps;
-import com.itechart.tests.configurations.TestListener;
+import com.itechart.steps.ContactSteps;
+import com.itechart.steps.LeadSteps;
+import com.itechart.steps.LoginSteps;
+import com.itechart.configurations.TestListener;
 import com.itechart.utils.PropertyReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
@@ -24,8 +26,10 @@ import java.util.concurrent.TimeUnit;
 @Listeners(TestListener.class)
 public abstract class BaseTest {
     protected WebDriver driver;
-    protected MainSteps mainSteps;
+    protected LoginSteps loginSteps;
     protected AccountSteps accountSteps;
+    protected ContactSteps contactSteps;
+    protected LeadSteps leadSteps;
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected AccountFactory accountFactory = new AccountFactory();
@@ -45,8 +49,10 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         iTestContext.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
-        mainSteps = new MainSteps(driver);
+        loginSteps = new LoginSteps(driver);
         accountSteps = new AccountSteps(driver);
+        contactSteps = new ContactSteps(driver);
+        leadSteps = new LeadSteps(driver);
     }
 
     public void openHomePage() {
