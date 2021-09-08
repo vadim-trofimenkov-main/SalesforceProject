@@ -22,7 +22,7 @@ public class ContactFactory extends BaseFactory {
             return new Contact("Mr.",
                     faker.name().firstName(),
                     faker.name().lastName(),
-                    "0015g00000PrrCcAAJ",
+                    "0015g00000QqXfzAAF",
                     "0035g00000CqtMeAAJ",
                     faker.gameOfThrones().character(),
                     faker.internet().emailAddress(),

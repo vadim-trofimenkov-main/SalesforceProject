@@ -2,13 +2,13 @@ package com.itechart.tests.api;
 
 import com.itechart.models.Lead;
 import com.itechart.models.ResponseStatus;
-import com.itechart.tests.configurations.Retry;
+import com.itechart.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CrudApiLeadTest extends BaseApiTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Lead")
+    @Test(retryAnalyzer = Retry.class, description = "CRUD API Lead")
     public void createGetUpdateDeleteLead() {
         Lead lead = leadFactory.createNewLead();
         ResponseStatus response = leadAdapter.create(lead);
