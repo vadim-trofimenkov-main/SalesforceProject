@@ -21,13 +21,6 @@ This is an open-source repository for everyone who studing and working with Auto
 * Screenshotting
 	
 ## Technologies
-Project is created with:
-* Java version: 11.0
-* Selenium version: 3.141.59
-* TestNG version: 7.4.0
-* Webdriver Manager version: 4.4.3
-* Rest-assured version: 4.4.0
-* Allure-testng version: 2.13.9 
     
 ### Technologies stack:
 * Programming language: Java
