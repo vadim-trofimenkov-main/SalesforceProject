@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class CrudApiLeadTest extends BaseApiTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Lead")
+    @Test(retryAnalyzer = Retry.class, description = "CRUD API Lead")
     public void createGetUpdateDeleteLead() {
         Lead lead = leadFactory.createNewLead();
         ResponseStatus response = leadAdapter.create(lead);

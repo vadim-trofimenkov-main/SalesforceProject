@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class CrudApiContactTest extends BaseApiTest {
 
-    @Test(retryAnalyzer = Retry.class, description = "Create Contact")
+    @Test(retryAnalyzer = Retry.class, description = "CRUD API Contact")
     public void createGetUpdateDeleteContact() {
         Contact contact = contactFactory.createNewContact(false);
         ResponseStatus response = contactAdapter.create(contact);

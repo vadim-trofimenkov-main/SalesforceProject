@@ -19,7 +19,7 @@ public class AccountSteps extends BaseTest {
         accountDetailsPage = new AccountDetailsPage(driver);
     }
 
-    @Step("Creating Account")
+    @Step("Creating Account: {account.accountName}")
     public AccountSteps create(Account account) {
         log.info("Creating Account: {}", account);
         boolean isAccountCreated =
@@ -32,7 +32,7 @@ public class AccountSteps extends BaseTest {
         return this;
     }
 
-    @Step("Updating Account")
+    @Step("Updating Account: {account.accountName}")
     public AccountSteps edit(Account account) {
         log.info("Editing Account: {}", account);
         accountDetailsPage
@@ -50,7 +50,7 @@ public class AccountSteps extends BaseTest {
         return this;
     }
 
-    @Step("Validating Account")
+    @Step("Validating Account: {account.accountName}")
     public AccountSteps validate(Account account) {
         log.info("Validating Account: {}", account);
         accountDetailsPage

@@ -19,7 +19,7 @@ public class ContactSteps extends BaseTest {
         contactDetailsPage = new ContactDetailsPage(driver);
     }
 
-    @Step("Creating Contact")
+    @Step("Creating Contact: {contact.firstName} {contact.lastName}")
     public ContactSteps create(Contact contact) {
         log.info("Creating Contact: {}", contact);
         boolean isContactCreated =
@@ -32,7 +32,7 @@ public class ContactSteps extends BaseTest {
         return this;
     }
 
-    @Step("Updating Contact")
+    @Step("Updating Contact: {contact.firstName} {contact.lastName}")
     public ContactSteps edit(Contact contact) {
         log.info("Editing Contact: {}", contact);
         contactDetailsPage
@@ -50,7 +50,7 @@ public class ContactSteps extends BaseTest {
         return this;
     }
 
-    @Step("Validating Contact")
+    @Step("Validating Contact: {contact.firstName} {contact.lastName}")
     public ContactSteps validate(Contact contact) {
         log.info("Validating Contact: {}", contact);
         contactDetailsPage

@@ -19,7 +19,7 @@ public class LeadSteps extends BaseTest {
         leadDetailsPage = new LeadDetailsPage(driver);
     }
 
-    @Step("Creating Lead")
+    @Step("Creating Lead: {lead.firstName} {lead.lastName}")
     public LeadSteps create(Lead lead) {
         log.info("Creating Lead: {}", lead);
         boolean isLeadCreated =
@@ -32,7 +32,7 @@ public class LeadSteps extends BaseTest {
         return this;
     }
 
-    @Step("Updating Lead")
+    @Step("Updating Lead: {lead.firstName} {lead.lastName}")
     public LeadSteps edit(Lead lead) {
         log.info("Editing Lead: {}", lead);
         leadDetailsPage
@@ -50,7 +50,7 @@ public class LeadSteps extends BaseTest {
         return this;
     }
 
-    @Step("Validating Lead")
+    @Step("Validating Lead: {lead.firstName} {lead.lastName}")
     public LeadSteps validate(Lead lead) {
         log.info("Validating Lead: {}", lead);
         leadDetailsPage
