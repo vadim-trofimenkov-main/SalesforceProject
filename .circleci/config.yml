@@ -29,6 +29,10 @@ jobs:
       - run:
           name: Running tests
           command: ./src/test/resources/run-tests-parallel.sh
+      - run:
+          name: Fail report-generation job
+          command: set -o pipefail
+          when: on_fail
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -67,6 +71,8 @@ jobs:
       - run:
           name: Generation of Allure Report
           command: mvn allure:report
+      - store_test_results:
+          path: target/surefire-reports/junitreports
       - store_artifacts:
           path: target/site/allure-maven-plugin/
 workflows:
