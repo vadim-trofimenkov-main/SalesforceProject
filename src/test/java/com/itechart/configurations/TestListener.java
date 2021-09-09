@@ -1,6 +1,8 @@
-package com.itechart.tests.configurations;
+package com.itechart.configurations;
 
+import com.itechart.utils.AllureUtils;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -24,8 +26,9 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         //TODO Api request to set failed status of test case
-//        WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
-//        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
+        if(driver != null)
+        AllureUtils.takeScreenshot(driver);
         log.info("-------------- FAILED TEST {} Duration: {} ----------------", iTestResult.getName(),
                 getExecutionTime(iTestResult));
     }
