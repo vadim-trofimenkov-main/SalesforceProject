@@ -15,6 +15,4 @@ do
   ((i++))
 done
 
-mvn mvn -Dtest=${tests} -Dmaven.test.failure.ignore=true test > build_status.log | egrep "^\[INFO\] Failures: [0-9]+$" | egrep -o '[0-9]+' | awk '{n += $1}; END{print n}'
-echo $(( $(cat maven_build.out | grep "Failures" | grep -v "Time elapsed" | cut -d , -f 1 | cut -d " " -f 3 | tr "\n" "+") 0))
-grep -oP '(?<=Failures: )[0-9]+' file
+mvn mvn -Dtest=${tests} test > build_status.log
