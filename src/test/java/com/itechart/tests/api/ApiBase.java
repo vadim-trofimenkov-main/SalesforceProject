@@ -13,7 +13,7 @@ import org.testng.annotations.Listeners;
 
 @Log4j2
 @Listeners(TestListener.class)
-public class BaseApiTest {
+public class ApiBase {
     protected WebDriver driver;
     protected AccountAdapter accountAdapter = new AccountAdapter();
     protected ContactAdapter contactAdapter = new ContactAdapter();

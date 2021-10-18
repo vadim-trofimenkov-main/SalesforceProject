@@ -4,7 +4,7 @@ import com.itechart.models.Lead;
 import com.itechart.configurations.Retry;
 import org.testng.annotations.Test;
 
-public class LeadCRUDTest extends BaseTest {
+public class LeadCRUDTest extends TestBase {
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Delete Lead record")
     public void createReadUpdateDeleteLeadRecord() {
         Lead lead = leadFactory.createNewLead();

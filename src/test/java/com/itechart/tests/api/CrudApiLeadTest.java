@@ -6,7 +6,7 @@ import com.itechart.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CrudApiLeadTest extends BaseApiTest {
+public class CrudApiLeadTest extends ApiBase {
 
     @Test(retryAnalyzer = Retry.class, description = "CRUD API Lead")
     public void createGetUpdateDeleteLead() {

@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 @Log4j2
 @Listeners(TestListener.class)
-public abstract class BaseTest {
+public abstract class TestBase {
     protected WebDriver driver;
     protected LoginSteps loginSteps;
     protected AccountSteps accountSteps;

@@ -3,14 +3,14 @@ package com.itechart.steps;
 import com.itechart.models.Contact;
 import com.itechart.pages.contact.ContactDetailsPage;
 import com.itechart.pages.contact.ContactListViewPage;
-import com.itechart.tests.ui.BaseTest;
+import com.itechart.tests.ui.TestBase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 @Log4j2
-public class ContactSteps extends BaseTest {
+public class ContactSteps extends TestBase {
     private final ContactListViewPage contactListViewPage;
     private final ContactDetailsPage contactDetailsPage;
 

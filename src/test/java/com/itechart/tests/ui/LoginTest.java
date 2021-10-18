@@ -4,7 +4,7 @@ import com.itechart.configurations.Retry;
 import org.testng.annotations.Test;
 
 
-public class LoginTest extends BaseTest {
+public class LoginTest extends TestBase {
     @Test(retryAnalyzer = Retry.class, description = "Login with correct credentials")
     public void loginTest() {
         loginSteps

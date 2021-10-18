@@ -27,7 +27,7 @@ jobs:
           command: google-chrome --version
       - run: |
           maven \
-          -Dtest=$(for file in $(circleci tests glob "src/test/java/com/itechart/tests/**/**.java" \
+          -Dtest=$(for file in $(circleci tests glob "src/test/java/com/itechart/tests/**/**Test.java" \
           | circleci tests split --split-by=timings); \
           do basename $file \
           | sed -e "s/.java/,/"; \

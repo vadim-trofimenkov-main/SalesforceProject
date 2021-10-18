@@ -6,7 +6,7 @@ import com.itechart.configurations.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CrudApiAccountTest extends BaseApiTest {
+public class CrudApiAccountTest extends ApiBase {
 
     @Test(retryAnalyzer = Retry.class, description = "CRUD API Account")
     public void createGetUpdateDeleteAccount() {

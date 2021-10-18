@@ -1,11 +1,11 @@
 package com.itechart.steps;
 
 import com.itechart.pages.LoginPage;
-import com.itechart.tests.ui.BaseTest;
+import com.itechart.tests.ui.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class LoginSteps extends BaseTest {
+public class LoginSteps extends TestBase {
     private final WebDriver driver;
 
     public LoginSteps(WebDriver driver) {

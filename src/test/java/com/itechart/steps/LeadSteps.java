@@ -3,14 +3,14 @@ package com.itechart.steps;
 import com.itechart.models.Lead;
 import com.itechart.pages.lead.LeadDetailsPage;
 import com.itechart.pages.lead.LeadListViewPage;
-import com.itechart.tests.ui.BaseTest;
+import com.itechart.tests.ui.TestBase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 @Log4j2
-public class LeadSteps extends BaseTest {
+public class LeadSteps extends TestBase {
     private final LeadListViewPage leadListViewPage;
     private final LeadDetailsPage leadDetailsPage;
 

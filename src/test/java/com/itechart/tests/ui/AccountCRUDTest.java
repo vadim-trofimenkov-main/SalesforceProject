@@ -4,7 +4,7 @@ import com.itechart.models.Account;
 import com.itechart.configurations.Retry;
 import org.testng.annotations.Test;
 
-public class AccountCRUDTest extends BaseTest {
+public class AccountCRUDTest extends TestBase {
     @Test(retryAnalyzer = Retry.class, description = "Create Read Update Delete Account record")
     public void createNewAccountRecord() {
         Account account = accountFactory.createNewAccount(true);
