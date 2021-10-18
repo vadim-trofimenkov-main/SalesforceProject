@@ -25,12 +25,14 @@ jobs:
       - run:
           name: Check browser version
           command: google-chrome --version
-      - run:
-          name: Get data for parallel run
-          command: circleci tests glob "**Test.java" | circleci tests split --split-by=timings > list_of_tests.txt
-      - run:
-          name: Running tests
-          command: mvn clean test
+      - run: |
+          maven \
+          -Dtest=$(for file in $(circleci tests glob "src/test/java/com/itechart/tests/**/**.java" \
+          | circleci tests split --split-by=timings); \
+          do basename $file \
+          | sed -e "s/.java/,/"; \
+          done | tr -d '\r\n') \
+          -e test
       - run:
           name: Generate allure report
           command: mvn allure:report
