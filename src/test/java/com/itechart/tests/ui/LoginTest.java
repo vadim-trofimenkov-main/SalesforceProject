@@ -1,6 +1,7 @@
 package com.itechart.tests.ui;
 
 import com.itechart.configurations.Retry;
+import com.itechart.tests.BaseTest;
 import org.testng.annotations.Test;
 
 

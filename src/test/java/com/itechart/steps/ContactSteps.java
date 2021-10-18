@@ -3,7 +3,7 @@ package com.itechart.steps;
 import com.itechart.models.Contact;
 import com.itechart.pages.contact.ContactDetailsPage;
 import com.itechart.pages.contact.ContactListViewPage;
-import com.itechart.tests.ui.BaseTest;
+import com.itechart.tests.BaseTest;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;

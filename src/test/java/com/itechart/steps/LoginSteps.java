@@ -1,7 +1,7 @@
 package com.itechart.steps;
 
 import com.itechart.pages.LoginPage;
-import com.itechart.tests.ui.BaseTest;
+import com.itechart.tests.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 

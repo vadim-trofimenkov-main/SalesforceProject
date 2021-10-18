@@ -3,6 +3,7 @@ package com.itechart.tests.api;
 import com.itechart.models.Lead;
 import com.itechart.models.ResponseStatus;
 import com.itechart.configurations.Retry;
+import com.itechart.tests.BaseApiTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

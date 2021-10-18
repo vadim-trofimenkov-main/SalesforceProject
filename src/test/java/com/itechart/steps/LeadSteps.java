@@ -3,7 +3,7 @@ package com.itechart.steps;
 import com.itechart.models.Lead;
 import com.itechart.pages.lead.LeadDetailsPage;
 import com.itechart.pages.lead.LeadListViewPage;
-import com.itechart.tests.ui.BaseTest;
+import com.itechart.tests.BaseTest;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
