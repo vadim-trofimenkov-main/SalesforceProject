@@ -26,7 +26,7 @@ jobs:
           name: Check browser version
           command: google-chrome --version
       - run: |
-          ./mvnw \
+          maven \
           -Dtest=$(for file in $(circleci tests glob "src/test/java/com/itechart/tests/**/**.java" \
           | circleci tests split --split-by=timings); \
           do basename $file \

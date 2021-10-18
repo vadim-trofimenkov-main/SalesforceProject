@@ -1,4 +1,4 @@
-package com.itechart.tests;
+package com.itechart.tests.api;
 
 import com.itechart.models.factory.AccountFactory;
 import com.itechart.models.factory.ContactFactory;
