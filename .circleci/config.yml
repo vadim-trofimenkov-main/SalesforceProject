@@ -25,9 +25,12 @@ jobs:
       - run:
           name: Check browser version
           command: google-chrome --version
+      - run:
+          name: Output all tests identified by CircleCI
+          command: circleci tests glob "src/test/java/com/itechart/tests/**/*Test.java" > all_circleci_tests.txt
       - run: |
           mvn \
-          -Dtest=$(for file in $(circleci tests glob "src/test/java/com/itechart/tests/**/**Test.java" \
+          -Dtest=$(for file in $(circleci tests glob "src/test/java/com/itechart/tests/**/*Test.java" \
           | circleci tests split --split-by=timings); \
           do basename $file \
           | sed -e "s/.java/,/"; \
@@ -42,7 +45,7 @@ jobs:
       - store_artifacts:
           path: target/site/allure-maven-plugin/
       - store_artifacts:
-          path: list_of_tests.txt
+          path: all_circleci_tests.txt
 workflows:
   version: 2
   commit:
