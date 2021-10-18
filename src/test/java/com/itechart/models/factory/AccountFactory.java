@@ -9,7 +9,6 @@ public class AccountFactory extends BaseFactory {
         if (isUiTest) {
             return new Account(
                     faker.name().name(),
-                    "Test Account",
                     "Prospect",
                     faker.internet().url(),
                     "Apparel",
@@ -30,7 +29,6 @@ public class AccountFactory extends BaseFactory {
         } else {
             return new Account(
                     faker.name().name(),
-                    "0015g00000QqXfzAAF",
                     "Prospect",
                     faker.internet().url(),
                     "Apparel",
