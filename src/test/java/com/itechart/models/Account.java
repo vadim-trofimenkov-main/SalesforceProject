@@ -10,8 +10,6 @@ import lombok.extern.log4j.Log4j2;
 public class Account {
     @SerializedName("Name")
     final String accountName;
-    @SerializedName("ParentId")
-    final String parentAccount;
     @SerializedName("Type")
     final String type;
     @SerializedName("Website")

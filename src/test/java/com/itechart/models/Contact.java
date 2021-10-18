@@ -13,10 +13,6 @@ public class Contact {
     final String firstName;
     @SerializedName("LastName")
     final String lastName;
-    @SerializedName("AccountId")
-    final String accountName;
-    @SerializedName("ReportsToId")
-    final String reportsTo;
     @SerializedName("Title")
     final String title;
     @SerializedName("Email")

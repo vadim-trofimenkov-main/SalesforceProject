@@ -63,7 +63,6 @@ public class AccountDetailsPage extends BasePage {
         validateInput("Phone", account.getPhone());
         validateInput("Employees", account.getNumberOfEmployees());
         validateInput("Account Owner", account.getAccountOwner());
-        validateInput("Parent Account", account.getParentAccount());
         return this;
     }
 
