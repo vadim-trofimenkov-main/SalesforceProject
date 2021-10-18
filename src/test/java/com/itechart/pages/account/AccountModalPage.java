@@ -40,7 +40,6 @@ public class AccountModalPage extends BasePage {
         new LightDropDown(driver, "Type").selectOption(account.getType());
         new LightInput(driver, "Website").write(account.getWebsite());
         new TextArea(driver, "Description").write(account.getDescription());
-        new LightLookup(driver, "Parent Account").selectOption(account.getParentAccount());
         new LightInput(driver, "Phone").write(account.getPhone());
         new LightDropDown(driver, "Industry").selectOption(account.getIndustry());
         new LightInput(driver, "Employees").write(account.getNumberOfEmployees());
@@ -59,7 +58,6 @@ public class AccountModalPage extends BasePage {
 
     @Step("Clear data from fields")
     public AccountModalPage clearData() {
-        new LightLookup(driver, "Parent Account").clear();
         new LightDropDown(driver, "Industry").clear();
         new LightInput(driver, "Account Name").clear();
         new LightDropDown(driver, "Type").clear();

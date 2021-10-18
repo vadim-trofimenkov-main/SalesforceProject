@@ -53,8 +53,6 @@ public class ContactDetailsPage extends BasePage {
     public ContactDetailsPage validate(Contact contact) {
         log.info("Validating Contact Data: {}", contact);
         validateInput("Name", contact.getName());
-        validateInput("Account Name", contact.getAccountName());
-        validateInput("Reports To", contact.getReportsTo());
         validateInput("Title", contact.getTitle());
         validateInput("Department", contact.getDepartment());
         validateInput("Email", contact.getEmail());
