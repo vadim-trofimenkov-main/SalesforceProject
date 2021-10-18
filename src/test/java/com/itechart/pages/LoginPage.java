@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     private static final By USERNAME_LOCATOR = By.id("username");
     private static final By PASSWORD_LOCATOR = By.id("password");
     private static final By LOGIN_BUTTON_LOCATOR = By.id("Login");
-    private static final By ERROR_MESSAGE_LOCATOR = By.xpath("//*[contains(text(),'Please enter your password.')]");
+    private static final By ERROR_MESSAGE_LOCATOR = By.id("error");
     private static final By LOGO_LOCATOR = By.id("logo");
     private static final By USERNAME_LABEL_LOCATOR = By.cssSelector(".usernamelabel");
 
@@ -47,7 +47,8 @@ public class LoginPage extends BasePage {
 
     @Step("Get error message")
     public String getErrorMessage() {
-        return driver.findElement(ERROR_MESSAGE_LOCATOR).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(ERROR_MESSAGE_LOCATOR))
+                .getText();
     }
 
     @Step("Check the displaying of Username")
