@@ -23,6 +23,9 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
+          name: Check of existing metadata for tests
+          command: cat ${CIRCLE_INTERNAL_TASK_DATA}/circle-test-results/results.json
+      - run:
           name: Check browser version
           command: google-chrome --version
       - run:
