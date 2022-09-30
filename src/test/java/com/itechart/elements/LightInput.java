@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class LightInput {
     WebDriver driver;
     String label;
-    String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
+    String inputLocator = "//records-lwc-detail-panel//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
 
     public LightInput(WebDriver driver, String label) {
         this.driver = driver;

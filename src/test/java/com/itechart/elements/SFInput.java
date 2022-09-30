@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SFInput {
     WebDriver driver;
     String label;
-    String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::div[contains(@class,'uiInput')]//input";
+    String inputLocator = "//records-lwc-detail-panel//*[text()='%s']/ancestor::div[contains(@class,'uiInput')]//input";
 
     public SFInput(WebDriver driver, String label) {
         this.driver = driver;

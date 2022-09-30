@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LightLookup {
     WebDriver driver;
     String label;
-    String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
-    String lookupOption = "(//*[contains(@class, 'modal-body')]//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item) [1]";
-    String DELETE_ACTION_LOCATOR = "//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::*[@class='slds-form-element']//lightning-primitive-icon[@lightning-basecombobox_basecombobox]";
+    String inputLocator = "//records-lwc-detail-panel//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
+    String lookupOption = "(//records-lwc-detail-panel//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item) [1]";
+    String DELETE_ACTION_LOCATOR = "//records-lwc-detail-panel//*[text()='%s']/ancestor::*[@class='slds-form-element']//lightning-primitive-icon[@lightning-basecombobox_basecombobox]";
 
     public LightLookup(WebDriver driver, String label) {
         this.driver = driver;

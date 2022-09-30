@@ -26,14 +26,15 @@ public class AccountListViewPage extends BasePage {
 
     @Step("Open List View for Account")
     public AccountListViewPage open() {
-        driver.get("https://itechart42-dev-ed.lightning.force.com/lightning/o/Account/list?filterName=Recent");
+        driver.get(baseUrl + "lightning/o/Account/list");
         return this;
     }
 
     @Step("Click on New button")
     public AccountModalPage clickNewButton() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(NEW_BUTTON_LOCATOR));
-        driver.findElement(NEW_BUTTON_LOCATOR).click();
+        /*wait.until(ExpectedConditions.presenceOfElementLocated(NEW_BUTTON_LOCATOR));
+        driver.findElement(NEW_BUTTON_LOCATOR).click();*/
+        driver.get(baseUrl + "lightning/o/Account/new?count=1&nooverride=1&useRecordTypeCheck=1&navigationLocation=LIST_VIEW&uid=166452908349622516");
         return new AccountModalPage(driver);
     }
 

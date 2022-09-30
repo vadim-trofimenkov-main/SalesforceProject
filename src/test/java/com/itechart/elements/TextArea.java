@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class TextArea {
     WebDriver driver;
     String label;
-    String textAreaLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']" +
+    String textAreaLocator = "//records-lwc-detail-panel//*[text()='%s']" +
             "/ancestor::*[contains(@class, 'uiInput') or contains(@class, 'slds-form-element')]//textarea";
 
     public TextArea(WebDriver driver, String label) {

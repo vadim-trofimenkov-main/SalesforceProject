@@ -25,7 +25,7 @@ public class AccountFactory extends BaseFactory {
                     faker.address().zipCode(),
                     faker.address().state(),
                     faker.address().country(),
-                    propertyReader.getPropertyValueByKey("user"));
+                    "Dmitry Rak");
         } else {
             return new Account(
                     faker.name().name(),

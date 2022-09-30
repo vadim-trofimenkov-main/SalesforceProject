@@ -43,10 +43,13 @@ public abstract class BaseTest {
     public void setUp(ITestContext iTestContext) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("--headless");
+        //TODO not working
+        //options.addArguments("--start-maximized");
+        options.addArguments("--disable-notifications");
+        //options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         iTestContext.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
         loginSteps = new LoginSteps(driver);
