@@ -36,6 +36,7 @@ public class AccountSteps extends BaseTest {
     public AccountSteps edit(Account account) {
         log.info("Editing Account: {}", account);
         accountDetailsPage
+                .clickIconDropdownMenu()
                 .clickEditDetailsButton()
                 .clearData()
                 .enterData(account)
@@ -64,6 +65,7 @@ public class AccountSteps extends BaseTest {
         log.info("Deleting Account");
         boolean isRecordDeleted =
                 accountDetailsPage
+                        .clickIconDropdownMenu()
                         .clickDeleteButton()
                         .delete()
                         .isSuccessDeleteMessageDisplayed();

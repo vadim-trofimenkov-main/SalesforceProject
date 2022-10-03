@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AccountDetailsPage extends BasePage {
 
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
-    private final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
+    private final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//*[@name='Edit']");
     private final By ICON_DROPDOWN_MENU = By.xpath("//*[contains(@class, 'slds-button slds-button_icon-border-filled')]");
-    private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
+    private final By DELETE_BUTTON = By.xpath("//*[@name ='Delete']");
     private final By SUCCESS_MESSAGE = By.xpath("//*[contains(@class, 'slds-theme--success')]");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
     private final By DELETE_MODAL_BUTTON = By.xpath("//div[@class='modal-container slds-modal__container']//button[@title= 'Delete']");
@@ -59,17 +59,18 @@ public class AccountDetailsPage extends BasePage {
         return this;
     }
 
-    @Step("Click on Dropdown menu")
-    public AccountDetailsPage clickDropdownMenu(){
+    @Step("Click on Dropdown icon menu")
+    public AccountDetailsPage clickIconDropdownMenu(){
         try {
             driver.findElement(ICON_DROPDOWN_MENU).click();
-        } catch (StaleElementReferenceException e) {
-            log.warn("Cannot find Dropdown menu icon");
-            log.warn(e.getLocalizedMessage());
-            driver.findElement(ICON_DROPDOWN_MENU).click();
-        }
-
+        } catch (StaleElementReferenceException e){
+                log.warn("Cannot find Icon Dropdown menu icon");
+                log.warn(e.getLocalizedMessage());
+           //     driver.findElement(ICON_DROPDOWN_MENU).click;
+            }
+        return this;
     }
+
 
     @Step("Click on Delete button")
     public AccountDetailsPage clickDeleteButton() {
