@@ -16,6 +16,7 @@ public class AccountDetailsPage extends BasePage {
 
     private final By DETAILS_TAB = By.xpath("//a[@data-label='Details']");
     private final By EDIT_DETAILS_BUTTON_LOCATOR = By.xpath("//button[@name='Edit']");
+    private final By ICON_DROPDOWN_MENU = By.xpath("//*[contains(@class, 'slds-button slds-button_icon-border-filled')]");
     private final By DELETE_BUTTON = By.xpath("//button[@name ='Delete']");
     private final By SUCCESS_MESSAGE = By.xpath("//*[contains(@class, 'slds-theme--success')]");
     private final By DELETE_MODAL_TITLE = By.xpath("//div[@class='modal-container slds-modal__container']//h2");
@@ -31,7 +32,6 @@ public class AccountDetailsPage extends BasePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(DETAILS_TAB));
         return true;
     }
-
 
     @Step("Open Details tab")
     public AccountDetailsPage openDetails() {
@@ -57,6 +57,18 @@ public class AccountDetailsPage extends BasePage {
         validateInput("Employees", account.getNumberOfEmployees());
         validateInput("Account Owner", account.getAccountOwner());
         return this;
+    }
+
+    @Step("Click on Dropdown menu")
+    public AccountDetailsPage clickDropdownMenu(){
+        try {
+            driver.findElement(ICON_DROPDOWN_MENU).click();
+        } catch (StaleElementReferenceException e) {
+            log.warn("Cannot find Dropdown menu icon");
+            log.warn(e.getLocalizedMessage());
+            driver.findElement(ICON_DROPDOWN_MENU).click();
+        }
+
     }
 
     @Step("Click on Delete button")

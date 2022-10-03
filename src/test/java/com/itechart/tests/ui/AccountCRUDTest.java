@@ -19,16 +19,24 @@ public class AccountCRUDTest extends BaseTest {
                 .openAccountListViewPage()
                 .create(account)
                 .validate(account);
-        //TODO fix
+    }
+
+    //TODO fix
 /*                .edit(updatedAccount)
                 .validate(updatedAccount)
                 .delete();*/
+
+    @Test(retryAnalyzer = Retry.class, description = "Delete new account created")
+    public void deleteNewAccountRecord() {
+        Account account = accountFactory.createNewAccount(true);
+        Account updatedAccount = accountFactory.createNewAccount(true);
+        accountSteps
+        .openAccountListViewPage()
+                .create(account)
+                .validate(account)
+        .clickDropdownMenu(account);
+
     }
-
-
-
-
-
 
 
 
