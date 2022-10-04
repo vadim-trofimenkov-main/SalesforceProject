@@ -20,7 +20,7 @@ public class LeadListViewPage extends BasePage {
 
     @Step("Open List View for Lead")
     public LeadListViewPage open() {
-        driver.get("https://itechart42-dev-ed.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
+        driver.get(baseUrl + "lightning/o/Lead/list?filterName=Recent");
         return this;
     }
 

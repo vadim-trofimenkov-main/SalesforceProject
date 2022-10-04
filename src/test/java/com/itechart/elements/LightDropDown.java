@@ -10,8 +10,8 @@ import org.openqa.selenium.WebElement;
 public class LightDropDown {
     WebDriver driver;
     String label;
-    String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//input";
-    String lookupOption = "(//*[contains(@class, 'modal-body')]//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item) [1]";
+    String inputLocator = "//records-lwc-detail-panel//*[text()='%s']/parent::*[contains(@class,'slds-form-element')]//button";
+    String lookupOption = "//records-lwc-detail-panel//*[contains(text(), '%s')]/ancestor::lightning-base-combobox-item";
 
     public LightDropDown(WebDriver driver, String label) {
         this.driver = driver;

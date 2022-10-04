@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SFDropDown {
     WebDriver driver;
     String label;
-    String locator = "//*[contains(@class, 'modal-body')]//span[text()='%s']" +
+    String locator = "//records-lwc-detail-panel//span[text()='%s']" +
             "/ancestor::div[contains(@class,'uiInput')]//a";
     String optionLocator = "//*[contains(@class, 'uiMenuList') and contains(@class, 'visible')]//a[@title='%s']";
 

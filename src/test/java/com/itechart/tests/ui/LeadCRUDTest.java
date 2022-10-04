@@ -18,4 +18,9 @@ public class LeadCRUDTest extends BaseTest {
                 .validate(updatedLead)
                 .delete();
     }
+
+    //TODO fix
+/*                .edit(updatedAccount)
+                .validate(updatedAccount)
+                .delete();*/
 }

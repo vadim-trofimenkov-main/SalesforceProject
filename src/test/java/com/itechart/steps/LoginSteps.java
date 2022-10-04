@@ -17,6 +17,7 @@ public class LoginSteps extends BaseTest {
         homePage = loginPage
                 .open()
                 .login(username, password);
+        homePage.isPageOpened();
         return this;
     }
 

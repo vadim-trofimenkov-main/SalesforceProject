@@ -11,10 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SFLookUp {
     WebDriver driver;
     String label;
-    String inputLocator = "//*[contains(@class, 'modal-body')]//*[text()='%s']" +
+    String inputLocator = "//records-lwc-detail-panel//*[text()='%s']" +
             "/ancestor::div[contains(@class,'uiInput')]//input";
     String lookupOption = "(//div[contains(@title, '%s')]//ancestor::li[not(contains(@class, 'invisible'))]) [1]";
-    String DELETE_ACTION_LOCATOR = "//*[contains(@class, 'modal-body')]//*[text()='%s']/ancestor::*[contains(@class,'uiInput')]//a[@class='deleteAction']";
+    String DELETE_ACTION_LOCATOR = "//records-lwc-detail-panel//*[text()='%s']/ancestor::*[contains(@class,'uiInput')]//a[@class='deleteAction']";
 
     public SFLookUp(WebDriver driver, String label) {
         this.driver = driver;
